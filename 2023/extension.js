@@ -10,10 +10,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 lib.rank.rarity.common.addArray(["qunyou_xiefuren"]);
             }
             if (lib.rank.rarity.rare) {
-                lib.rank.rarity.rare.addArray(["qunyou_caozhang","qunyou_liubei","qunyou_dailaidongzhu"]);
+                lib.rank.rarity.rare.addArray(["qunyou_202301_caozhang","qunyou_202302_liubei","qunyou_202302_dailaidongzhu"]);
             }
-            lib.rank.rarity.epic.addArray(["qunyou_weidan", "qunyou_luzhi", "qunyou_pujing", "qunyou_fengji","qunyou_donghe","qunyou_jiangwei"]);
-            lib.rank.rarity.legend.addArray(["qunyou_huangyueying", "qunyou_qun_huangyueying", "qunyou_xietiao", "qunyou_gansidui", "qunyou_mou_zhanghe"]);
+            lib.rank.rarity.epic.addArray(["qunyou_weidan", "qunyou_luzhi", "qunyou_202301_pujing", "qunyou_202301_fengji","qunyou_202301_donghe","qunyou_202302_jiangwei"]);
+            lib.rank.rarity.legend.addArray(["qunyou_huangyueying", "qunyou_qun_huangyueying", "qunyou_xietiao", "qunyou_202301_gansidui", "qunyou_mou_zhanghe"]);
 
             //阵亡配音
             lib.skill._dieAudio={
@@ -36,8 +36,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         characterSort: {
                             qunyou: {
                                 "yuandan": ["qunyou_xiefuren", "qunyou_weidan", "qunyou_luzhi", "qunyou_huangyueying", "qunyou_qun_huangyueying", "qunyou_xietiao"],
-                                "month1": ["qunyou_gansidui", "qunyou_pujing", "qunyou_caozhang", "qunyou_fengji", "qunyou_mouzhanghe","qunyou_donghe"],
-                                "month2": ["qunyou_jiangwei","qunyou_liubei","qunyou_dailaidongzhu"],
+                                "month1": ["qunyou_202301_gansidui", "qunyou_202301_pujing", "qunyou_202301_caozhang", "qunyou_202301_fengji", "qunyou_mou_zhanghe","qunyou_202301_donghe"],
+                                "month2": ["qunyou_202302_jiangwei","qunyou_202302_liubei","qunyou_202302_dailaidongzhu"],
                             },
                         },
                         character: {
@@ -59,31 +59,31 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "qunyou_xietiao": ["female", "wu", 3, ["qunyou_piaomiao", "qunyou_yunque"],
                                 []
                             ],
-                            "qunyou_gansidui": ["male", "qun", 4, ["qunyou_gansi"],
+                            "qunyou_202301_gansidui": ["male", "qun", 4, ["qunyou_202301_gansi"],
                                 []
                             ],
-                            "qunyou_pujing": ["male", "qun", 3, ["qunyou_jiemou", "qunyou_yunyou", "qunyou_duhua"],
+                            "qunyou_202301_pujing": ["male", "qun", 3, ["qunyou_202301_jiemou", "qunyou_202301_yunyou", "qunyou_202301_duhua"],
                                 []
                             ],
-                            "qunyou_caozhang": ["male", "wei", 4, ["qunyou_xiongwu", "qunyou_jiangchi"],
+                            "qunyou_202301_caozhang": ["male", "wei", 4, ["qunyou_202301_xiongwu", "qunyou_202301_jiangchi"],
                                 []
                             ],
-                            "qunyou_fengji": ["male", "qun", 3, ["qunyou_jiebi", "qunyou_zishi"],
+                            "qunyou_202301_fengji": ["male", "qun", 3, ["qunyou_202301_jiebi", "qunyou_202301_zishi"],
                                 []
                             ],
                             "qunyou_mou_zhanghe": ["male", "wei", 4, ["qunyou_shibian", "qunyou_liaodi"],
                                 []
                             ],
-                            "qunyou_donghe": ["male", "shu", 3, ["qunyou_hezhi", "qunyou_minxi"],
+                            "qunyou_202301_donghe": ["male", "shu", 3, ["qunyou_202301_hezhi", "qunyou_202301_minxi"],
                                 []
                             ],
-                            "qunyou_jiangwei": ["male", "shu", 4, ["qunyou_tiaoxin", "qunyou_huzhen","qunyou_jw_jizhi"],
+                            "qunyou_202302_jiangwei": ["male", "shu", 4, ["qunyou_202302_tiaoxin", "qunyou_202302_huzhen","qunyou_202302_jizhi"],
                                 []
                             ],
-                            "qunyou_liubei": ["male", "shu", 4, ["qunyou_renwang", "qunyou_renze","qunyou_jiangqi"],
+                            "qunyou_202302_liubei": ["male", "shu", 4, ["qunyou_202302_renwang", "qunyou_202302_renze","qunyou_202302_jiangqi"],
                                 ["zhu"]
                             ],
-                            "qunyou_dailaidongzhu":["male", "qun", 4, ["qunyou_manyi", "qunyou_weixiang","qunyou_panqin"],
+                            "qunyou_202302_dailaidongzhu":["male", "qun", 4, ["qunyou_202302_manyi", "qunyou_202302_weixiang","qunyou_202302_panqin"],
                                 ['doublegroup:qun:shu']
                             ],
                         },
@@ -1066,8 +1066,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
 
-                            //qunyou_gansidui
-                            "qunyou_gansi":{
+                            //202301_
+                            "qunyou_202301_gansi":{
                                 audio:['wuhun2',1],
                                 enable:"phaseUse",
                                 usable:1,
@@ -1088,8 +1088,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
 
-                            //qunyou_pujing
-                            "qunyou_jiemou":{
+                            //qunyou_202301_pujing
+                            "qunyou_202301_jiemou":{
                                 trigger:{
                                     player:"phaseEnd",
                                 },
@@ -1123,13 +1123,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                             if(target.countCards('h')>_status.event.player.countCards('h')) return 0;
                                             return att-4;
                                         },
-                                        prompt:get.prompt2('qunyou_jiemou'),
+                                        prompt:get.prompt2('qunyou_202301_jiemou'),
                                     });
                                     "step 2"
                                     if(result.bool){
                                     var target=result.targets[0];
                                     var cards=result.cards;
-                                    target.addToExpansion(cards,player,'give').gaintag.add('qunyou_jiemou');
+                                    target.addToExpansion(cards,player,'give').gaintag.add('qunyou_202301_jiemou');
                                     }
                                 },
                                 intro:{
@@ -1140,14 +1140,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     var cards=player.getExpansions(skill);
                                     if(cards.length) player.loseToDiscardpile(cards);
                                 },
-                                group:"qunyou_jiemou_kongzhi",
+                                group:"qunyou_202301_jiemou_kongzhi",
                                 subSkill:{
                                     kongzhi:{
                                         trigger:{
                                             global:"useCardToPlayered",
                                         },
                                         filter:function (event,player,name){
-                                            var cards=event.target.getExpansions('qunyou_jiemou');
+                                            var cards=event.target.getExpansions('qunyou_202301_jiemou');
                                             for(var i of cards){
                                                 if(get.color(event.card)==get.color(i)) return true;
                                             };
@@ -1156,7 +1156,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         content:function (){
                                             "step 0"
                                             event.list = []
-                                            var cards=trigger.target.getExpansions('qunyou_jiemou');
+                                            var cards=trigger.target.getExpansions('qunyou_202301_jiemou');
                                             for(var i of cards){
                                                 if(get.color(trigger.card)==get.color(i)) event.list.push(i);
                                             };
@@ -1168,14 +1168,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     },
                                 },
                             },
-                            "qunyou_yunyou":{
+                            "qunyou_202301_yunyou":{
                                 trigger:{
                                     player:"loseEnd",
                                 },
                                 forced:true,
                                 locked:true,
                                 init:function (player){
-                                    if(!player.storage.qunyou_yunyou_suit) player.storage.qunyou_yunyou_suit = [];
+                                    if(!player.storage.qunyou_202301_yunyou_suit) player.storage.qunyou_202301_yunyou_suit = [];
                                 },
                                 filter:function (event,player){
                                     return player==_status.currentPhase;
@@ -1184,25 +1184,25 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     "step 0"
                                     for(var card of trigger.cards){
                                         var suit = get.suit(card);
-                                        if(!player.storage.qunyou_yunyou_suit.contains(suit)){
-                                            player.addSkill('qunyou_yunyou_suit');
-                                            player.storage.qunyou_yunyou_suit.push(suit);
-                                            player.storage.qunyou_yunyou_suit.sort(function(a,b){
+                                        if(!player.storage.qunyou_202301_yunyou_suit.contains(suit)){
+                                            player.addSkill('qunyou_202301_yunyou_suit');
+                                            player.storage.qunyou_202301_yunyou_suit.push(suit);
+                                            player.storage.qunyou_202301_yunyou_suit.sort(function(a,b){
                                                 return lib.suit.indexOf(b)-lib.suit.indexOf(a);
                                             });
-                                            player.syncStorage('qunyou_yunyou_suit');
+                                            player.syncStorage('qunyou_202301_yunyou_suit');
                                         };
                                     };
                                     "step 1"
                                     if(game.HasExtension('十周年UI')){
                                         game.broadcastAll(function(player){
                                             var list='';
-                                            for(var suit of player.getStorage('qunyou_yunyou_suit')) list+=get.translation(suit);
-                                            if(player.marks.qunyou_yunyou_suit) player.marks.qunyou_yunyou_suit.firstChild.innerHTML=list;
+                                            for(var suit of player.getStorage('qunyou_202301_yunyou_suit')) list+=get.translation(suit);
+                                            if(player.marks.qunyou_202301_yunyou_suit) player.marks.qunyou_202301_yunyou_suit.firstChild.innerHTML=list;
                                         },player);
                                     };
                                 },
-                                group:["qunyou_yunyou_undamage"],
+                                group:["qunyou_202301_yunyou_undamage"],
                                 subSkill:{
                                     suit:{
                                         charlotte:true,
@@ -1224,7 +1224,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         forced:true,
                                         filter:function (event,player){
                                             if(!event.card || !get.suit(event.card) || get.suit(event.card)=='none')  return false;
-                                            var suits = player.storage.qunyou_yunyou_suit;
+                                            var suits = player.storage.qunyou_202301_yunyou_suit;
                                             for(var suit of suits){
                                                 if(get.suit(event.card)==suit){
                                                     return true;
@@ -1235,18 +1235,18 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         content:function (){
                                             "step 0"
                                             trigger.cancel();
-                                            player.addSkill('qunyou_yunyou_suit');
-                                            player.storage.qunyou_yunyou_suit.remove(get.suit(trigger.card));
-                                            player.storage.qunyou_yunyou_suit.sort(function(a,b){
+                                            player.addSkill('qunyou_202301_yunyou_suit');
+                                            player.storage.qunyou_202301_yunyou_suit.remove(get.suit(trigger.card));
+                                            player.storage.qunyou_202301_yunyou_suit.sort(function(a,b){
                                                 return lib.suit.indexOf(b)-lib.suit.indexOf(a);
                                             });
-                                            player.syncStorage('qunyou_yunyou_suit');
+                                            player.syncStorage('qunyou_202301_yunyou_suit');
                                             "step 1"
                                             if(game.HasExtension('十周年UI')){
                                                 game.broadcastAll(function(player){
                                                     var list='';
-                                                    for(var suit of player.getStorage('qunyou_yunyou_suit')) list+=get.translation(suit);
-                                                    if(player.marks.qunyou_yunyou_suit) player.marks.qunyou_yunyou_suit.firstChild.innerHTML=list;
+                                                    for(var suit of player.getStorage('qunyou_202301_yunyou_suit')) list+=get.translation(suit);
+                                                    if(player.marks.qunyou_202301_yunyou_suit) player.marks.qunyou_202301_yunyou_suit.firstChild.innerHTML=list;
                                                 },player);
                                             };
                                         },
@@ -1254,14 +1254,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     },
                                 },
                             },
-                            "qunyou_duhua":{
+                            "qunyou_202301_duhua":{
                                 limited:true,
                                 unique:true,
                                 mark:true,
                                 intro:{
                                     content:"limited",
                                 },
-                                derivation:['qunyou_duhua_wusheng'],
+                                derivation:['qunyou_202301_duhua_wusheng'],
                                 skillAnimation:true,
                                 init:function (player,skill){
                                     player.storage[skill]=false;
@@ -1286,10 +1286,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     "step 2"
                                     trigger.player.draw(event.drawnum);
                                     trigger.player.recover(event.drawnum);
-                                    trigger.player.addSkillLog("qunyou_duhua_wusheng");
+                                    trigger.player.addSkillLog("qunyou_202301_duhua_wusheng");
                                 },
                             },
-                            "qunyou_duhua_wusheng":{
+                            "qunyou_202301_duhua_wusheng":{
                                 audio:['wusheng',2],
                                 group:["new_rewusheng"],
                                 direct:true,
@@ -1316,20 +1316,20 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 
                             },
 
-                            //qunyou_caozhang
-                            "qunyou_xiongwu": {
+                            //qunyou_202301_caozhang
+                            "qunyou_202301_xiongwu": {
                                 mod: {
                                     cardUsable: function (card, player, num) {
                                         if (card.name == 'sha') return num + player.getAttackRange() - 1;
                                     },
                                 },
                             },
-                            "qunyou_jiangchi": {
+                            "qunyou_202301_jiangchi": {
                                 enable: "phaseUse",
                                 filter: function (event, player) {
                                     return player.getCardUsable({
                                         name: 'sha'
-                                    }) >= 0 && ((player.getStat().skill.qunyou_jiangchi || 0) < player.maxHp);
+                                    }) >= 0 && ((player.getStat().skill.qunyou_202301_jiangchi || 0) < player.maxHp);
                                 },
                                 content: function () {
                                     "step 0"
@@ -1344,13 +1344,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     "step 1"
                                     if (result.index == 0) {
                                         player.chooseToDiscard(1, 'he', true);
-                                        player.addTempSkill('qunyou_jiangchi_attackRange');
-                                        player.addTempSkill('qunyou_jiangchi_qinggang');
-                                        player.addMark('qunyou_jiangchi_attackRange', 1, false);
+                                        player.addTempSkill('qunyou_202301_jiangchi_attackRange');
+                                        player.addTempSkill('qunyou_202301_jiangchi_qinggang');
+                                        player.addMark('qunyou_202301_jiangchi_attackRange', 1, false);
                                     } else {
                                         player.draw();
-                                        player.addTempSkill('qunyou_jiangchi_less');
-                                        player.addMark('qunyou_jiangchi_less', 1, false);
+                                        player.addTempSkill('qunyou_202301_jiangchi_less');
+                                        player.addMark('qunyou_202301_jiangchi_less', 1, false);
                                     }
                                 },
                                 subSkill: {
@@ -1359,7 +1359,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         onremove: true,
                                         mod: {
                                             attackRange: function (player, num) {
-                                                return num + player.countMark('qunyou_jiangchi_attackRange');
+                                                return num + player.countMark('qunyou_202301_jiangchi_attackRange');
                                             },
                                         },
                                         intro: {
@@ -1372,7 +1372,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         onremove: true,
                                         mod: {
                                             cardUsable: function (card, player, num) {
-                                                if (card.name == 'sha') return num - player.countMark('qunyou_jiangchi_less');
+                                                if (card.name == 'sha') return num - player.countMark('qunyou_202301_jiangchi_less');
                                             },
                                         },
                                         intro: {
@@ -1392,7 +1392,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         content: function () {
                                             trigger.target.addTempSkill('qinggang2');
                                             trigger.target.storage.qinggang2.add(trigger.card);
-                                            player.removeSkill('qunyou_jiangchi_qinggang');
+                                            player.removeSkill('qunyou_202301_jiangchi_qinggang');
                                         },
                                         ai: {
                                             "unequip_ai": true,
@@ -1407,16 +1407,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
 
-                            //qunyou_fengji
-                            "qunyou_jiebi": {
+                            //qunyou_202301_fengji
+                            "qunyou_202301_jiebi": {
                                 enable: "phaseUse",
                                 usable: 3,
                                 filter: function (event, player) {
-                                    return !player.hasSkill("qunyou_jiebi_no");
+                                    return !player.hasSkill("qunyou_202301_jiebi_no");
                                 },
                                 content: function () {
                                     "step 0"
-                                    event.usedNum = (player.getStat().skill.qunyou_jiebi || 0);
+                                    event.usedNum = (player.getStat().skill.qunyou_202301_jiebi || 0);
                                     if (event.usedNum == 1) {
                                         player.chooseToDiscard(1, 'he', true);
                                     } else if (event.usedNum == 2) {
@@ -1436,7 +1436,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     })
                                     if (bool) {
                                         player.draw(event.usedNum);
-                                        player.addTempSkill("qunyou_jiebi_no")
+                                        player.addTempSkill("qunyou_202301_jiebi_no")
                                     }
                                 },
                                 subSkill: {
@@ -1445,7 +1445,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     },
                                 },
                             },
-                            "qunyou_zishi": {
+                            "qunyou_202301_zishi": {
                                 trigger: {
                                     target: "useCardToTargeted",
                                 },
@@ -1455,9 +1455,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 forced: true,
                                 content: function () {
                                     "step 0"
-                                    player.addTempSkill('qunyou_zishi_count');
-                                    player.addMark('qunyou_zishi_count', 1, false);
-                                    event.usedNum = player.countMark('qunyou_zishi_count');
+                                    player.addTempSkill('qunyou_202301_zishi_count');
+                                    player.addMark('qunyou_202301_zishi_count', 1, false);
+                                    event.usedNum = player.countMark('qunyou_202301_zishi_count');
                                     if (event.usedNum == 1) {
                                         player.draw();
                                     } else if (event.usedNum == 2) {
@@ -1537,8 +1537,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
 
-                            //qunyou_donghe
-                            "qunyou_hezhi":{
+                            //qunyou_202301_donghe
+                            "qunyou_202301_hezhi":{
                                 trigger:{
                                     player:"useCard",
                                 },
@@ -1551,7 +1551,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     for(var i of trigger.targets) i.draw(); 
                                 },
                             },
-                            "qunyou_minxi":{
+                            "qunyou_202301_minxi":{
                                 mark:true,
                                 locked:false,
                                 zhuanhuanji:true,
@@ -1560,11 +1560,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 intro:{
                                     markcount:function(storage,player){
                                         if(!_status.currentPhase) return undefined;
-                                        return (player.getStat('skill').qunyou_minxi||0)+1;
+                                        return (player.getStat('skill').qunyou_202301_minxi||0)+1;
                                     },
                                     content:function(storage,player,skill){
-                                        var num=(player.getStat('skill').qunyou_minxi||0)+1;
-                                        var str=player.storage.qunyou_minxi?'你可以获得'+num+'名手牌数不少于你的其他角色一张牌':'你可以交给'+num+'名手牌数不大于你的其他角色一张手牌。';
+                                        var num=(player.getStat('skill').qunyou_202301_minxi||0)+1;
+                                        var str=player.storage.qunyou_202301_minxi?'你可以获得'+num+'名手牌数不少于你的其他角色一张牌':'你可以交给'+num+'名手牌数不大于你的其他角色一张手牌。';
                                         str+='若有角色本阶段已成为过此技能的目标两次，则你令此技能失效直到回合结束，然后你可以视为使用一张非伤害类锦囊牌，并可为这张牌增加或减少至多'+num+'个目标';
                                         return str;
                                     },
@@ -1572,17 +1572,17 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 enable:"phaseUse",
                                 multitarget:true,
                                 filter:function(event,player){
-                                    var num=(player.getStat('skill').qunyou_minxi||0)+1;
-                                    if(player.hasSkill('qunyou_minxi_disable')) return false;
-                                    return player.storage.qunyou_minxi||player.countCards('h')>=num;
+                                    var num=(player.getStat('skill').qunyou_202301_minxi||0)+1;
+                                    if(player.hasSkill('qunyou_202301_minxi_disable')) return false;
+                                    return player.storage.qunyou_202301_minxi||player.countCards('h')>=num;
                                 },
                                 filterTarget:function(card,player,target){
                                     if(player==target) return false;
-                                    if(player.storage.qunyou_minxi) return target.countGainableCards(player,'he')&&target.countCards('h')>=player.countCards('h');
+                                    if(player.storage.qunyou_202301_minxi) return target.countGainableCards(player,'he')&&target.countCards('h')>=player.countCards('h');
                                     else return target.countCards('h')<=player.countCards('h');
                                 },
                                 selectTarget:function(){
-                                    var player=_status.event.player,num=(player.getStat('skill').qunyou_minxi||0)+1;
+                                    var player=_status.event.player,num=(player.getStat('skill').qunyou_202301_minxi||0)+1;
                                     return num;
                                 },
                                 content:function(){
@@ -1590,37 +1590,37 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     event.num=targets.length;
                                     'step 1'
                                     event.target=targets[targets.length-event.num];
-                                    if(!event.target.hasSkill('qunyou_minxi_used')) event.target.addTempSkill('qunyou_minxi_used');
-                                    else player.addTempSkill('qunyou_minxi_disable');
-                                    if(player.storage.qunyou_minxi) player.gainPlayerCard('获得'+get.translation(event.target)+'一张牌',event.target,'he',true);
+                                    if(!event.target.hasSkill('qunyou_202301_minxi_used')) event.target.addTempSkill('qunyou_202301_minxi_used');
+                                    else player.addTempSkill('qunyou_202301_minxi_disable');
+                                    if(player.storage.qunyou_202301_minxi) player.gainPlayerCard('获得'+get.translation(event.target)+'一张牌',event.target,'he',true);
                                     else player.chooseCard(true,'h','交给'+get.translation(event.target)+'一张牌');
                                     'step 2'
-                                    if(result.cards&&!player.storage.qunyou_minxi) player.give(result.cards,event.target);
+                                    if(result.cards&&!player.storage.qunyou_202301_minxi) player.give(result.cards,event.target);
                                     if(--event.num>0) event.goto(1);
                                     'step 3'
-                                    player.changeZhuanhuanji('qunyou_minxi');
-                                    if(!player.hasSkill('qunyou_minxi_disable')) event.finish();
+                                    player.changeZhuanhuanji('qunyou_202301_minxi');
+                                    if(!player.hasSkill('qunyou_202301_minxi_disable')) event.finish();
                                     'step 4'
                                     var list=[];
                                     for(var j of lib.inpile){
                                         if(get.type(j)=='trick'&&!get.tag({name:j,isCard:true},'damage')) list.push(j);
                                     };
-                                    var next=player.chooseButton(['你可以视为使用一张非伤害类锦囊牌，并可为这张牌增加或减少至多'+(player.getStat('skill').qunyou_minxi||0)+'个目标',[list,'vcard']]);
+                                    var next=player.chooseButton(['你可以视为使用一张非伤害类锦囊牌，并可为这张牌增加或减少至多'+(player.getStat('skill').qunyou_202301_minxi||0)+'个目标',[list,'vcard']]);
                                     next.set('filterButton',function(button){
                                         return player.hasUseTarget({name:button.link[2]});
                                     });
                                     'step 5'
                                     if(result.links[0][2]){
-                                        lib.skill.qunyou_minxi_x.viewAs={name:result.links[0][2],isCard:true};
-                                        lib.skill.qunyou_minxi_x.prompt='视为使用一张'+get.translation(result.links[0][2]);
+                                        lib.skill.qunyou_202301_minxi_x.viewAs={name:result.links[0][2],isCard:true};
+                                        lib.skill.qunyou_202301_minxi_x.prompt='视为使用一张'+get.translation(result.links[0][2]);
                                         var next=player.chooseToUse();
-                                            next.logSkill='qunyou_minxi';
+                                            next.logSkill='qunyou_202301_minxi';
                                             next.set('norestore',true);
-                                            next.set('_backupevent','qunyou_minxi_x');
-                                            next.backup('qunyou_minxi_x');
+                                            next.set('_backupevent','qunyou_202301_minxi_x');
+                                            next.backup('qunyou_202301_minxi_x');
                                     };
                                 },
-                                group:['qunyou_minxi_targets'],
+                                group:['qunyou_202301_minxi_targets'],
                                 subSkill:{
                                     targets:{
                                         trigger:{
@@ -1628,11 +1628,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         },
                                         direct:true,
                                         filter:function(event,player){
-                                            return !get.info(event.card).notarget&&event.skill=='qunyou_minxi_x';
+                                            return !get.info(event.card).notarget&&event.skill=='qunyou_202301_minxi_x';
                                         },
                                         content:function(){
                                             'step 0'
-                                            event.num=player.getStat('skill').qunyou_minxi||0;
+                                            event.num=player.getStat('skill').qunyou_202301_minxi||0;
                                             'step 1'
                                             var goon=false;
                                             var info=get.info(trigger.card);
@@ -1668,7 +1668,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                             }
                                             'step 3'
                                             if(event.targets){
-                                                player.logSkill('qunyou_minxi',event.targets);
+                                                player.logSkill('qunyou_202301_minxi',event.targets);
                                                 trigger.targets.addArray(event.targets);
                                             }
                                             event.finish();
@@ -1683,7 +1683,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                             if(result.bool){
                                                 event.targets=result.targets;
                                                 if(event.isMine()){
-                                                    player.logSkill('qunyou_minxi',event.targets);
+                                                    player.logSkill('qunyou_202301_minxi',event.targets);
                                                     event.finish();
                                                 };
                                                 for(var i=0;i<result.targets.length;i++){
@@ -1695,7 +1695,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                                 event.finish();
                                             };
                                             'step 6'
-                                            player.logSkill('qunyou_minxi',event.targets);
+                                            player.logSkill('qunyou_202301_minxi',event.targets);
                                         },
                                     },
                                     x:{
@@ -1707,34 +1707,34 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     disable:{
                                         mark:true,
                                         intro:{
-                                            content:"〖"+get.translation("qunyou_minxi")+"〗失效",
+                                            content:"〖"+get.translation("qunyou_202301_minxi")+"〗失效",
                                         },
                                         sub:true,
                                     },
                                     used:{
                                         mark:true,
                                         intro:{
-                                            content:"本回合已被指定为〖"+get.translation("qunyou_minxi")+"〗的目标",
+                                            content:"本回合已被指定为〖"+get.translation("qunyou_202301_minxi")+"〗的目标",
                                         },
                                         sub:true,
                                     },
                                 },
                             },
 
-                            //qunyou_jiangwei
-                            "qunyou_tiaoxin":{
+                            //qunyou_202302_jiangwei
+                            "qunyou_202302_tiaoxin":{
                                 audio:["tiaoxin_re_jiangwei",2],
                                 enable:"phaseUse",
                                 usable:1,
                                 init:function (player,skill){
-                                    player.storage.qunyou_tiaoxin=0;
+                                    player.storage.qunyou_202302_tiaoxin=0;
                                 },
                                 filterTarget:function(card,player,target){
                                     return target!=player&&target.countCards('he');
                                 },
                                 content:function(){
                                     "step 0"
-                                    if(player.hasSkill("qunyou_jw_jizhi")) player.storage.qunyou_tiaoxin++;
+                                    if(player.hasSkill("qunyou_202302_jizhi")) player.storage.qunyou_202302_tiaoxin++;
                                     target.chooseToUse(function(card,player,event){
                                         if(get.name(card)!='sha') return false;
                                         return lib.filter.filterCard.apply(this,arguments);
@@ -1767,7 +1767,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     threaten:1.1,
                                 },
                             },
-                            "qunyou_huzhen":{
+                            "qunyou_202302_huzhen":{
                                 audio:["guanxing_re_jiangwei",2],
                                 trigger:{
                                     global:["dying"],
@@ -1799,7 +1799,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                                 content:function () {
                                     'step 0'
-                                    player.storage.qunyou_huzhen_recover=trigger.player;
+                                    player.storage.qunyou_202302_huzhen_recover=trigger.player;
                                     if (player.isUnderControl()) {
                                         game.modeSwapPlayer(player);
                                     }
@@ -1869,36 +1869,36 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 ai:{
                                     threaten:1.2,
                                 },
-                                group:["qunyou_huzhen_recover"],
+                                group:["qunyou_202302_huzhen_recover"],
                                 subSkill:{
                                     recover:{
                                         trigger:{
-                                            player:"qunyou_huzhenAfter",
+                                            player:"qunyou_202302_huzhenAfter",
                                         },
                                         direct:true,
                                         init:function(player){
-                                            if(!player.storage.qunyou_huzhen_recover) player.storage.qunyou_huzhen_recover=[];
+                                            if(!player.storage.qunyou_202302_huzhen_recover) player.storage.qunyou_202302_huzhen_recover=[];
                                         },
                                         content:function(){
                                             "step 0"
                                             player.judge(function(card){return (get.suit(card)=='heart')?3:-2});
                                             "step 1"
-                                            event.player=player.storage.qunyou_huzhen_recover;
+                                            event.player=player.storage.qunyou_202302_huzhen_recover;
                                             if(result.suit=="heart") event.player.recover(event.player.maxHp-event.player.hp);
-                                            player.awakenSkill("qunyou_huzhen");
+                                            player.awakenSkill("qunyou_202302_huzhen");
                                         },
                                         sub:true,
                                     },
                                 },
                             },
-                            "qunyou_jw_jizhi":{
+                            "qunyou_202302_jizhi":{
                                 skillAnimation:true,
                                 animationColor:"fire",
                                 audio:2,
                                 audioname:["zhiji_re_jiangwei",2],
                                 unique:true,
                                 juexingji:true,
-                                derivation:"qunyou_zhentu",
+                                derivation:"qunyou_202302_zhentu",
                                 trigger:{
                                     player:"phaseZhunbeiBegin",
                                 },
@@ -1908,24 +1908,24 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         return player.storage.qunhyou_tiaoxin;
                                     },
                                     content:function(storage,player){
-                                        return "已发动过"+player.storage.qunyou_tiaoxin+"次〖挑衅〗";
+                                        return "已发动过"+player.storage.qunyou_202302_tiaoxin+"次〖挑衅〗";
                                     },
                                 },
                                 forced:true,
                                 filter:function(event,player){
-                                    if(player.storage.qunyou_jw_jizhi) return false;
-                                    return player.countCards('h')==0||player.storage.qunyou_tiaoxin>=3;
+                                    if(player.storage.qunyou_202302_jizhi) return false;
+                                    return player.countCards('h')==0||player.storage.qunyou_202302_tiaoxin>=3;
                                 },
                                 content:function(){
                                     "step 0"
-                                    player.awakenSkill('qunyou_jw_jizhi');
+                                    player.awakenSkill('qunyou_202302_jizhi');
                                     player.gainMaxHp();
                                     player.recover();
-                                    player.storage.qunyou_jw_jizhi=true;
-                                    player.addSkill("qunyou_zhentu");
+                                    player.storage.qunyou_202302_jizhi=true;
+                                    player.addSkill("qunyou_202302_zhentu");
                                 },
                             },
-                            "qunyou_zhentu":{
+                            "qunyou_202302_zhentu":{
                                 audio:["bazhen_ol_sp_zhugeliang",2],
                                 trigger:{
                                     player:["chooseToUseBegin"],
@@ -1950,7 +1950,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                                 content:function(){
                                     "step 0"
-                                    player.judge('qunyou_zhentu',function(card){return (get.color(card)=='red')?1.5:1});
+                                    player.judge('qunyou_202302_zhentu',function(card){return (get.color(card)=='red')?1.5:1});
                                     "step 1"
                                     if(result.color=="red"){
                                         trigger.untrigger();
@@ -1971,8 +1971,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
 
-                            //qunyou_liubei
-                            "qunyou_renwang":{
+                            //qunyou_202302_liubei
+                            "qunyou_202302_renwang":{
                                 audio:["rerende_gz_jun_liubei",2],
                                 trigger:{
                                     player:"loseAfter",
@@ -1991,19 +1991,19 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     return evt&&evt.cards2&&evt.cards2.length>0;   
                                 },
                                 content:function(){
-                                    player.addMark('qunyou_renwang',trigger.cards.length);
+                                    player.addMark('qunyou_202302_renwang',trigger.cards.length);
                                 },
-                                group:"qunyou_renwang_use",
+                                group:"qunyou_202302_renwang_use",
                                 subSkill:{
                                     use:{
                                         enable:["chooseToUse","chooseToRespond"],
                                         hiddenCard:function(player,name){
-                                            if(player.hasSkill("qunyou_renwang_disable")) return false;
-                                            if(get.type(name)=='basic'&&lib.inpile.contains(name)&&player.countMark('qunyou_renwang')>=2) return true;
+                                            if(player.hasSkill("qunyou_202302_renwang_disable")) return false;
+                                            if(get.type(name)=='basic'&&lib.inpile.contains(name)&&player.countMark('qunyou_202302_renwang')>=2) return true;
                                         },
                                         filter:function(event,player){
-                                            if(player.hasSkill("qunyou_renwang_disable")) return false;
-                                            if(event.type=='wuxie'||player.countMark('qunyou_renwang')<2) return false;
+                                            if(player.hasSkill("qunyou_202302_renwang_disable")) return false;
+                                            if(event.type=='wuxie'||player.countMark('qunyou_202302_renwang')<2) return false;
                                             for(var i of lib.inpile){
                                                 if(get.type(i)!='basic') continue;
                                                 var card={name:i,isCard:true};
@@ -2053,9 +2053,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                                         isCard:true,
                                                     },
                                                     precontent:function(){
-                                                        player.logSkill('qunyou_renwang');
-                                                        player.removeMark('qunyou_renwang',2);
-                                                        player.addTempSkill("qunyou_renwang_disable");
+                                                        player.logSkill('qunyou_202302_renwang');
+                                                        player.removeMark('qunyou_202302_renwang',2);
+                                                        player.addTempSkill("qunyou_202302_renwang_disable");
                                                     },
                                                 }
                                             },
@@ -2070,7 +2070,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                             respondShan:true,
                                             respondSha:true,
                                             skillTagFilter:function(player,tag){
-                                                if(player.countMark('qunyou_renwang')<2) return false;
+                                                if(player.countMark('qunyou_202302_renwang')<2) return false;
                                             },
                                             result:{
                                                 player:function(player){
@@ -2090,7 +2090,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     },
                                 },
                             },
-                            "qunyou_renze":{
+                            "qunyou_202302_renze":{
                                 audio:["rerende",2],
                                 enable:"phaseUse",
                                 filterCard:true,
@@ -2175,13 +2175,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     threaten:0.8,
                                 },
                             },
-                            "qunyou_jiangqi":{
+                            "qunyou_202302_jiangqi":{
                                 unique:true,
                                 audio:["jijiang1_re_liubei",2],
                                 enable:"phaseUse",
                                 usable:1,
                                 filter:function(event,player){
-                                    if(!player.hasZhuSkill('qunyou_jiangqi')) return false;
+                                    if(!player.hasZhuSkill('qunyou_202302_jiangqi')) return false;
                                     return game.hasPlayer(function(current){
                                         if(current==player) return false;
                                         return current.group=='shu'&&current.hp>=player.hp&&game.hasPlayer(function(target){
@@ -2222,7 +2222,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     event.current=current;
                                     var target=targets[1];
                                     event.target=target;
-                                    player.logSkill('qunyou_jiangqi');
+                                    player.logSkill('qunyou_202302_jiangqi');
                                     player.line2([current,target]);
                                     var next=target.chooseControl('出杀','跳过阶段')
                                     next.set('choiceList',[
@@ -2241,8 +2241,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
 
-                            //qunyou_dailaidongzhu
-                            "qunyou_manyi":{
+                            //qunyou_202302_dailaidongzhu
+                            "qunyou_202302_manyi":{
                                 init:function(player){
                                     player._groupChosen=true;
                                     player.changeGroup('qun',false);
@@ -2267,7 +2267,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         },
                                     },
                                 },
-                                group:["qunyou_manyi_draw"],
+                                group:["qunyou_202302_manyi_draw"],
                                 subSkill:{
                                     draw:{
                                         trigger:{
@@ -2281,7 +2281,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         content:function(){
                                             'step 0'
                                             player.draw();
-                                            player.logSkill("qunyou_manyi");
+                                            player.logSkill("qunyou_202302_manyi");
                                             if(trigger.target==player) event.finish();
                                             player.chooseCard(true,'he','交给'+get.translation(trigger.player)+'一张牌').set('ai',function(card){
                                                 if(get.position(card)=='e') return -1;
@@ -2296,7 +2296,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     },
                                 },
                             },
-                            "qunyou_weixiang":{
+                            "qunyou_202302_weixiang":{
                                 audio:"ext:群友DIY2023/audio/skill:1",
                                 groupSkill:true,
                                 enable:"phaseUse",
@@ -2335,7 +2335,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     },
                                 },
                             },
-                            "qunyou_panqin":{
+                            "qunyou_202302_panqin":{
                                 audio:"ext:群友DIY2023/audio/skill:1",
                                 groupSkill:true,
                                 enable:"phaseUse",
@@ -2376,15 +2376,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "qunyou_xiefuren": "谢夫人",
                             "qunyou_weidan": "韦诞",
                             "qunyou_xietiao": "谢窕",
-                            "qunyou_gansidui": "敢死队",
-                            "qunyou_pujing": "普净",
-                            "qunyou_caozhang": "曹彰",
-                            "qunyou_fengji": "逢纪",
+                            "qunyou_202301_gansidui": "敢死队",
+                            "qunyou_202301_pujing": "普净",
+                            "qunyou_202301_caozhang": "曹彰",
+                            "qunyou_202301_fengji": "逢纪",
                             "qunyou_mou_zhanghe": "谋张郃",
-                            "qunyou_donghe":"董和",
-                            "qunyou_jiangwei":"姜维",
-                            "qunyou_liubei":"刘备",
-                            "qunyou_dailaidongzhu":"带来洞主",
+                            "qunyou_202301_donghe":"董和",
+                            "qunyou_202302_jiangwei":"姜维",
+                            "qunyou_202302_liubei":"刘备",
+                            "qunyou_202302_dailaidongzhu":"带来洞主",
 
 
                             // 技能部分
@@ -2420,52 +2420,52 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "qunyou_yunque_info":"结束阶段,你可依据本回合使用的花色数依次发动以下效果:1.弃置场上一张牌;2.令一名角色回复一点体力;3.摸等同于自身体力上限的牌,然后进入濒死状态。",
                             "qunyou_cuizhi":"翠枝",
                             "qunyou_cuizhi_info":"其他角色造成伤害结算后,若你手牌数不多于其,你获得其一张牌;若你体力值不多于其,其流失一点体力,你回复一点体力。",
-                            "qunyou_gansi":"敢死",
-                            "qunyou_gansi_info":"出牌阶段，你令一名角色死亡，然后你死亡。",
-                            "qunyou_jiemou":"揭谋",
-                            "qunyou_jiemou_info":"结束阶段,你可以摸一张牌,然后将一张牌置于一名其他角色的武将牌上。若有角色用颜色相同的牌指定其为目标,你可以展示并令其获得此牌，然后取消其为目标。",
-                            "qunyou_yunyou":"云游",
-                            "qunyou_yunyou_info":"锁定技,你记录你回合内失去牌的花色。花色在记录中的牌对你造成伤害时防止之,然后从记录中移除此花色。",
-                            "qunyou_duhua":"度化",
-                            "qunyou_duhua_info":"限定技,当一名角色处于濒死状态时,你可以弃置X张牌,令其弃置区域里的所有牌,复原武将牌,摸X张牌并回复×点体力,然后其获得【武圣】。(×最大为5)",
-                            "qunyou_duhua_wusheng":"武圣",
-                            "qunyou_duhua_wusheng_info":"你可以将一张红色牌当【杀】使用或打出,你使用的红色【杀】无距离限制且可以无视防具。",
-                            "qunyou_xiongwu":"雄武",
-                            "qunyou_xiongwu_info":"锁定技，你回合内使用【杀】的次数等于你的攻击距离。",
-                            "qunyou_jiangchi":"将驰",
-                            "qunyou_jiangchi_info":"出牌阶段限X次:1.摸一张牌使本回合使用【杀】次数-1;2.弃一张牌使本回合攻击距离+1且下一张【杀】无视防具(X为你的体力上限且一回合使用【杀】次数不应小于0)。",
-                            "qunyou_jiebi":"诘愎",
-                            "qunyou_jiebi_info":"出牌阶段可以依次发动，1.弃一张牌;2.失去一点体力;3.武将牌翻面。每发动一次视为使用一张不计入出牌次数且无出牌限制的【杀】;若此做造成了伤害,则你摸X张牌,然后本回合此技能失效(X为选项编号数)。",
-                            "qunyou_zishi":"自恃",
-                            "qunyou_zishi_info":"锁定技,每回合依次发动,当你成为其他角色使用牌的目标时:1.摸一张牌;2.回复一点体力;3.你与当前回合角色武将牌翻面。",
+                            "qunyou_202301_gansi":"敢死",
+                            "qunyou_202301_gansi_info":"出牌阶段，你令一名角色死亡，然后你死亡。",
+                            "qunyou_202301_jiemou":"揭谋",
+                            "qunyou_202301_jiemou_info":"结束阶段,你可以摸一张牌,然后将一张牌置于一名其他角色的武将牌上。若有角色用颜色相同的牌指定其为目标,你可以展示并令其获得此牌，然后取消其为目标。",
+                            "qunyou_202301_yunyou":"云游",
+                            "qunyou_202301_yunyou_info":"锁定技,你记录你回合内失去牌的花色。花色在记录中的牌对你造成伤害时防止之,然后从记录中移除此花色。",
+                            "qunyou_202301_duhua":"度化",
+                            "qunyou_202301_duhua_info":"限定技,当一名角色处于濒死状态时,你可以弃置X张牌,令其弃置区域里的所有牌,复原武将牌,摸X张牌并回复×点体力,然后其获得【武圣】。(×最大为5)",
+                            "qunyou_202301_duhua_wusheng":"武圣",
+                            "qunyou_202301_duhua_wusheng_info":"你可以将一张红色牌当【杀】使用或打出,你使用的红色【杀】无距离限制且可以无视防具。",
+                            "qunyou_202301_xiongwu":"雄武",
+                            "qunyou_202301_xiongwu_info":"锁定技，你回合内使用【杀】的次数等于你的攻击距离。",
+                            "qunyou_202301_jiangchi":"将驰",
+                            "qunyou_202301_jiangchi_info":"出牌阶段限X次:1.摸一张牌使本回合使用【杀】次数-1;2.弃一张牌使本回合攻击距离+1且下一张【杀】无视防具(X为你的体力上限且一回合使用【杀】次数不应小于0)。",
+                            "qunyou_202301_jiebi":"诘愎",
+                            "qunyou_202301_jiebi_info":"出牌阶段可以依次发动，1.弃一张牌;2.失去一点体力;3.武将牌翻面。每发动一次视为使用一张不计入出牌次数且无出牌限制的【杀】;若此做造成了伤害,则你摸X张牌,然后本回合此技能失效(X为选项编号数)。",
+                            "qunyou_202301_zishi":"自恃",
+                            "qunyou_202301_zishi_info":"锁定技,每回合依次发动,当你成为其他角色使用牌的目标时:1.摸一张牌;2.回复一点体力;3.你与当前回合角色武将牌翻面。",
                             "qunyou_shibian":"识变",
                             "qunyou_shibian_info":"一名角色的回合开始时，你可以令本回合手牌数始终等于其手牌数。",
                             "qunyou_liaodi":"料敌",
                             "qunyou_liaodi_info":"当你因〖识变〗摸牌后，你可以令本轮〖识变〗失效。",
-                            "qunyou_tiaoxin":"挑衅",
-                            "qunyou_tiaoxin_info":"出牌阶段限一次，你可以指定一名有牌的其他角色，该角色需对你使用一张【杀】，否则你获得其一张牌。",
-                            "qunyou_huzhen":"护阵",
-                            "qunyou_huzhen_info":"限定技,当一名角色进入濒死状态时，你可以将所有手牌以任意顺序置于牌堆顶或牌堆底，然后进行一次判定，若结果为♥，其回复体力至体力上限。",
-                            "qunyou_hezhi":"和治",
-                            "qunyou_hezhi_info":"锁定技，你使用非伤害类锦囊牌指定目标时，其摸一张牌。",
-                            "qunyou_minxi":"民息",
-                            "qunyou_minxi_info":"转换技，出牌阶段，阴:你可以交给X名手牌数不大于你的其他角色一张手牌；阳:你可以获得X名手牌数不少于你的其他角色一张牌。若有角色本阶段已成为过此技能的目标两次，则你令此技能失效直到回合结束，然后你可以视为使用一张非伤害类锦囊牌，并可为这张牌增加或减少至多X个目标(X为此技能本阶段发动次数+1)。",
-                            "qunyou_jw_jizhi":"继志",
-                            "qunyou_jw_jizhi_info":"觉醒技，准备阶段，若你没有手牌或你已累计发动过三次〖挑衅〗，你增加1点体力上限并回复1点体力，然后获得技能〖阵图〗。",
-                            "qunyou_zhentu":"阵图",
-                            "qunyou_zhentu_info":"当你需要使用一张【闪】时，你可以进行判定。若结果为红色，视为你使用一张【闪】；若结果为黑色，你可以视为使用一张无距离限制的【杀】。",
-                            "qunyou_renwang":"仁望",
-                            "qunyou_renwang_info":"锁定技，你每不因回合内使用而失去一张牌便获得一个\"仁\"标记。每回合限一次，你可以移去两枚\"仁\"来视为使用或打出一张基本牌。",
-                            "qunyou_renze":"仁泽",
-                            "qunyou_renze_info":"出牌阶段，你可以将任意张手牌交给其他角色。",
-                            "qunyou_jiangqi":"将旗",
-                            "qunyou_jiangqi_info":"主公技，出牌阶段限一次，你可以令一名蜀势力角色选择一项:①视为对你指定的另一名角色使用一张【杀】；②跳过下个回合的出牌阶段。",
-                            "qunyou_manyi":"蛮裔",
-                            "qunyou_manyi_info":"锁定技，你的登场势力为\"群\"，【南蛮入侵】对你无效。当有角色打出【杀】响应【南蛮入侵】时，你摸一张牌并交给其一张牌。",
-                            "qunyou_weixiang":"伪降",
-                            "qunyou_weixiang_info":"群势力技，出牌阶段限一次，你可以与一名角色拼点，若你没赢，你获得其一张牌，并将势力修改为\"蜀\"；若你赢，你结束出牌阶段。",
-                            "qunyou_panqin":"叛侵",
-                            "qunyou_panqin_info":"蜀势力技，出牌阶段限一次，你可以与一名角色拼点，若你赢，你对其造成1点伤害，并将势力修改为\"群\"；若你没赢，你失去1点体力。",
+                            "qunyou_202302_tiaoxin":"挑衅",
+                            "qunyou_202302_tiaoxin_info":"出牌阶段限一次，你可以指定一名有牌的其他角色，该角色需对你使用一张【杀】，否则你获得其一张牌。",
+                            "qunyou_202302_huzhen":"护阵",
+                            "qunyou_202302_huzhen_info":"限定技,当一名角色进入濒死状态时，你可以将所有手牌以任意顺序置于牌堆顶或牌堆底，然后进行一次判定，若结果为♥，其回复体力至体力上限。",
+                            "qunyou_202301_hezhi":"和治",
+                            "qunyou_202301_hezhi_info":"锁定技，你使用非伤害类锦囊牌指定目标时，其摸一张牌。",
+                            "qunyou_202301_minxi":"民息",
+                            "qunyou_202301_minxi_info":"转换技，出牌阶段，阴:你可以交给X名手牌数不大于你的其他角色一张手牌；阳:你可以获得X名手牌数不少于你的其他角色一张牌。若有角色本阶段已成为过此技能的目标两次，则你令此技能失效直到回合结束，然后你可以视为使用一张非伤害类锦囊牌，并可为这张牌增加或减少至多X个目标(X为此技能本阶段发动次数+1)。",
+                            "qunyou_202302_jizhi":"继志",
+                            "qunyou_202302_jizhi_info":"觉醒技，准备阶段，若你没有手牌或你已累计发动过三次〖挑衅〗，你增加1点体力上限并回复1点体力，然后获得技能〖阵图〗。",
+                            "qunyou_202302_zhentu":"阵图",
+                            "qunyou_202302_zhentu_info":"当你需要使用一张【闪】时，你可以进行判定。若结果为红色，视为你使用一张【闪】；若结果为黑色，你可以视为使用一张无距离限制的【杀】。",
+                            "qunyou_202302_renwang":"仁望",
+                            "qunyou_202302_renwang_info":"锁定技，你每不因回合内使用而失去一张牌便获得一个\"仁\"标记。每回合限一次，你可以移去两枚\"仁\"来视为使用或打出一张基本牌。",
+                            "qunyou_202302_renze":"仁泽",
+                            "qunyou_202302_renze_info":"出牌阶段，你可以将任意张手牌交给其他角色。",
+                            "qunyou_202302_jiangqi":"将旗",
+                            "qunyou_202302_jiangqi_info":"主公技，出牌阶段限一次，你可以令一名蜀势力角色选择一项:①视为对你指定的另一名角色使用一张【杀】；②跳过下个回合的出牌阶段。",
+                            "qunyou_202302_manyi":"蛮裔",
+                            "qunyou_202302_manyi_info":"锁定技，你的登场势力为\"群\"，【南蛮入侵】对你无效。当有角色打出【杀】响应【南蛮入侵】时，你摸一张牌并交给其一张牌。",
+                            "qunyou_202302_weixiang":"伪降",
+                            "qunyou_202302_weixiang_info":"群势力技，出牌阶段限一次，你可以与一名角色拼点，若你没赢，你获得其一张牌，并将势力修改为\"蜀\"；若你赢，你结束出牌阶段。",
+                            "qunyou_202302_panqin":"叛侵",
+                            "qunyou_202302_panqin_info":"蜀势力技，出牌阶段限一次，你可以与一名角色拼点，若你赢，你对其造成1点伤害，并将势力修改为\"群\"；若你没赢，你失去1点体力。",
 
 
                             //分组部分
@@ -2475,7 +2475,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         },
                         //转换技显示
                         dynamicTranslate: {
-                            "qunyou_minxi":function(player){
+                            "qunyou_202301_minxi":function(player){
                                 if(player.storage.qunuou_minxi==true) return '转换技，出牌阶段，阴:你可以交给X名手牌数不大于你的其他角色一张手牌；<span class="bluetext">阳:你可以获得X名手牌数不少于你的其他角色一张牌。</span>若有角色本阶段已成为过此技能的目标两次，则你令此技能失效直到回合结束，然后你可以视为使用一张非伤害类锦囊牌，并可为这张牌增加或减少至多X个目标(X为此技能本阶段发动次数+1)。';
                                 return '转换技，出牌阶段，<span class="bluetext">阴:你可以交给X名手牌数不大于你的其他角色一张手牌；</span>阳:你可以获得X名手牌数不少于你的其他角色一张牌。若有角色本阶段已成为过此技能的目标两次，则你令此技能失效直到回合结束，然后你可以视为使用一张非伤害类锦囊牌，并可为这张牌增加或减少至多X个目标(X为此技能本阶段发动次数+1)。';
                             },
