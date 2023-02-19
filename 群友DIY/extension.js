@@ -196,7 +196,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "qunyou2022_tengyin": ["male", "wu", 3, ["qunyou2022_xiujie", "qunyou2022_zhongjian"],
                                 []
                             ],
-                            "qunyou2022_huanfuren": ["female", "wei", 1, ["qunyou2022_cailan", "qunyou2022_xunxu", "qunyou2022_huaer"],
+                            "qunyou2022_huanfuren": ["female", "wei", 1, ["qunyou2022_cailan", "qunyou2022_xunxu"],
                                 []
                             ],
                             "qunyou2022_caoyu": ["male", "wei", 4, ["qunyou2022_yanchu", "qunyou2022_fenggong"],
@@ -4501,6 +4501,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 filter: function (event, player) {
                                     return event.player.hp <= 0;
                                 },
+                                derivation:"qunyou2022_huaer",
                                 content: function () {
                                     'step 0'
                                     var num = player.countCards('h');
@@ -4512,9 +4513,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     }
                                     'step 2'
                                     if (!trigger.player.isDying()) {
-                                        player.removeSkill('qunyou2022_xunxu');
+                                        player.awakenSkill('qunyou2022_xunxu');
                                         player.addSkill('qunyou2022_huaer');
-                                        event.finish();
                                     }
                                 },
                             },
@@ -5628,7 +5628,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "qunyou2022_cailan": "采兰",
                             "qunyou2022_cailan_info": "每回合限两次，当一名角色在弃牌阶段以外弃置手牌时，你可令其获得其中一张牌，然后你摸一张牌。",
                             "qunyou2022_xunxu": "洵虚",
-                            "qunyou2022_xunxu_info": "每回合限一次，当一名角色进入濒死状态时，你可以弃置所有手牌并摸等量的牌，然后若你手牌中有【桃】或【酒】，该角色回复一点体力。若该角色因此脱离凝死状态，你失去〖淘虚〗获得〖华尔〗。",
+                            "qunyou2022_xunxu_info": "每回合限一次，当一名角色进入濒死状态时，你可以弃置所有手牌并摸等量的牌，然后若你手牌中有【桃】或【酒】，该角色回复一点体力。若该角色因此脱离凝死状态，你失去〖洵虚〗并获得〖华尔〗。",
                             "qunyou2022_huaer": "华尔",
                             "qunyou2022_huaer_info": "每回合限一次，当一名角色受到伤害时，你可以弃置X张手牌并摸等量的牌（X为其体力值），然后若你手牌中有【桃】或【酒】，你可以选择一项：1、令其回复一点体力；2、你摸一张牌。若没有，此技能改为“每回合限两次”。",
                             
