@@ -14,6 +14,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     /*2023_m1*/
                     /*2023_m2*/
                     /*2023_m3*/
+                    "qunyou2023_m3_yitakuya",
                 ]);
             };
             if (lib.rank.rarity.common) {
@@ -26,6 +27,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     /*2023_m2*/
                     "qunyou2023_m2_qifu_zhangliao",
                     /*2023_m3*/
+                    "qunyou2023_m3_heiyukuaidou","qunyou2023_m3_feicunjianxin","qunyou2023_m3_jiaxu",
                 ]);
             };
             if (lib.rank.rarity.rare) {
@@ -38,6 +40,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     /*2023_m2*/
                     "qunyou2023_m2_liubei", "qunyou2023_m2_dailaidongzhu","qunyou2023_m2_aerwa", 
                     /*2023_m3*/
+                    "qunyou2023_m3_caocao","qunyou2023_m3_liubei","qunyou2023_m3_hongxia",
                 ]);
             };
             if (lib.rank.rarity.epic) {
@@ -51,6 +54,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     /*2023_m2*/
                     "qunyou2023_m2_jiangwei","qunyou2023_m2_aogusiting",
                     /*2023_m3*/
+                    "qunyou2023_m3_shen_zhugeliang",
                 ]);
             };
             if (lib.rank.rarity.legend) {
@@ -63,6 +67,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     "qunyou2023_m1_gansidui", "qunyou2023_m1_mou_zhanghe",
                     /*2023_m2*/
                     /*2023_m3*/
+                    "qunyou2023_m3_zhangti","qunyou2023_m3_caoanyang","qunyou2023_m3_caoqingming","qunyou2023_m3_sb_guojia","qunyou2023_m3_diaochan",
                 ]);
             };
 
