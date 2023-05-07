@@ -10,7 +10,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 "month1": ["qunyou2023_m1_gansidui", "qunyou2023_m1_pujing", "qunyou2023_m1_caozhang", "qunyou2023_m1_fengji", "qunyou2023_m1_mou_zhanghe", "qunyou2023_m1_donghe"],
                 "month2": ["qunyou2023_m2_jiangwei", "qunyou2023_m2_liubei", "qunyou2023_m2_dailaidongzhu", "qunyou2023_m2_aerwa", "qunyou2023_m2_aogusiting", "qunyou2023_m2_qifu_zhangliao"],
                 "month3": ["qunyou2023_m3_heiyukuaidou", "qunyou2023_m3_feicunjianxin", "qunyou2023_m3_caocao", "qunyou2023_m3_liubei", "qunyou2023_m3_yitakuya", "qunyou2023_m3_zhangti", "qunyou2023_m3_shen_zhugeliang", "qunyou2023_m3_jiaxu", "qunyou2023_m3_hongxia", "qunyou2023_m3_diaochan", "qunyou2023_m3_caoanyang", "qunyou2023_m3_caoqingming", "qunyou2023_m3_sb_guojia"],
-                "month4": ["qunyou2023_m4_shen_machao", ],
+                "month4": ["qunyou2023_m4_shen_machao", "qunyou2023_m4_shuangtoushirenmo","qunyou2023_m4_shen_zhanghe","qunyou2023_m4_caoanyang"],
             },
         },
         character: {
@@ -72,7 +72,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
             "qunyou2023_m2_dailaidongzhu": ["male", "qun", 4, ["qunyou2023_m2_manyi", "qunyou2023_m2_weixiang", "qunyou2023_m2_panqin"],
                 ['doublegroup:qun:shu']
             ],
-            "qunyou2023_m2_aerwa": ["male", "qun", 3, ["qunyou2023_m2_ganzhi","qunyou2023_m2_endian", "qunyou2023_m2_qiji"],
+            "qunyou2023_m2_aerwa": ["male", "qun", 3, ["qunyou2023_m2_ganzhi", "qunyou2023_m2_endian", "qunyou2023_m2_qiji"],
                 []
             ],
             "qunyou2023_m2_aogusiting": ["male", "qun", "3/4", ["qunyou2023_m2_liezui", "qunyou2023_m2_yongfa", "qunyou2023_m2_shazhen", "qunyou2023_m2_xinhuo"],
@@ -112,7 +112,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
             "qunyou2023_m3_hongxia": ["female", "key", 3, ["qunyou2023_m3_gu", "qunyou2023_m3_yin"],
                 []
             ],
-            "qunyou2023_m3_diaochan": ["female", "qun", 2, ["qunyou2023_m3_huahun", "qunyou2023_m3_yingjin","qunyou2023_m3_shaoxi"],
+            "qunyou2023_m3_diaochan": ["female", "qun", 2, ["qunyou2023_m3_huahun", "qunyou2023_m3_yingjin", "qunyou2023_m3_shaoxi"],
                 []
             ],
             "qunyou2023_m3_caoanyang": ["female", "wei", 3, ["qunyou2023_m3_lianci", "qunyou2023_m3_shangfu"],
@@ -131,6 +131,15 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
             "qunyou2023_m4_shen_machao": ["male", "shen", 4, [],
                 []
             ],
+            "qunyou2023_m4_shuangtoushirenmo": ["male", "wei", 6, ["qunyou2023_m4_tongxin","qunyou2023_m4_tongli"],
+                []
+            ],
+            "qunyou2023_m4_shen_zhanghe":["male","shen",4,["qunyou2023_m4_xuanhua","qunyou2023_m4_qimen","qunyou2023_m4_danfu"],
+                []    
+            ],
+            "qunyou2023_m4_caoanyang":["female","wei",3,["qunyou2023_m4_heshi","qunyou2023_m4_huanyun"],
+                []
+            ],
 
 
         },
@@ -139,7 +148,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
         //武将称号
         characterTitle: {},
         //珠联璧合
-        perfectPair:{},
+        perfectPair: {},
         skill: {
             //qunyou2023_yd_huangyueying
             "qunyou2023_yd_jizhi": {
@@ -982,141 +991,141 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2023_yd_xietiao
             "qunyou2023_yd_piaomiao": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{
-                    player:"dying",
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    player: "dying",
                 },
-                locked:true,
-                direct:true,
-                charlotte:true,
-                skillAnimation:true,
-                animationColor:"green",
-                derivation:['qunyou2023_yd_cuizhi'],
-                init:function (player){
-                    if(!player.storage.qunyou2023_yd_piaomiao_nouse) player.storage.qunyou2023_yd_piaomiao_nouse=[];
+                locked: true,
+                direct: true,
+                charlotte: true,
+                skillAnimation: true,
+                animationColor: "green",
+                derivation: ['qunyou2023_yd_cuizhi'],
+                init: function (player) {
+                    if (!player.storage.qunyou2023_yd_piaomiao_nouse) player.storage.qunyou2023_yd_piaomiao_nouse = [];
                 },
-                filter:function (event,player){
-                    return player.storage.qunyou2023_yd_piaomiao_nouse.length<4;
+                filter: function (event, player) {
+                    return player.storage.qunyou2023_yd_piaomiao_nouse.length < 4;
                 },
-                content:function(){
+                content: function () {
                     "step 0"
-                    var list = ["spade","heart","club","diamond"];
-                    for(var suit of player.storage.qunyou2023_yd_piaomiao_nouse) list.remove(suit);
-                    player.chooseControl(list,"cancel2")
-                    .set('prompt',"请选择一种花色无法使用");
+                    var list = ["spade", "heart", "club", "diamond"];
+                    for (var suit of player.storage.qunyou2023_yd_piaomiao_nouse) list.remove(suit);
+                    player.chooseControl(list, "cancel2")
+                        .set('prompt', "请选择一种花色无法使用");
                     "step 1"
-                    if(result.control=="cancel2") event.finish();
+                    if (result.control == "cancel2") event.finish();
                     event.suit = result.control;
                     "step 2"
                     player.logSkill('qunyou2023_yd_piaomiao');
                     player.addSkill('qunyou2023_yd_piaomiao_nouse');
                     player.storage.qunyou2023_yd_piaomiao_nouse.push(event.suit);
-                    player.storage.qunyou2023_yd_piaomiao_nouse.sort(function(a,b){
-                        return lib.suit.indexOf(b)-lib.suit.indexOf(a);
+                    player.storage.qunyou2023_yd_piaomiao_nouse.sort(function (a, b) {
+                        return lib.suit.indexOf(b) - lib.suit.indexOf(a);
                     });
                     player.syncStorage('qunyou2023_yd_piaomiao_nouse');
                     player.draw(2);
-                    var num=3-player.hp;
-                    if(num) player.recover(num);
+                    var num = 3 - player.hp;
+                    if (num) player.recover(num);
                     "step 3"
-                    if(game.HasExtension('十周年UI')){
-                        game.broadcastAll(function(player){
-                            var list='';
-                            for(var suit of player.getStorage('qunyou2023_yd_piaomiao_nouse')) list+=get.translation(suit);
-                            if(player.marks.qunyou2023_yd_piaomiao_nouse) player.marks.qunyou2023_yd_piaomiao_nouse.firstChild.innerHTML=list;
-                        },player);
+                    if (game.HasExtension('十周年UI')) {
+                        game.broadcastAll(function (player) {
+                            var list = '';
+                            for (var suit of player.getStorage('qunyou2023_yd_piaomiao_nouse')) list += get.translation(suit);
+                            if (player.marks.qunyou2023_yd_piaomiao_nouse) player.marks.qunyou2023_yd_piaomiao_nouse.firstChild.innerHTML = list;
+                        }, player);
                     };
                     "step 4"
-                    var flag_black = player.storage.qunyou2023_yd_piaomiao_nouse.contains("spade")&&player.storage.qunyou2023_yd_piaomiao_nouse.contains("club")&&(event.suit=="spade"||event.suit=="club");
-                    var flag_red = player.storage.qunyou2023_yd_piaomiao_nouse.contains("heart")&&player.storage.qunyou2023_yd_piaomiao_nouse.contains("diamond")&&(event.suit=="heart"||event.suit=="diamond");
-                    
-                    if(player.storage.qunyou2023_yd_piaomiao_nouse.length==4){
+                    var flag_black = player.storage.qunyou2023_yd_piaomiao_nouse.contains("spade") && player.storage.qunyou2023_yd_piaomiao_nouse.contains("club") && (event.suit == "spade" || event.suit == "club");
+                    var flag_red = player.storage.qunyou2023_yd_piaomiao_nouse.contains("heart") && player.storage.qunyou2023_yd_piaomiao_nouse.contains("diamond") && (event.suit == "heart" || event.suit == "diamond");
+
+                    if (player.storage.qunyou2023_yd_piaomiao_nouse.length == 4) {
                         player.loseMaxHp(2);
                         player.addSkill("qunyou2023_yd_piaomiao_wuxian");
-                    }
-                    else if(flag_black||flag_red){
+                    } else if (flag_black || flag_red) {
                         player.gainMaxHp();
                         player.addSkill("qunyou2023_yd_cuizhi");
                     };
                 },
-                subSkill:{
-                    nouse:{
-                        charlotte:true,
-                        onremove:true,
-                        mark:true,
-                        intro:{
-                            markcount:function(storage){
-                                if(game.HasExtension('十周年UI')) return undefined;
+                subSkill: {
+                    nouse: {
+                        charlotte: true,
+                        onremove: true,
+                        mark: true,
+                        intro: {
+                            markcount: function (storage) {
+                                if (game.HasExtension('十周年UI')) return undefined;
                                 return storage.length;
                             },
-                            content:function(storage,player){
-                                if(player.storage.qunyou2023_yd_piaomiao_nouse.length==4) return "使用牌无次数和距离限制";
-                                var list='';
-                                for(var suit of player.getStorage('qunyou2023_yd_piaomiao_nouse')) list+=get.translation(suit);
-                                return "无法使用"+list+"花色的牌";
+                            content: function (storage, player) {
+                                if (player.storage.qunyou2023_yd_piaomiao_nouse.length == 4) return "使用牌无次数和距离限制";
+                                var list = '';
+                                for (var suit of player.getStorage('qunyou2023_yd_piaomiao_nouse')) list += get.translation(suit);
+                                return "无法使用" + list + "花色的牌";
                             },
                         },
-                        mod:{
-                            cardEnabled:function (card,player){
-                                if(player.storage.qunyou2023_yd_piaomiao_nouse.length<4&&player.storage.qunyou2023_yd_piaomiao_nouse.contains(get.suit(card))) return false;
-                            }, 
-                        }, 
-                        sub:true,
+                        mod: {
+                            cardEnabled: function (card, player) {
+                                if (player.storage.qunyou2023_yd_piaomiao_nouse.length < 4 && player.storage.qunyou2023_yd_piaomiao_nouse.contains(get.suit(card))) return false;
+                            },
+                        },
+                        sub: true,
                     },
-                    wuxian:{
-                        mod:{
-                            targetInRange:function (card,player,target){
+                    wuxian: {
+                        mod: {
+                            targetInRange: function (card, player, target) {
                                 return true;
                             },
-                            cardUsableTarget:function (card,player,target){
+                            cardUsableTarget: function (card, player, target) {
                                 return true;
                             },
                         },
-                        sub:true,
+                        sub: true,
                     },
                 },
             },
             "qunyou2023_yd_yunque": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{
-                    player:"phaseJieshuBegin",
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    player: "phaseJieshuBegin",
                 },
-                direct:true,
-                filter:function(event,player){
-                    var list=[],history=player.getHistory('useCard');
-                    for(var i of history) list.add(get.suit(i.card));
-                    return list.length>0;
+                direct: true,
+                filter: function (event, player) {
+                    var list = [],
+                        history = player.getHistory('useCard');
+                    for (var i of history) list.add(get.suit(i.card));
+                    return list.length > 0;
                 },
-                content:function(){
+                content: function () {
                     "step 0"
-                    var list=[],history=player.getHistory('useCard');
-                    for(var i of history) list.add(get.suit(i.card));
+                    var list = [],
+                        history = player.getHistory('useCard');
+                    for (var i of history) list.add(get.suit(i.card));
                     event.list = list;
                     "step 1"
-                    if(event.list.length>0){
-                        player.chooseTarget('弃置场上的一张牌',1,function(card,player,target){
+                    if (event.list.length > 0) {
+                        player.chooseTarget('弃置场上的一张牌', 1, function (card, player, target) {
                             return target.countCards('ej');
                         });
-                    }
-                    else event.finish();
+                    } else event.finish();
                     "step 2"
-                    if(result.bool){
-                        player.discardPlayerCard(result.targets[0],'ej',true);
-                        player.logSkill("qunyou2023_yd_yunque",result.targets[0]);
+                    if (result.bool) {
+                        player.discardPlayerCard(result.targets[0], 'ej', true);
+                        player.logSkill("qunyou2023_yd_yunque", result.targets[0]);
                     };
                     "step 3"
-                    if(event.list.length>1) player.chooseTarget('令一名角色回复一点体力',1);
+                    if (event.list.length > 1) player.chooseTarget('令一名角色回复一点体力', 1);
                     else event.finish();
                     "step 4"
-                    if(result.bool){
+                    if (result.bool) {
                         result.targets[0].recover();
-                        player.logSkill("qunyou2023_yd_yunque",result.targets[0]);
+                        player.logSkill("qunyou2023_yd_yunque", result.targets[0]);
                     };
                     "step 5"
-                    if(event.list.length>2) player.chooseBool("摸"+player.maxHp+"张牌，然后失去所有体力");
+                    if (event.list.length > 2) player.chooseBool("摸" + player.maxHp + "张牌，然后失去所有体力");
                     else event.finish();
                     "step 6"
-                    if(result.bool){      
+                    if (result.bool) {
                         player.draw(player.maxHp);
                         player.loseHp(player.hp);
                         player.logSkill("qunyou2023_yd_yunque");
@@ -1124,32 +1133,32 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2023_yd_cuizhi": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{
-                    global:"damageSource",
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    global: "damageSource",
                 },
-                direcr:true,
-                filter:function (event,player){
-                    if(player==event.source) return false;
-                    return player.countCards('h')<=event.source.countCards('h')||player.hp<=event.source.hp;
+                direcr: true,
+                filter: function (event, player) {
+                    if (player == event.source) return false;
+                    return player.countCards('h') <= event.source.countCards('h') || player.hp <= event.source.hp;
                 },
-                content:function (){
+                content: function () {
                     "step 0"
-                    player.chooseToDiscard('弃一张〖缥缈〗记录过的花色的牌并发动〖翠枝〗','he',function(card){
+                    player.chooseToDiscard('弃一张〖缥缈〗记录过的花色的牌并发动〖翠枝〗', 'he', function (card) {
                         return player.storage.qunyou2023_yd_piaomiao_nouse.contains(get.suit(card));
                     });
                     "step 1"
-                    if(result.bool==false) event.finish();
-                    var list=[];
-                    if(player.countCards('h')<=trigger.source.countCards('h')) list.push("获得"+get.translation(trigger.source)+"的一张牌");
-                    if(player.hp<=trigger.source.hp) list.push("对"+get.translation(trigger.source)+"造成一点伤害");
+                    if (result.bool == false) event.finish();
+                    var list = [];
+                    if (player.countCards('h') <= trigger.source.countCards('h')) list.push("获得" + get.translation(trigger.source) + "的一张牌");
+                    if (player.hp <= trigger.source.hp) list.push("对" + get.translation(trigger.source) + "造成一点伤害");
                     list.push('cancel2');
                     player.chooseControl(list);
                     "step 2"
-                    if(result.control=='cancel2') event.finish();
-                    player.logSkill('qunyou2023_yd_cuizhi',trigger.source);
-                    if(result.control=="获得"+get.translation(trigger.source)+"的一张牌") player.gainPlayerCard(trigger.source,'he',true,1);
-                    if(result.control=="对"+get.translation(trigger.source)+"造成一点伤害") trigger.source.damage();
+                    if (result.control == 'cancel2') event.finish();
+                    player.logSkill('qunyou2023_yd_cuizhi', trigger.source);
+                    if (result.control == "获得" + get.translation(trigger.source) + "的一张牌") player.gainPlayerCard(trigger.source, 'he', true, 1);
+                    if (result.control == "对" + get.translation(trigger.source) + "造成一点伤害") trigger.source.damage();
                 },
             },
 
@@ -1656,168 +1665,177 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
             },
             "qunyou2023_m1_minxi": {
                 audio: "ext:群友DIY/audio/skill:2",
-                locked:false,
-                zhuanhuanji:true,
-                mark:true,
-                marktext:"☯",
-                intro:{
-                    markcount:function(storage,player){
-                        if(!_status.currentPhase) return undefined;
-                        return (player.getStat('skill').qunyou2023_m1_minxi||0)+1;
+                locked: false,
+                zhuanhuanji: true,
+                mark: true,
+                marktext: "☯",
+                intro: {
+                    markcount: function (storage, player) {
+                        if (!_status.currentPhase) return undefined;
+                        return (player.getStat('skill').qunyou2023_m1_minxi || 0) + 1;
                     },
-                    content:function(storage,player,skill){
-                        var num=(player.getStat('skill').qunyou2023_m1_minxi||0)+1;
-                        return player.storage.qunyou2023_m1_minxi?'你可以获得'+num+'名手牌数不少于你的其他角色一张牌':'你可以交给'+num+'名手牌数不大于你的其他角色一张手牌。';
+                    content: function (storage, player, skill) {
+                        var num = (player.getStat('skill').qunyou2023_m1_minxi || 0) + 1;
+                        return player.storage.qunyou2023_m1_minxi ? '你可以获得' + num + '名手牌数不少于你的其他角色一张牌' : '你可以交给' + num + '名手牌数不大于你的其他角色一张手牌。';
                     },
                 },
-                enable:"phaseUse",
-                multitarget:true,
-                filter:function(event,player){
-                    var num=(player.getStat('skill').qunyou2023_m1_minxi||0)+1;
-                    if(player.hasSkill('qunyou2023_m1_minxi_disable')) return false;
-                    return player.storage.qunyou2023_m1_minxi||player.countCards('h')>=num;
+                enable: "phaseUse",
+                multitarget: true,
+                filter: function (event, player) {
+                    var num = (player.getStat('skill').qunyou2023_m1_minxi || 0) + 1;
+                    if (player.hasSkill('qunyou2023_m1_minxi_disable')) return false;
+                    return player.storage.qunyou2023_m1_minxi || player.countCards('h') >= num;
                 },
-                filterTarget:function(card,player,target){
-                    if(player==target) return false;
-                    if(player.storage.qunyou2023_m1_minxi) return target.countGainableCards(player,'he')&&target.countCards('h')>=player.countCards('h');
-                    else return target.countCards('h')<=player.countCards('h');
+                filterTarget: function (card, player, target) {
+                    if (player == target) return false;
+                    if (player.storage.qunyou2023_m1_minxi) return target.countGainableCards(player, 'he') && target.countCards('h') >= player.countCards('h');
+                    else return target.countCards('h') <= player.countCards('h');
                 },
-                selectTarget:function(){
-                    var player=_status.event.player,num=(player.getStat('skill').qunyou2023_m1_minxi||0)+1;
+                selectTarget: function () {
+                    var player = _status.event.player,
+                        num = (player.getStat('skill').qunyou2023_m1_minxi || 0) + 1;
                     return num;
                 },
-                content:function(){
+                content: function () {
                     'step 0'
-                    event.num=targets.length;
+                    event.num = targets.length;
                     'step 1'
-                    event.target=targets[targets.length-event.num];
-                    if(!event.target.hasSkill('qunyou2023_m1_minxi_used')) event.target.addTempSkill('qunyou2023_m1_minxi_used');
+                    event.target = targets[targets.length - event.num];
+                    if (!event.target.hasSkill('qunyou2023_m1_minxi_used')) event.target.addTempSkill('qunyou2023_m1_minxi_used');
                     else player.addTempSkill('qunyou2023_m1_minxi_disable');
-                    if(player.storage.qunyou2023_m1_minxi) player.gainPlayerCard('获得'+get.translation(event.target)+'一张牌',event.target,'he',true);
-                    else player.chooseCard(true,'h','交给'+get.translation(event.target)+'一张牌');
+                    if (player.storage.qunyou2023_m1_minxi) player.gainPlayerCard('获得' + get.translation(event.target) + '一张牌', event.target, 'he', true);
+                    else player.chooseCard(true, 'h', '交给' + get.translation(event.target) + '一张牌');
                     'step 2'
-                    if(result.cards&&!player.storage.qunyou2023_m1_minxi) player.give(result.cards,event.target);
-                    if(--event.num>0) event.goto(1);
+                    if (result.cards && !player.storage.qunyou2023_m1_minxi) player.give(result.cards, event.target);
+                    if (--event.num > 0) event.goto(1);
                     'step 3'
                     player.changeZhuanhuanji('qunyou2023_m1_minxi');
-                    if(!player.hasSkill('qunyou2023_m1_minxi_disable')) event.finish();
+                    if (!player.hasSkill('qunyou2023_m1_minxi_disable')) event.finish();
                     'step 4'
-                    var list=[];
-                    for(var j of lib.inpile){
-                        if(get.type(j)=='trick'&&!get.tag({name:j,isCard:true},'damage')) list.push(j);
+                    var list = [];
+                    for (var j of lib.inpile) {
+                        if (get.type(j) == 'trick' && !get.tag({
+                                name: j,
+                                isCard: true
+                            }, 'damage')) list.push(j);
                     };
-                    var next=player.chooseButton(['你可以视为使用一张非伤害类锦囊牌，并可为这张牌增加或减少至多'+(player.getStat('skill').qunyou2023_m1_minxi||0)+'个目标',[list,'vcard']]);
-                    next.set('filterButton',function(button){
-                        return player.hasUseTarget({name:button.link[2]});
+                    var next = player.chooseButton(['你可以视为使用一张非伤害类锦囊牌，并可为这张牌增加或减少至多' + (player.getStat('skill').qunyou2023_m1_minxi || 0) + '个目标', [list, 'vcard']]);
+                    next.set('filterButton', function (button) {
+                        return player.hasUseTarget({
+                            name: button.link[2]
+                        });
                     });
                     'step 5'
-                    if(result.links[0][2]){
-                        lib.skill.qunyou2023_m1_minxi_x.viewAs={name:result.links[0][2],isCard:true};
-                        lib.skill.qunyou2023_m1_minxi_x.prompt='视为使用一张'+get.translation(result.links[0][2]);
-                        var next=player.chooseToUse();
-                            next.logSkill='qunyou2023_m1_minxi';
-                            next.set('norestore',true);
-                            next.set('_backupevent','qunyou2023_m1_minxi_x');
-                            next.backup('qunyou2023_m1_minxi_x');
+                    if (result.links[0][2]) {
+                        lib.skill.qunyou2023_m1_minxi_x.viewAs = {
+                            name: result.links[0][2],
+                            isCard: true
+                        };
+                        lib.skill.qunyou2023_m1_minxi_x.prompt = '视为使用一张' + get.translation(result.links[0][2]);
+                        var next = player.chooseToUse();
+                        next.logSkill = 'qunyou2023_m1_minxi';
+                        next.set('norestore', true);
+                        next.set('_backupevent', 'qunyou2023_m1_minxi_x');
+                        next.backup('qunyou2023_m1_minxi_x');
                     };
                 },
-                group:['qunyou2023_m1_minxi_targets'],
-                subSkill:{
-                    targets:{
-                        trigger:{
-                            player:["useCard2"],
+                group: ['qunyou2023_m1_minxi_targets'],
+                subSkill: {
+                    targets: {
+                        trigger: {
+                            player: ["useCard2"],
                         },
-                        direct:true,
-                        filter:function(event,player){
-                            return !get.info(event.card).notarget&&event.skill=='qunyou2023_m1_minxi_x';
+                        direct: true,
+                        filter: function (event, player) {
+                            return !get.info(event.card).notarget && event.skill == 'qunyou2023_m1_minxi_x';
                         },
-                        content:function(){
+                        content: function () {
                             'step 0'
-                            event.num=player.getStat('skill').qunyou2023_m1_minxi||0;
+                            event.num = player.getStat('skill').qunyou2023_m1_minxi || 0;
                             'step 1'
-                            var goon=false;
-                            var info=get.info(trigger.card);
-                            var players=game.filterPlayer();
-                            for(var i=0;i<players.length;i++){
-                                if(lib.filter.targetEnabled2(trigger.card,player,players[i])&&!trigger.targets.contains(players[i])){
-                                    goon=true;break;
+                            var goon = false;
+                            var info = get.info(trigger.card);
+                            var players = game.filterPlayer();
+                            for (var i = 0; i < players.length; i++) {
+                                if (lib.filter.targetEnabled2(trigger.card, player, players[i]) && !trigger.targets.contains(players[i])) {
+                                    goon = true;
+                                    break;
                                 };
                             };
-                            if(goon){
-                                player.chooseTarget('是否增加至多'+event.num+'名'+get.translation(trigger.card)+'的目标？',[1,event.num],function(card,player,target){
-                                    var trigger=_status.event;
-                                    if(trigger.targets.contains(target)) return false;
-                                    return lib.filter.targetEnabled2(trigger.card,_status.event.player,target);
-                                }).set('ai',function(target){
-                                    var trigger=_status.event.getTrigger();
-                                    var player=_status.event.player;
-                                    return get.effect(target,trigger.card,player,player);
-                                }).set('targets',trigger.targets).set('card',trigger.card);
-                            }
-                            else{
-                                if(!info.multitarget&&trigger.targets&&trigger.targets.length>1){
+                            if (goon) {
+                                player.chooseTarget('是否增加至多' + event.num + '名' + get.translation(trigger.card) + '的目标？', [1, event.num], function (card, player, target) {
+                                    var trigger = _status.event;
+                                    if (trigger.targets.contains(target)) return false;
+                                    return lib.filter.targetEnabled2(trigger.card, _status.event.player, target);
+                                }).set('ai', function (target) {
+                                    var trigger = _status.event.getTrigger();
+                                    var player = _status.event.player;
+                                    return get.effect(target, trigger.card, player, player);
+                                }).set('targets', trigger.targets).set('card', trigger.card);
+                            } else {
+                                if (!info.multitarget && trigger.targets && trigger.targets.length > 1) {
                                     event.goto(4);
                                 }
                             }
                             'step 2'
-                            if(result.bool){
-                                if(!event.isMine()) game.delayx();
-                                    event.targets=result.targets;
-                            }
-                            else{
+                            if (result.bool) {
+                                if (!event.isMine()) game.delayx();
+                                event.targets = result.targets;
+                            } else {
                                 event.goto(4);
                             }
                             'step 3'
-                            if(event.targets){
-                                player.logSkill('qunyou2023_m1_minxi',event.targets);
+                            if (event.targets) {
+                                player.logSkill('qunyou2023_m1_minxi', event.targets);
                                 trigger.targets.addArray(event.targets);
                             }
                             event.finish();
                             'step 4'
-                            player.chooseTarget('是否减少至多'+event.num+'名'+get.translation(trigger.card)+'的目标？',[1,event.num],function(card,player,target){
+                            player.chooseTarget('是否减少至多' + event.num + '名' + get.translation(trigger.card) + '的目标？', [1, event.num], function (card, player, target) {
                                 return _status.event.targets.contains(target);
-                            }).set('ai',function(target){
-                                var trigger=_status.event.getTrigger();
-                                return -get.effect(target,trigger.card,trigger.player,_status.event.player);
-                            }).set('targets',trigger.targets);
+                            }).set('ai', function (target) {
+                                var trigger = _status.event.getTrigger();
+                                return -get.effect(target, trigger.card, trigger.player, _status.event.player);
+                            }).set('targets', trigger.targets);
                             'step 5'
-                            if(result.bool){
-                                event.targets=result.targets;
-                                if(event.isMine()){
-                                    player.logSkill('qunyou2023_m1_minxi',event.targets);
+                            if (result.bool) {
+                                event.targets = result.targets;
+                                if (event.isMine()) {
+                                    player.logSkill('qunyou2023_m1_minxi', event.targets);
                                     event.finish();
                                 };
-                                for(var i=0;i<result.targets.length;i++){
+                                for (var i = 0; i < result.targets.length; i++) {
                                     trigger.targets.remove(result.targets[i]);
                                 };
                                 game.delay();
-                            }
-                            else{
+                            } else {
                                 event.finish();
                             };
                             'step 6'
-                            player.logSkill('qunyou2023_m1_minxi',event.targets);
+                            player.logSkill('qunyou2023_m1_minxi', event.targets);
                         },
                     },
-                    x:{
-                        filterCard:function(){return false},
-                        selectCard:-1,
-                        popname:true,
-                        sub:true,
-                    },
-                    disable:{
-                        mark:true,
-                        intro:{
-                            content:"〖民息〗失效",
+                    x: {
+                        filterCard: function () {
+                            return false
                         },
-                        sub:true,
+                        selectCard: -1,
+                        popname: true,
+                        sub: true,
                     },
-                    used:{
-                        mark:true,
-                        intro:{
-                            content:"本回合已被指定为〖民息〗的目标",
+                    disable: {
+                        mark: true,
+                        intro: {
+                            content: "〖民息〗失效",
                         },
-                        sub:true,
+                        sub: true,
+                    },
+                    used: {
+                        mark: true,
+                        intro: {
+                            content: "本回合已被指定为〖民息〗的目标",
+                        },
+                        sub: true,
                     },
                 },
             },
@@ -1868,47 +1886,47 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2023_m2_huzhen": {
-                audio:["guanxing_re_jiangwei",2],
-                trigger:{
-                    global:["dying"],
+                audio: ["guanxing_re_jiangwei", 2],
+                trigger: {
+                    global: ["dying"],
                 },
-                limited:true,
-                unique:true,
-                mark:true,
-                intro:{
-                    content:"limited",
+                limited: true,
+                unique: true,
+                mark: true,
+                intro: {
+                    content: "limited",
                 },
-                skillAnimation:true,
-                init:function (player,skill){
-                    player.storage[skill]=false;
+                skillAnimation: true,
+                init: function (player, skill) {
+                    player.storage[skill] = false;
                 },
-                filter:function(event,player){
-                    return player.countCards('h')>0;
+                filter: function (event, player) {
+                    return player.countCards('h') > 0;
                 },
-                check:function(event,player){
-                    if(get.attitude(player,event.player)<4) return false;
-                    if(player.countCards('h',function(card){
-                        var mod2=game.checkMod(card,player,'unchanged','cardEnabled2',player);
-                        if(mod2!='unchanged') return mod2;
-                        var mod=game.checkMod(card,player,event.player,'unchanged','cardSavable',player);
-                        if(mod!='unchanged') return mod;
-                        var savable=get.info(card).savable;
-                        if(typeof savable=='function') savable=savable(card,player,event.player);
-                        return savable;
-                    })>=1-event.player.hp) return false;
-                    if(event.player==player||event.player==get.zhu(player)) return true;
-                    if(_status.currentPhase&&get.damageEffect(_status.currentPhase,player,player)<0) return false;
+                check: function (event, player) {
+                    if (get.attitude(player, event.player) < 4) return false;
+                    if (player.countCards('h', function (card) {
+                            var mod2 = game.checkMod(card, player, 'unchanged', 'cardEnabled2', player);
+                            if (mod2 != 'unchanged') return mod2;
+                            var mod = game.checkMod(card, player, event.player, 'unchanged', 'cardSavable', player);
+                            if (mod != 'unchanged') return mod;
+                            var savable = get.info(card).savable;
+                            if (typeof savable == 'function') savable = savable(card, player, event.player);
+                            return savable;
+                        }) >= 1 - event.player.hp) return false;
+                    if (event.player == player || event.player == get.zhu(player)) return true;
+                    if (_status.currentPhase && get.damageEffect(_status.currentPhase, player, player) < 0) return false;
                     return !player.hasUnknown();
                 },
-                content:function () {
+                content: function () {
                     'step 0'
-                    player.storage.qunyou2023_m2_huzhen_recover=trigger.player;
+                    player.storage.qunyou2023_m2_huzhen_recover = trigger.player;
                     if (player.isUnderControl()) {
                         game.modeSwapPlayer(player);
                     }
                     var player = event.player;
                     if (player.isUnderControl()) game.modeSwapPlayer(player);
-            
+
                     var cards = player.getCards('h');
                     var guanXing = decadeUI.content.chooseGuanXing(player, cards, cards.length, null, cards.length);
                     guanXing.caption = '【护阵】';
@@ -1917,16 +1935,16 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                         guanXing.caption = '【护阵】';
                         decadeUI.content.chooseGuanXing(player, cards, cards.length, null, cards.length);
                     }, player, cards);
-            
+
                     event.switchToAuto = function () {
                         var cards = guanXing.cards[0].concat();
                         var cheats = [];
                         var judges = player.node.judges.childNodes;
-            
+
                         if (judges.length) {
                             cheats = decadeUI.get.cheatJudgeCards(cards, judges, true);
                         }
-            
+
                         if (cards.length && cheats.length == judges.length) {
                             for (var i = 0; i >= 0 && i < cards.length; i++) {
                                 if (get.value(cards[i], player) >= 5) {
@@ -1935,7 +1953,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                                 }
                             }
                         }
-            
+
                         var time = 500;
                         for (var i = 0; i < cheats.length; i++) {
                             setTimeout(function (card, index, finished) {
@@ -1944,7 +1962,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                             }, time, cheats[i], i, (i >= cheats.length - 1) && cards.length == 0);
                             time += 500;
                         }
-            
+
                         for (var i = 0; i < cards.length; i++) {
                             setTimeout(function (card, index, finished) {
                                 guanXing.move(card, index, 1);
@@ -1953,12 +1971,12 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                             time += 500;
                         }
                     };
-            
+
                     if (event.isOnline()) {
                         event.player.send(function () {
                             if (!window.decadeUI && decadeUI.eventDialog) _status.event.finish();
                         }, event.player);
-            
+
                         event.player.wait();
                         decadeUI.game.wait();
                     } else if (!event.isMine()) {
@@ -1969,28 +1987,30 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                     game.log(player, '将' + get.cnNumber(event.num1) + '张牌置于牌堆顶，' + get.cnNumber(event.num2) + '张牌置于牌堆底');
                     game.updateRoundNumber();
                 },
-                ai:{
-                    threaten:1.2,
+                ai: {
+                    threaten: 1.2,
                 },
-                group:["qunyou2023_m2_huzhen_recover"],
-                subSkill:{
-                    recover:{
-                        trigger:{
-                            player:"qunyou2023_m2_huzhenAfter",
+                group: ["qunyou2023_m2_huzhen_recover"],
+                subSkill: {
+                    recover: {
+                        trigger: {
+                            player: "qunyou2023_m2_huzhenAfter",
                         },
-                        direct:true,
-                        init:function(player){
-                            if(!player.storage.qunyou2023_m2_huzhen_recover) player.storage.qunyou2023_m2_huzhen_recover=[];
+                        direct: true,
+                        init: function (player) {
+                            if (!player.storage.qunyou2023_m2_huzhen_recover) player.storage.qunyou2023_m2_huzhen_recover = [];
                         },
-                        content:function(){
+                        content: function () {
                             "step 0"
-                            player.judge(function(card){return (get.suit(card)=='heart')?3:-2});
+                            player.judge(function (card) {
+                                return (get.suit(card) == 'heart') ? 3 : -2
+                            });
                             "step 1"
-                            event.player=player.storage.qunyou2023_m2_huzhen_recover;
-                            if(result.suit=="heart") event.player.recover(event.player.maxHp-event.player.hp);
+                            event.player = player.storage.qunyou2023_m2_huzhen_recover;
+                            if (result.suit == "heart") event.player.recover(event.player.maxHp - event.player.hp);
                             player.awakenSkill("qunyou2023_m2_huzhen");
                         },
-                        sub:true,
+                        sub: true,
                     },
                 },
             },
@@ -2511,79 +2531,79 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2023_m2_aerwa
             "qunyou2023_m2_ganzhi": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{
-                    global:'phaseBefore',
-                    player:'enterGame',
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    global: 'phaseBefore',
+                    player: 'enterGame',
                 },
-                forced:true,
-                filter:function(event,player){
-                    return event.name!='phase'||game.phaseNumber==0;
+                forced: true,
+                filter: function (event, player) {
+                    return event.name != 'phase' || game.phaseNumber == 0;
                 },
-                logTarget:()=>game.filterPlayer().sortBySeat(),
-                derivation:'qunyou2023_m2_dianhe',
-                content:function(){
+                logTarget: () => game.filterPlayer().sortBySeat(),
+                derivation: 'qunyou2023_m2_dianhe',
+                content: function () {
                     'step 0'
-                    game.countPlayer(function(current){
+                    game.countPlayer(function (current) {
                         current.addSkill('qunyou2023_m2_dianhe');
                     });
-                    game.log(player,'令所有其他角色获得了技能','#g【电荷】')
+                    game.log(player, '令所有其他角色获得了技能', '#g【电荷】')
                     game.delayx();
                 },
             },
             "qunyou2023_m2_dianhe": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{
-                    player:['phaseZhunbeiBegin',"damageBegin1"],
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    player: ['phaseZhunbeiBegin', "damageBegin1"],
                 },
-                zhuanhuanji:true,
-                forced:true,
-                direct:true,
-                mark:true,
-                marktext:"☯",
-                intro:{
-                    content:function(storage,player){
-                        var str=storage?'当前状态为：阳':'当前状态为：阴';
-                        str+='<br>准备阶段，你变更转换技状态。<br>当你受到伤害时，若伤害来源的电荷为：';
-                        str+=storage?'阴，此伤害+1；阳，此伤害-1。':'阴，此伤害-1；阳，此伤害+1。';
-                        str+='然后你变更转换技状态。';
+                zhuanhuanji: true,
+                forced: true,
+                direct: true,
+                mark: true,
+                marktext: "☯",
+                intro: {
+                    content: function (storage, player) {
+                        var str = storage ? '当前状态为：阳' : '当前状态为：阴';
+                        str += '<br>准备阶段，你变更转换技状态。<br>当你受到伤害时，若伤害来源的电荷为：';
+                        str += storage ? '阴，此伤害+1；阳，此伤害-1。' : '阴，此伤害-1；阳，此伤害+1。';
+                        str += '然后你变更转换技状态。';
                         return str;
                     },
                 },
-                filter:function(event,player,name){
-                    if (event.name=='phaseZhunbei') return true;
-                    return event.source&&event.source.hasSkill('qunyou2023_m2_dianhe');
+                filter: function (event, player, name) {
+                    if (event.name == 'phaseZhunbei') return true;
+                    return event.source && event.source.hasSkill('qunyou2023_m2_dianhe');
                 },
-                content:function(){
+                content: function () {
                     'step 0'
-                    if(event.triggername!='damageBegin1') event.goto(1);
-                    if(Boolean(trigger.source.storage['qunyou2023_m2_dianhe'])!=Boolean(player.storage['qunyou2023_m2_dianhe'])) trigger.num++;
-                    if(Boolean(trigger.source.storage['qunyou2023_m2_dianhe'])==Boolean(player.storage['qunyou2023_m2_dianhe'])) trigger.num--;
+                    if (event.triggername != 'damageBegin1') event.goto(1);
+                    if (Boolean(trigger.source.storage['qunyou2023_m2_dianhe']) != Boolean(player.storage['qunyou2023_m2_dianhe'])) trigger.num++;
+                    if (Boolean(trigger.source.storage['qunyou2023_m2_dianhe']) == Boolean(player.storage['qunyou2023_m2_dianhe'])) trigger.num--;
                     'step 1'
                     player.changeZhuanhuanji('qunyou2023_m2_dianhe');
                     player.logSkill('qunyou2023_m2_dianhe');
                 },
             },
             "qunyou2023_m2_endian": {
-                audio:"ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/skill:2",
                 trigger: {
                     player: "phaseUseBefore",
                 },
                 filter: function (event, player) {
-                    return game.hasPlayer(function(current){
-                        return current.hasSkill('qunyou2023_m2_dianhe')
-                        &&Boolean(current.storage['qunyou2023_m2_dianhe'])!=Boolean(player.storage['qunyou2023_m2_dianhe'])
-                        &&current.countGainableCards(player,'he')>0;
+                    return game.hasPlayer(function (current) {
+                        return current.hasSkill('qunyou2023_m2_dianhe') &&
+                            Boolean(current.storage['qunyou2023_m2_dianhe']) != Boolean(player.storage['qunyou2023_m2_dianhe']) &&
+                            current.countGainableCards(player, 'he') > 0;
                     });
                 },
                 content: function () {
                     "step 0"
-                    event.targets = game.filterPlayer(function(current){
-                        return current.hasSkill('qunyou2023_m2_dianhe')
-                        &&Boolean(current.storage['qunyou2023_m2_dianhe'])!=Boolean(player.storage['qunyou2023_m2_dianhe'])
-                        &&current.countGainableCards(player,'he')>0;
+                    event.targets = game.filterPlayer(function (current) {
+                        return current.hasSkill('qunyou2023_m2_dianhe') &&
+                            Boolean(current.storage['qunyou2023_m2_dianhe']) != Boolean(player.storage['qunyou2023_m2_dianhe']) &&
+                            current.countGainableCards(player, 'he') > 0;
                     });
-                    for(var i of event.targets) player.gainPlayerCard(i, 'he', true);
+                    for (var i of event.targets) player.gainPlayerCard(i, 'he', true);
                     "step 1"
                     player.changeZhuanhuanji('qunyou2023_m2_dianhe');
                 },
@@ -2595,35 +2615,35 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                         mod: {
                             cardEnabled: function (card, player) {
                                 var source = _status.currentPhase;
-                                if (source && source != player 
-                                    &&source.hasSkill('qunyou2023_m2_qiji')
-                                    &&player.hasSkill('qunyou2023_m2_dianhe')
-                                    &&source.hasSkill('qunyou2023_m2_dianhe')
-                                    &&Boolean(source.storage['qunyou2023_m2_dianhe'])!=Boolean(player.storage['qunyou2023_m2_dianhe'])) return false;
+                                if (source && source != player &&
+                                    source.hasSkill('qunyou2023_m2_qiji') &&
+                                    player.hasSkill('qunyou2023_m2_dianhe') &&
+                                    source.hasSkill('qunyou2023_m2_dianhe') &&
+                                    Boolean(source.storage['qunyou2023_m2_dianhe']) != Boolean(player.storage['qunyou2023_m2_dianhe'])) return false;
                             },
                             cardUsable: function (card, player) {
                                 var source = _status.currentPhase;
-                                if (source && source != player 
-                                    &&source.hasSkill('qunyou2023_m2_qiji')
-                                    &&player.hasSkill('qunyou2023_m2_dianhe')
-                                    &&source.hasSkill('qunyou2023_m2_dianhe')
-                                    &&Boolean(source.storage['qunyou2023_m2_dianhe'])!=Boolean(player.storage['qunyou2023_m2_dianhe'])) return false;
+                                if (source && source != player &&
+                                    source.hasSkill('qunyou2023_m2_qiji') &&
+                                    player.hasSkill('qunyou2023_m2_dianhe') &&
+                                    source.hasSkill('qunyou2023_m2_dianhe') &&
+                                    Boolean(source.storage['qunyou2023_m2_dianhe']) != Boolean(player.storage['qunyou2023_m2_dianhe'])) return false;
                             },
                             cardRespondable: function (card, player) {
                                 var source = _status.currentPhase;
-                                if (source && source != player 
-                                    &&source.hasSkill('qunyou2023_m2_qiji')
-                                    &&player.hasSkill('qunyou2023_m2_dianhe')
-                                    &&source.hasSkill('qunyou2023_m2_dianhe')
-                                    &&Boolean(source.storage['qunyou2023_m2_dianhe'])!=Boolean(player.storage['qunyou2023_m2_dianhe'])) return false;
+                                if (source && source != player &&
+                                    source.hasSkill('qunyou2023_m2_qiji') &&
+                                    player.hasSkill('qunyou2023_m2_dianhe') &&
+                                    source.hasSkill('qunyou2023_m2_dianhe') &&
+                                    Boolean(source.storage['qunyou2023_m2_dianhe']) != Boolean(player.storage['qunyou2023_m2_dianhe'])) return false;
                             },
                             cardSavable: function (card, player) {
                                 var source = _status.currentPhase;
-                                if (source && source != player 
-                                    &&source.hasSkill('qunyou2023_m2_qiji')
-                                    &&player.hasSkill('qunyou2023_m2_dianhe')
-                                    &&source.hasSkill('qunyou2023_m2_dianhe')
-                                    &&Boolean(source.storage['qunyou2023_m2_dianhe'])!=Boolean(player.storage['qunyou2023_m2_dianhe'])) return false;
+                                if (source && source != player &&
+                                    source.hasSkill('qunyou2023_m2_qiji') &&
+                                    player.hasSkill('qunyou2023_m2_dianhe') &&
+                                    source.hasSkill('qunyou2023_m2_dianhe') &&
+                                    Boolean(source.storage['qunyou2023_m2_dianhe']) != Boolean(player.storage['qunyou2023_m2_dianhe'])) return false;
                             },
                         },
                         sub: true,
@@ -2633,47 +2653,47 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2023_m2_aogusiting
             "qunyou2023_m2_liezui": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{
-                    global:'damageBegin4',
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    global: 'damageBegin4',
                 },
-                mark:true,
-                intro:{
-                    content:'mark',
+                mark: true,
+                intro: {
+                    content: 'mark',
                 },
-                direct:true,
-                filter:function(event,player){
-                    return event.source!=player&&player.countMark("qunyou2023_m2_liezui")>0&&player.countCards("he")>0;
+                direct: true,
+                filter: function (event, player) {
+                    return event.source != player && player.countMark("qunyou2023_m2_liezui") > 0 && player.countCards("he") > 0;
                 },
-                content:function(){
+                content: function () {
                     "step 0"
-                    var str="猎罪：防止"+get.translation(trigger.player)+"受到的伤害";
-                    if(trigger.source) str+="，然后视为对"+ get.translation(trigger.source) + '使用一张属性【杀】';
-                    var next=player.chooseToDiscard(str,"he");
-                    next.set('ai',function (card) {
-                        if(!_status.event.goon) return false;
-                        return 8-get.value(card);
+                    var str = "猎罪：防止" + get.translation(trigger.player) + "受到的伤害";
+                    if (trigger.source) str += "，然后视为对" + get.translation(trigger.source) + '使用一张属性【杀】';
+                    var next = player.chooseToDiscard(str, "he");
+                    next.set('ai', function (card) {
+                        if (!_status.event.goon) return false;
+                        return 8 - get.value(card);
                     });
-                    next.set('goon',function (){
-                        if(get.attitude(player,trigger.player)<=0) return false;
-                        if(get.attitude(player,trigger.source)>0&&trigger.player.hp>1) return false;
-                        if(trigger.player!=player&&trigger.player.hp>2) return false;
+                    next.set('goon', function () {
+                        if (get.attitude(player, trigger.player) <= 0) return false;
+                        if (get.attitude(player, trigger.source) > 0 && trigger.player.hp > 1) return false;
+                        if (trigger.player != player && trigger.player.hp > 2) return false;
                         return true;
                     });
-                    next.logSkill="qunyou2023_m2_liezui";
+                    next.logSkill = "qunyou2023_m2_liezui";
                     "step 1"
-                    if(!result.bool) event.finish();
+                    if (!result.bool) event.finish();
                     "step 2"
-                    player.removeMark("qunyou2023_m2_liezui",1);
-                    if(trigger.source){
+                    player.removeMark("qunyou2023_m2_liezui", 1);
+                    if (trigger.source) {
                         var list = [];
                         for (var i of lib.inpile_nature) list.push(['基本', '', 'sha', i]);
                         player.chooseButton(['猎罪：视为对' + get.translation(trigger.source) + '使用一张属性【杀】</div>', [list, 'vcard']]);
                     };
                     "step 3"
                     trigger.cancel();
-                    if(result.links[0][2]){
-                        var card={
+                    if (result.links[0][2]) {
+                        var card = {
                             name: result.links[0][2],
                             nature: result.links[0][3],
                             isCard: true,
@@ -2681,18 +2701,18 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                         player.useCard(card, false, trigger.source, 'qunyou2023_m2_liezui');
                     };
                 },
-                ai:{
-                    maixie_defend:true,
-                    threaten:0.9,
-                    result:{
-                        effect:{
-                            target:function(card,player,target){
-                                if(get.tag(card,'damage')){
-                                    if(player.hasSkillTag('jueqing',false,target)) return [1,-2];
-                                    if(!target.hasFriend()) return;
-                                    if(target.countMark("qunyou2023_m2_liezui")>0&&target.countCards("he")>0){
-                                        if(target.countMark("qunyou2023_m2_liezui")>1&&target.countCards("he")>1) return [0,0.5,1,-1];
-                                        return [0,-0.5,1,-1];
+                ai: {
+                    maixie_defend: true,
+                    threaten: 0.9,
+                    result: {
+                        effect: {
+                            target: function (card, player, target) {
+                                if (get.tag(card, 'damage')) {
+                                    if (player.hasSkillTag('jueqing', false, target)) return [1, -2];
+                                    if (!target.hasFriend()) return;
+                                    if (target.countMark("qunyou2023_m2_liezui") > 0 && target.countCards("he") > 0) {
+                                        if (target.countMark("qunyou2023_m2_liezui") > 1 && target.countCards("he") > 1) return [0, 0.5, 1, -1];
+                                        return [0, -0.5, 1, -1];
                                     };
                                 };
                             },
@@ -2701,72 +2721,84 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2023_m2_yongfa": {
-                audio:"ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/skill:2",
                 enable: "phaseUse",
                 filter: function (event, player) {
-                    return player.countMark("qunyou2023_m2_yongfa")>0;
+                    return player.countMark("qunyou2023_m2_yongfa") > 0;
                 },
-                mark:true,
-                intro:{
-                    content:'mark',
+                mark: true,
+                intro: {
+                    content: 'mark',
                 },
-                init:function (player) {
-                    player.storage.qunyou2023_m2_yongfa_card=[];
+                init: function (player) {
+                    player.storage.qunyou2023_m2_yongfa_card = [];
                 },
-                direct:true,
-                content:function(){
+                direct: true,
+                content: function () {
                     'step 0'
-                    var list=[];
-                    for(var i of lib.inpile){
-                        if(player.storage.qunyou2023_m2_yongfa_card.contains(i)) continue;
-                        var info=lib.card[i];
-                        if(info.type=='trick'&&!get.tag({name: i, isCard: true}, 'multitarget')&&!info.notarget) list.push(['锦囊','',i]);
+                    var list = [];
+                    for (var i of lib.inpile) {
+                        if (player.storage.qunyou2023_m2_yongfa_card.contains(i)) continue;
+                        var info = lib.card[i];
+                        if (info.type == 'trick' && !get.tag({
+                                name: i,
+                                isCard: true
+                            }, 'multitarget') && !info.notarget) list.push(['锦囊', '', i]);
                     };
-                    var next=player.chooseButton(['永罚：视为使用一张无距离限制的单目标锦囊牌',[list,'vcard']]);
-                    next.set('filterButton',function (button) {
-                        return player.hasUseTarget({name:button.link[2],isCard:true},false);
+                    var next = player.chooseButton(['永罚：视为使用一张无距离限制的单目标锦囊牌', [list, 'vcard']]);
+                    next.set('filterButton', function (button) {
+                        return player.hasUseTarget({
+                            name: button.link[2],
+                            isCard: true
+                        }, false);
                     });
-                    next.set('ai',function(button){
-                        return _status.event.player.getUseValue({name:button.link[2],isCard:true});
+                    next.set('ai', function (button) {
+                        return _status.event.player.getUseValue({
+                            name: button.link[2],
+                            isCard: true
+                        });
                     });
                     'step 1'
-                    if(!result.links[0][2]) event.finish();
-                    event.card={name:result.links[0][2],isCard:true};
-                    player.chooseUseTarget(event.card,'nodistance');
+                    if (!result.links[0][2]) event.finish();
+                    event.card = {
+                        name: result.links[0][2],
+                        isCard: true
+                    };
+                    player.chooseUseTarget(event.card, 'nodistance');
                     'step 2'
-                    if(result.bool){
+                    if (result.bool) {
                         player.storage.qunyou2023_m2_yongfa_card.add(event.card.name);
                         player.logSkill("qunyou2023_m2_yongfa");
-                        player.removeMark("qunyou2023_m2_yongfa",1);
+                        player.removeMark("qunyou2023_m2_yongfa", 1);
                     };
                 },
-                ai:{
-                    order:4,
-                    result:{
-                        player:1,
+                ai: {
+                    order: 4,
+                    result: {
+                        player: 1,
                     },
-                    threaten:1.9,
+                    threaten: 1.9,
                 },
-                group:["qunyou2023_m2_yongfa_card"],
-                subSkill:{
-                    card:{
+                group: ["qunyou2023_m2_yongfa_card"],
+                subSkill: {
+                    card: {
                         trigger: {
                             player: "phaseAfter",
                         },
                         direct: true,
-                        silent:true,
+                        silent: true,
                         content: function () {
-                            player.storage.qunyou2023_m2_yongfa_card=[];
+                            player.storage.qunyou2023_m2_yongfa_card = [];
                         },
                         sub: true,
                     },
                 },
             },
             "qunyou2023_m2_shazhen": {
-                audio:"ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/skill:2",
                 trigger: {
-                    player: ["enterGame","dying"],
-                    global:'phaseBefore',
+                    player: ["enterGame", "dying"],
+                    global: 'phaseBefore',
                 },
                 locked: true,
                 forced: true,
@@ -2774,8 +2806,8 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 skillAnimation: true,
                 animationColor: "fire",
                 filter: function (event, player) {
-                    if(player.storage.disableEquip == undefined || player.storage.disableEquip.length >=5) return false;
-                    return (event.name!='phase'||game.phaseNumber==0)||event.name=="dying";
+                    if (player.storage.disableEquip == undefined || player.storage.disableEquip.length >= 5) return false;
+                    return (event.name != 'phase' || game.phaseNumber == 0) || event.name == "dying";
                 },
                 content: function () {
                     "step 0"
@@ -2783,55 +2815,55 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                     player.chooseToDisable();
                     "step 1"
                     player.recover(player.maxHp - player.hp);
-                    var num=0;
-                    for(var i=1;i<6;i++){
-                        if(player.isDisabled(i)) num++;
+                    var num = 0;
+                    for (var i = 1; i < 6; i++) {
+                        if (player.isDisabled(i)) num++;
                     };
                     player.draw(num);
-                    var next=player.chooseControl("获得一个【猎罪】标记","获得一个【永罚】标记");
-                    next.set('ai',function(){
+                    var next = player.chooseControl("获得一个【猎罪】标记", "获得一个【永罚】标记");
+                    next.set('ai', function () {
                         return _status.event.choice;
                     });
-                    next.set('choice',function (){
-                        if((event.name!='phase'||game.phaseNumber==0)&&player.getSeatNum()==1) return "获得一个【永罚】标记";
-                        if(player==_status.currentPhase) return "获得一个【永罚】标记";
-                        var numDf=Math.min(player.countCards('he'),player.countMark("qunyou2023_m2_liezui"));
-                        if(numDf>0&&(player.hp+numDf)>2) return "获得一个【永罚】标记";
+                    next.set('choice', function () {
+                        if ((event.name != 'phase' || game.phaseNumber == 0) && player.getSeatNum() == 1) return "获得一个【永罚】标记";
+                        if (player == _status.currentPhase) return "获得一个【永罚】标记";
+                        var numDf = Math.min(player.countCards('he'), player.countMark("qunyou2023_m2_liezui"));
+                        if (numDf > 0 && (player.hp + numDf) > 2) return "获得一个【永罚】标记";
                         return "获得一个【猎罪】标记";
                     }());
                     "step 2"
-                    if(result.control){
-                        if(result.control=="获得一个【猎罪】标记") player.addMark("qunyou2023_m2_liezui");
-                        if(result.control=="获得一个【永罚】标记") player.addMark("qunyou2023_m2_yongfa");
+                    if (result.control) {
+                        if (result.control == "获得一个【猎罪】标记") player.addMark("qunyou2023_m2_liezui");
+                        if (result.control == "获得一个【永罚】标记") player.addMark("qunyou2023_m2_yongfa");
                     };
                 },
             },
             "qunyou2023_m2_xinhuo": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{
-                    player:['qunyou2023_m2_liezuiAfter','qunyou2023_m2_yongfaAfter'],
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    player: ['qunyou2023_m2_liezuiAfter', 'qunyou2023_m2_yongfaAfter'],
                 },
-                direct:true,
-                forced:true,
-                filter:function(event,player){
-                    var num1=0;
-                    for(var i=1;i<6;i++){
-                        if(player.isDisabled(i)) num1++;
+                direct: true,
+                forced: true,
+                filter: function (event, player) {
+                    var num1 = 0;
+                    for (var i = 1; i < 6; i++) {
+                        if (player.isDisabled(i)) num1++;
                     };
-                    var num2=player.countMark("qunyou2023_m2_liezui")+player.countMark("qunyou2023_m2_yongfa");
-                    return num1!=num2;
+                    var num2 = player.countMark("qunyou2023_m2_liezui") + player.countMark("qunyou2023_m2_yongfa");
+                    return num1 != num2;
                 },
                 content: function () {
-                    if(event.triggername=="qunyou2023_m2_liezuiAfter") player.addMark("qunyou2023_m2_yongfa");
-                    if(event.triggername=="qunyou2023_m2_yongfaAfter") player.addMark("qunyou2023_m2_liezui");
+                    if (event.triggername == "qunyou2023_m2_liezuiAfter") player.addMark("qunyou2023_m2_yongfa");
+                    if (event.triggername == "qunyou2023_m2_yongfaAfter") player.addMark("qunyou2023_m2_liezui");
                 },
-                mod:{
-                    maxHandcard:function(player,num){
-                        var num1=0;
-                        for(var i=1;i<6;i++){
-                            if(player.isDisabled(i)) num1++;
+                mod: {
+                    maxHandcard: function (player, num) {
+                        var num1 = 0;
+                        for (var i = 1; i < 6; i++) {
+                            if (player.isDisabled(i)) num1++;
                         };
-                        return num+num1;
+                        return num + num1;
                     }
                 }
             },
@@ -2959,7 +2991,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2023_m3_heiyukuaidou
             "qunyou2023_m3_jiashu": {
-                audio:"ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/skill:2",
                 trigger: {
                     global: "phaseUseBegin",
                 },
@@ -3019,7 +3051,9 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                     });
                     "step 1"
                     if (result.links[0][2]) {
-                        lib.skill.qunyou2023_m3_jiashu_x.viewAs = {name: result.links[0][2]};
+                        lib.skill.qunyou2023_m3_jiashu_x.viewAs = {
+                            name: result.links[0][2]
+                        };
                         lib.skill.qunyou2023_m3_jiashu_x.prompt = '将所有手牌当' + get.translation(result.links[0][2]) + '使用';
                         var next = player.chooseToUse();
                         next.set('norestore', true);
@@ -3027,7 +3061,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                         next.backup('qunyou2023_m3_jiashu_x');
                     };
                 },
-                group:"qunyou2023_m3_jiashu_draw",
+                group: "qunyou2023_m3_jiashu_draw",
                 subSkill: {
                     x: {
                         filterCard: true,
@@ -3063,7 +3097,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2023_m3_wuxing": {
-                audio:"ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/skill:2",
                 enable: "phaseUse",
                 skillAnimation: true,
                 animationColor: "wood",
@@ -3103,7 +3137,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2023_m3_feicunjianxin
             "qunyou2023_m3_niren": {
-                audio:"ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/skill:2",
                 trigger: {
                     target: "useCardToTarget",
                 },
@@ -3115,7 +3149,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 content: function () {
                     "step 0"
                     var next = player.chooseToUse({
-                        prompt: '是否对'+get.translation(trigger.player)+'使用一张【杀】？',
+                        prompt: '是否对' + get.translation(trigger.player) + '使用一张【杀】？',
                         filterCard: function (card, player) {
                             if (get.name(card) != 'sha') return false;
                             return lib.filter.filterCard.apply(this, arguments);
@@ -3132,7 +3166,9 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                         trigger.getParent().excluded.push(player);
                     };
                     "step 2"
-                    if (trigger.player.getCards('e',{subtype:['equip1']}).length>0&&player.hasHistory('useCard', function (evt) {
+                    if (trigger.player.getCards('e', {
+                            subtype: ['equip1']
+                        }).length > 0 && player.hasHistory('useCard', function (evt) {
                             if (evt.getParent(2) != event) return false;
                             return player.hasHistory('sourceDamage', function (evtx) {
                                 return evtx.card == evt.card;
@@ -3141,7 +3177,9 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                         var att = (get.attitude(player, trigger.player) <= 0);
                         var next = player.chooseButton();
                         next.set('att', att);
-                        next.set('createDialog',['逆刃：弃置' + get.translation(trigger.player) + '的一张武器牌', trigger.player.getCards('e', {subtype: ['equip1']})]);
+                        next.set('createDialog', ['逆刃：弃置' + get.translation(trigger.player) + '的一张武器牌', trigger.player.getCards('e', {
+                            subtype: ['equip1']
+                        })]);
                         next.set('ai', function (button) {
                             if (_status.event.att) return get.buttonValue(button);
                             return 0;
@@ -3155,13 +3193,15 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2023_m3_badao": {
-                audio:"ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/skill:2",
                 trigger: {
                     source: "damageSource",
                 },
-                direct:true,
+                direct: true,
                 filter: function (event, player) {
-                    if (player.countCards('hes',{name: "shan"}) == 0) return false;
+                    if (player.countCards('hes', {
+                            name: "shan"
+                        }) == 0) return false;
                     if (event._notrigger.contains(event.player)) return false;
                     return event.card && event.card.name == 'sha' && event.player != player && event.player.isAlive() && event.player.countGainableCards(player, 'h') > 0;
                 },
@@ -3170,22 +3210,22 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
                 content: function () {
                     'step 0'
-                    player.chooseToDiscard('hes',(card)=>card.name=='shan');
+                    player.chooseToDiscard('hes', (card) => card.name == 'shan');
                     'step 1'
-                    if (result.bool && trigger.player.countGainableCards(player,'h')) {
+                    if (result.bool && trigger.player.countGainableCards(player, 'h')) {
                         player.logSkill("qunyou2023_m3_badao");
                         player.gainPlayerCard(trigger.player, true, 'h');
                     };
                 },
             },
             "qunyou2023_m3_fengxin": {
-                audio:"ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/skill:2",
                 round: 1,
-                enable:['chooseToRespond','chooseToUse'],
+                enable: ['chooseToRespond', 'chooseToUse'],
                 filterCard: function (card, player, event) {
                     return true;
                 },
-                position:'hes',
+                position: 'hes',
                 viewAs: {
                     name: "sha",
                     cards: [],
@@ -3193,10 +3233,10 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                     number: null,
                     isCard: true,
                 },
-                check:function(card){
-                    var val=get.value(card);
-                    if(_status.event.name=='chooseToRespond') return 1/Math.max(0.1,val);
-                    return 5-val;
+                check: function (card) {
+                    var val = get.value(card);
+                    if (_status.event.name == 'chooseToRespond') return 1 / Math.max(0.1, val);
+                    return 5 - val;
                 },
                 ai: {
                     respondSha: true,
@@ -3205,7 +3245,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2023_m3_caocao
             "qunyou2023_m3_tenglong": {
-                audio:"ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/skill:2",
                 enable: "phaseUse",
                 usable: 1,
                 content: function () {
@@ -3230,9 +3270,9 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
                 subSkill: {
                     damage: {
-                        mark:true,
-                        intro:{
-                            content:"造成的伤害+1",
+                        mark: true,
+                        intro: {
+                            content: "造成的伤害+1",
                         },
                         trigger: {
                             source: "damageBegin",
@@ -3247,12 +3287,12 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2023_m3_tunzhi": {
-                audio:"ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/skill:2",
                 trigger: {
                     player: "phaseJieshuBegin",
                 },
                 preHidden: true,
-                filter: function (event,player) {
+                filter: function (event, player) {
                     return game.hasPlayer(function (current) {
                         return current.hasSkill('qunyou2023_m3_tunzhi_gain');
                     });
@@ -3265,14 +3305,14 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 content: function () {
                     game.countPlayer(function (current) {
                         var num = current.countMark('qunyou2023_m3_tunzhi_gain');
-                        if(num>0) player.gainPlayerCard(current, 'he', num, true);
+                        if (num > 0) player.gainPlayerCard(current, 'he', num, true);
                     });
                 },
                 group: ["qunyou2023_m3_tunzhi_add"],
                 subSkill: {
                     add: {
                         trigger: {
-                            source:'damageSource'
+                            source: 'damageSource'
                         },
                         direct: true,
                         filter: function (event, player) {
@@ -3315,7 +3355,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                     player.showCards(event.cards);
                     "step 1"
                     for (var i = 0; i < event.cards.length; i++) {
-                        if (get.color(event.cards[i])!= 'black') {
+                        if (get.color(event.cards[i]) != 'black') {
                             event.cards[i].discard();
                             event.cards.splice(i--, 1);
                         };
@@ -3325,7 +3365,10 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                         player.gain(event.cards);
                         player.$gain2(event.cards);
                     };
-                    player.useCard({name:'jiu', isCard:true}, player);
+                    player.useCard({
+                        name: 'jiu',
+                        isCard: true
+                    }, player);
                     if (_status.event.getParent(2).type == 'dying') player.recover();
                 },
                 ai: {
@@ -3402,11 +3445,11 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2023_m3_jingzhu": {
-                audio:"ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/skill:2",
                 trigger: {
                     player: "damageEnd",
                 },
-                direct:true,
+                direct: true,
                 filter: function (event, player) {
                     return event.num > 1 && player.countCards('h') > 0;
                 },
@@ -3452,7 +3495,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2023_m3_yitakuya
             "qunyou2023_m3_fengxing": {
-                audio:"ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/skill:2",
                 mod: {
                     globalFrom: function (from, to, distance) {
                         return Math.min(get.distance(from.storage.qunyou2023_m3_fengxing, to), distance);
@@ -3461,7 +3504,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 trigger: {
                     player: "phaseUseBegin",
                 },
-                direct:true,
+                direct: true,
                 init: function (player) {
                     if (!player.storage.qunyou2023_m3_fengxing) player.storage.qunyou2023_m3_fengxing = player;
                 },
@@ -3495,11 +3538,11 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2023_m3_yuanxi": {
-                audio:"ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/skill:2",
                 trigger: {
                     global: "phaseDrawBefore",
                 },
-                direct:true,
+                direct: true,
                 filter: function (event, player) {
                     return get.distance(player, event.player) == 2 && player.countCards('he') > 0;
                 },
@@ -3512,9 +3555,9 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                         return 0;
                     });
                     'step 1'
-                    if(!result.bool) event.finish();
+                    if (!result.bool) event.finish();
                     'step 2'
-                    player.addTempSkill("qunyou2023_m3_yuanxi_disable",'roundStart');
+                    player.addTempSkill("qunyou2023_m3_yuanxi_disable", 'roundStart');
                     trigger.player.gain(result.cards, player, 'give');
                     trigger.cancel();
                     'step 3'
@@ -3522,88 +3565,101 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                         player.storage.qunyou2023_m3_fengxing.gainPlayerCard(trigger.player, 'h', true);
                     };
                 },
-                subSkill:{
-                    disable:{
-                        mark:true,
-                        intro:{
-                            content:"本轮已使用过〖远袭〗",
+                subSkill: {
+                    disable: {
+                        mark: true,
+                        intro: {
+                            content: "本轮已使用过〖远袭〗",
                         },
-                        sub:true,
+                        sub: true,
                     },
                 },
             },
 
             //qunyou2023_m3_zhangti
             "qunyou2023_m3_jue": {
-                audio:"ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/skill:2",
                 enable: "phaseUse",
                 filter: function (event, player) {
-                    return !player.hasSkill('qunyou2023_m3_jue_0') || !player.hasSkill('qunyou2023_m3_jue_1') 
-                    || !player.hasSkill('qunyou2023_m3_jue_2') || !player.hasSkill('qunyou2023_m3_jue_3');
+                    return !player.hasSkill('qunyou2023_m3_jue_0') || !player.hasSkill('qunyou2023_m3_jue_1') ||
+                        !player.hasSkill('qunyou2023_m3_jue_2') || !player.hasSkill('qunyou2023_m3_jue_3');
                 },
-                filterTarget:true,
-                prompt:"沮遏：请撅一个人",
+                filterTarget: true,
+                prompt: "沮遏：请撅一个人",
                 content: function () {
                     'step 0'
-                    var juelist = [], list = [
-                        '令其弃两张牌，然后跳过下个判定阶段',
-                        '令其摸两张牌，然后跳过下个摸牌阶段',
-                        '令其摸两张牌并弃一张牌，然后跳过下个出牌阶段',
-                        '令其摸一张牌并弃两张牌，然后跳过下个弃牌阶段',
-                    ];
+                    var juelist = [],
+                        list = [
+                            '令其弃两张牌，然后跳过下个判定阶段',
+                            '令其摸两张牌，然后跳过下个摸牌阶段',
+                            '令其摸两张牌并弃一张牌，然后跳过下个出牌阶段',
+                            '令其摸一张牌并弃两张牌，然后跳过下个弃牌阶段',
+                        ];
                     for (var i = 0; i < 4; i++) {
-                        if (!player.hasSkill('qunyou2023_m3_jue_' + i)) juelist.push('选项'+get.cnNumber(i+1,true));
+                        if (!player.hasSkill('qunyou2023_m3_jue_' + i)) juelist.push('选项' + get.cnNumber(i + 1, true));
                     }
-                    var next=player.chooseControl(juelist,'cancel2')
+                    var next = player.chooseControl(juelist, 'cancel2')
                     next.set('choiceList', list);
-                    next.set('prompt',"沮遏：请选择怎么撅"+get.translation(target));
+                    next.set('prompt', "沮遏：请选择怎么撅" + get.translation(target));
                     'step 1'
                     switch (result.control) {
                         case '选项一':
-                            player.logSkill('qunyou2023_m3_jue',target);
-                            target.chooseToDiscard('he',2, true);
+                            player.logSkill('qunyou2023_m3_jue', target);
+                            target.chooseToDiscard('he', 2, true);
                             target.skip('phaseJudge');
-                            target.addTempSkill('qunyou2023_m3_jue_phaseJudge', {player:'phaseJudgeSkipped'});
+                            target.addTempSkill('qunyou2023_m3_jue_phaseJudge', {
+                                player: 'phaseJudgeSkipped'
+                            });
                             player.addTempSkill('qunyou2023_m3_jue_0');
                             break;
                         case '选项二':
-                            player.logSkill('qunyou2023_m3_jue',target);
+                            player.logSkill('qunyou2023_m3_jue', target);
                             target.draw(2);
                             target.skip('phaseDraw');
-                            target.addTempSkill('qunyou2023_m3_jue_phaseDraw', {player:'phaseDrawSkipped'});
+                            target.addTempSkill('qunyou2023_m3_jue_phaseDraw', {
+                                player: 'phaseDrawSkipped'
+                            });
                             player.addTempSkill('qunyou2023_m3_jue_1');
                             break;
                         case '选项三':
-                            player.logSkill('qunyou2023_m3_jue',target);
+                            player.logSkill('qunyou2023_m3_jue', target);
                             target.draw(2);
-                            target.chooseToDiscard('he',1, true)
+                            target.chooseToDiscard('he', 1, true)
                             target.skip('phaseUse');
-                            target.addTempSkill('qunyou2023_m3_jue_phaseUse', {player:'phaseUseSkipped'});
+                            target.addTempSkill('qunyou2023_m3_jue_phaseUse', {
+                                player: 'phaseUseSkipped'
+                            });
                             player.addTempSkill('qunyou2023_m3_jue_2');
                             break;
                         case '选项四':
-                            player.logSkill('qunyou2023_m3_jue',target);
+                            player.logSkill('qunyou2023_m3_jue', target);
                             target.draw(1);
-                            target.chooseToDiscard('he',2, true)
+                            target.chooseToDiscard('he', 2, true)
                             target.skip('phaseDiscard');
-                            target.addTempSkill('qunyou2023_m3_jue_phaseDiscard', {player:'phaseDiscardSkipped'});
+                            target.addTempSkill('qunyou2023_m3_jue_phaseDiscard', {
+                                player: 'phaseDiscardSkipped'
+                            });
                             player.addTempSkill('qunyou2023_m3_jue_3');
                             break;
-                        default: event.finish();
+                        default:
+                            event.finish();
                     };
                 },
                 subSkill: {
-                    0:{}, 1:{}, 2:{}, 3:{},
+                    0: {},
+                    1: {},
+                    2: {},
+                    3: {},
                     phaseJudge: {
-                        charlotte:true,
+                        charlotte: true,
                         mark: true,
                         intro: {
                             content: "被撅了，跳过下个判定阶段",
                         },
-                        sub:true,
+                        sub: true,
                     },
                     phaseDraw: {
-                        charlotte:true,
+                        charlotte: true,
                         mark: true,
                         intro: {
                             content: "被撅了，跳过下个摸牌阶段",
@@ -3611,7 +3667,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                         sub: true,
                     },
                     phaseUse: {
-                        charlotte:true,
+                        charlotte: true,
                         mark: true,
                         intro: {
                             content: "被撅了，跳过下个出牌阶段",
@@ -3619,7 +3675,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                         sub: true,
                     },
                     phaseDiscard: {
-                        charlotte:true,
+                        charlotte: true,
                         mark: true,
                         intro: {
                             content: "被撅了，跳过下个弃牌阶段",
@@ -3629,766 +3685,843 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2023_m3_zhongqin": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{global:[
-                    'phaseZhunbeiSkipped','phaseZhunbeiCancelled',
-                    'phaseJudgeSkipped','phaseJudgeCancelled',
-                    'phaseDrawSkipped','phaseDrawCancelled',
-                    'phaseUseSkipped','phaseUseCancelled',
-                    'phaseDiscardSkipped','phaseDiscardCancelled',
-                    'phaseJieshuSkipped','phaseJieshuCancelled',
-                ]},
-                forced:true,
-                content:function(){
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    global: [
+                        'phaseZhunbeiSkipped', 'phaseZhunbeiCancelled',
+                        'phaseJudgeSkipped', 'phaseJudgeCancelled',
+                        'phaseDrawSkipped', 'phaseDrawCancelled',
+                        'phaseUseSkipped', 'phaseUseCancelled',
+                        'phaseDiscardSkipped', 'phaseDiscardCancelled',
+                        'phaseJieshuSkipped', 'phaseJieshuCancelled',
+                    ]
+                },
+                forced: true,
+                content: function () {
                     player.draw();
                 },
             },
 
             //qunyou2023_m3_shen_zhugeliang
             "qunyou2023_m3_buxi": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{player:"dying"},
-                forced:true,
-                charlotte:true,
-                content:function(){
-                    player.loseMaxHp();
-                    player.recover(1-player.hp);
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    player: "dying"
                 },
-                mod:{
-                    maxHandcardBase:function(player,num){
+                forced: true,
+                charlotte: true,
+                content: function () {
+                    player.loseMaxHp();
+                    player.recover(1 - player.hp);
+                },
+                mod: {
+                    maxHandcardBase: function (player, num) {
                         return player.maxHp;
                     },
                 },
             },
             "qunyou2023_m3_zhentu": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{player:"phaseJieshuBegin"},
-                forced:true,
-                filter:function(event,player){
-                    return player.hp>1&&player.maxHp<7;
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    player: "phaseJieshuBegin"
                 },
-                content:function(){
+                forced: true,
+                filter: function (event, player) {
+                    return player.hp > 1 && player.maxHp < 7;
+                },
+                content: function () {
                     "step 0"
-                    event.num=Math.min(7-player.maxHp,player.hp-1);
+                    event.num = Math.min(7 - player.maxHp, player.hp - 1);
                     player.loseHp(event.num);
                     "step 1"
-                    var next=player.chooseControl();
-                    next.set("choiceList",[
-                        "增加"+event.num+"点体力上限，然后进行一个额外的摸牌阶段",
-                        "摸"+event.num+"张牌，然后进行一个额外的出牌阶段（此阶段内〖烁星〗改为“出牌阶段限两次”）",
+                    var next = player.chooseControl();
+                    next.set("choiceList", [
+                        "增加" + event.num + "点体力上限，然后进行一个额外的摸牌阶段",
+                        "摸" + event.num + "张牌，然后进行一个额外的出牌阶段（此阶段内〖烁星〗改为“出牌阶段限两次”）",
                     ]);
-                    next.set('ai',function(){
+                    next.set('ai', function () {
                         return _status.event.choice;
                     });
-                    next.set('choice',function (){
-                        if(player.maxHp>5) return "选项二";
-                        if(player.maxHp>3&&game.hasPlayer(function(current){
-                            return get.attitude(player,current)<0&&current.hp<2&&player.canUse('sha',current);
-                        })) return "选项二";
+                    next.set('choice', function () {
+                        if (player.maxHp > 5) return "选项二";
+                        if (player.maxHp > 3 && game.hasPlayer(function (current) {
+                                return get.attitude(player, current) < 0 && current.hp < 2 && player.canUse('sha', current);
+                            })) return "选项二";
                         return "选项一";
                     }());
                     "step 2"
-                    if(result.control=="选项一"){
+                    if (result.control == "选项一") {
                         player.gainMaxHp(event.num);
-                        var next=player.phaseDraw();
+                        var next = player.phaseDraw();
                         event.next.remove(next);
                         trigger.getParent().next.push(next);
                     };
-                    if(result.control=="选项二"){
+                    if (result.control == "选项二") {
                         player.draw(event.num);
-                        var next=player.phaseUse();
+                        var next = player.phaseUse();
                         event.next.remove(next);
                         trigger.getParent().next.push(next);
-                        player.addTempSkill("qunyou2023_m3_zhentu_mark",'phaseUseEnd');
+                        player.addTempSkill("qunyou2023_m3_zhentu_mark", 'phaseUseEnd');
                     };
                 },
-                subSkill:{
-                    mark:{
-                        charlotte:true,
-                        mark:true,
-                        intro:{
-                            content:"发动〖烁星〗不用失去体力上限",
+                subSkill: {
+                    mark: {
+                        charlotte: true,
+                        mark: true,
+                        intro: {
+                            content: "发动〖烁星〗不用失去体力上限",
                         },
-                        sub:true,
+                        sub: true,
                     },
                 },
             },
             "qunyou2023_m3_shuoxin": {
-                audio:"ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/skill:2",
                 enable: "phaseUse",
-                usable:1,
-                filter:function(event,player){
-                    return player.getCardUsable({name:'sha'})>0;
+                usable: 1,
+                filter: function (event, player) {
+                    return player.getCardUsable({
+                        name: 'sha'
+                    }) > 0;
                 },
-                chooseButton:{
-                    dialog:function(event,player){
-                        var list1=[],list2=lib.linked.slice(0);
+                chooseButton: {
+                    dialog: function (event, player) {
+                        var list1 = [],
+                            list2 = lib.linked.slice(0);
                         list2.remove('kami');
-                        list1.push(['基本','','sha']);
-                        for(var j of list2){
-                            list1.push(['基本','','sha',j]);
+                        list1.push(['基本', '', 'sha']);
+                        for (var j of list2) {
+                            list1.push(['基本', '', 'sha', j]);
                         };
-                        return ui.create.dialog('烁星',[list1,'vcard']);
+                        return ui.create.dialog('烁星', [list1, 'vcard']);
                     },
-                    filter:function(button){
-                        if(button.link[3]=="thunder") return _status.event.player.hasUseTarget({name:button.link[2],nature:button.link[3],isCard:true},false);
-                        return _status.event.player.hasUseTarget({name:button.link[2],nature:button.link[3],isCard:true});
-                    },
-                    check:function(button){
-                        return player.getUseValue({
-                            name:button.link[2],
-                            nature:button.link[3],
+                    filter: function (button) {
+                        if (button.link[3] == "thunder") return _status.event.player.hasUseTarget({
+                            name: button.link[2],
+                            nature: button.link[3],
+                            isCard: true
+                        }, false);
+                        return _status.event.player.hasUseTarget({
+                            name: button.link[2],
+                            nature: button.link[3],
+                            isCard: true
                         });
                     },
-                    backup:function(links,player){
+                    check: function (button) {
+                        return player.getUseValue({
+                            name: button.link[2],
+                            nature: button.link[3],
+                        });
+                    },
+                    backup: function (links, player) {
                         return {
-                            audio:"ext:群友DIY/audio/skill:2",
-                            filterCard:true,
-                            position:'hes',
-                            popname:true,
-                            check:function(card){
-                                return 8-get.value(card);
+                            audio: "ext:群友DIY/audio/skill:2",
+                            filterCard: true,
+                            position: 'hes',
+                            popname: true,
+                            check: function (card) {
+                                return 8 - get.value(card);
                             },
-                            viewAs:{name:links[0][2],nature:links[0][3]},
+                            viewAs: {
+                                name: links[0][2],
+                                nature: links[0][3]
+                            },
                         }
                     },
-                    prompt:function(links,player){
-                        return '将一张牌当做'+(get.translation(links[0][3])||'普通')+get.translation(links[0][2])+'使用';
+                    prompt: function (links, player) {
+                        return '将一张牌当做' + (get.translation(links[0][3]) || '普通') + get.translation(links[0][2]) + '使用';
                     },
                 },
-                group:["qunyou2023_m3_shuoxin_effect","qunyou2023_m3_shuoxin_ice"],
-                subSkill:{
-                    effect:{
-                        trigger:{player:'useCardToPlayered'},
-                        forced:true,
-                        popup:false,
-                        firstDo:true,
-                        filter:function(event,player){
-                            return event.getParent().skill=='qunyou2023_m3_shuoxin_backup'&&event.card.name=='sha';
+                group: ["qunyou2023_m3_shuoxin_effect", "qunyou2023_m3_shuoxin_ice"],
+                subSkill: {
+                    effect: {
+                        trigger: {
+                            player: 'useCardToPlayered'
                         },
-                        content:function(){
+                        forced: true,
+                        popup: false,
+                        firstDo: true,
+                        filter: function (event, player) {
+                            return event.getParent().skill == 'qunyou2023_m3_shuoxin_backup' && event.card.name == 'sha';
+                        },
+                        content: function () {
                             "step 0"
-                            if(!player.hasSkill("qunyou2023_m3_zhentu_mark")) player.loseMaxHp();
-                            if(trigger.addCount!==false){
-                                trigger.addCount=false;
-                                var stat=player.getStat('card');
-                                if(stat&&stat.sha) stat.sha--;
+                            if (!player.hasSkill("qunyou2023_m3_zhentu_mark")) player.loseMaxHp();
+                            if (trigger.addCount !== false) {
+                                trigger.addCount = false;
+                                var stat = player.getStat('card');
+                                if (stat && stat.sha) stat.sha--;
                             };
                             "step 1"
-                            switch(trigger.card.nature){
-                                case undefined:player.recover();break;
-                                case 'fire':trigger.getParent().baseDamage++;break;
-                                case 'thunder':trigger.directHit.add(trigger.target);break;
+                            switch (trigger.card.nature) {
+                                case undefined:
+                                    player.recover();
+                                    break;
+                                case 'fire':
+                                    trigger.getParent().baseDamage++;
+                                    break;
+                                case 'thunder':
+                                    trigger.directHit.add(trigger.target);
+                                    break;
                             };
                         },
-                        mod:{
-                            targetInRange:function(card,player){
-                                if(_status.event.skill=='qunyou2023_m3_shuoxin_backup'&&card.name=='sha'&&card.nature=='thunder') return true;
+                        mod: {
+                            targetInRange: function (card, player) {
+                                if (_status.event.skill == 'qunyou2023_m3_shuoxin_backup' && card.name == 'sha' && card.nature == 'thunder') return true;
                             },
                         },
-                        ai:{
-                            unequip:true,
-                            directHit_ai:true,
-                            skillTagFilter:function(player,tag,arg){
-                                return arg&&arg.skill=='qunyou2023_m3_shuoxin_backup'&&arg.card.name=='sha'&&arg.card.nature=='thunder';
+                        ai: {
+                            unequip: true,
+                            directHit_ai: true,
+                            skillTagFilter: function (player, tag, arg) {
+                                return arg && arg.skill == 'qunyou2023_m3_shuoxin_backup' && arg.card.name == 'sha' && arg.card.nature == 'thunder';
                             },
                         },
                     },
-                    ice:{
-                        trigger:{player:'useCardToAfter'},
-                        forced:true,
-                        popup:false,
-                        firstDo:true,
-                        filter:function(event,player){
-                            return event.getParent().skill=='qunyou2023_m3_shuoxin_backup'&&event.card.name=='sha'&&event.card.nature=='ice';
+                    ice: {
+                        trigger: {
+                            player: 'useCardToAfter'
                         },
-                        content:function(){
+                        forced: true,
+                        popup: false,
+                        firstDo: true,
+                        filter: function (event, player) {
+                            return event.getParent().skill == 'qunyou2023_m3_shuoxin_backup' && event.card.name == 'sha' && event.card.nature == 'ice';
+                        },
+                        content: function () {
                             trigger.target.addTempSkill("qunyou2023_m3_shuoxin_block");
                         },
                     },
-                    block:{
-                        mark:true,
-                        mod:{
-                            cardEnabled:function(){
+                    block: {
+                        mark: true,
+                        mod: {
+                            cardEnabled: function () {
                                 return false;
                             },
-                            cardRespondable:function(){
+                            cardRespondable: function () {
                                 return false;
                             },
-                            cardSavable:function(){
+                            cardSavable: function () {
                                 return false;
                             },
                         },
-                        intro:{
-                            content:'不能使用或打出牌',
+                        intro: {
+                            content: '不能使用或打出牌',
                         },
-                        sub:true,
+                        sub: true,
                     },
                 },
             },
 
             //qunyou2023_m3_jiaxu
             "qunyou2023_m3_mouhuo": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{global:'damageSource'},
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    global: 'damageSource'
+                },
                 zhuanhuanji: true,
                 mark: true,
                 marktext: "☯",
-                intro:{
-                    content:function(storage,player){
+                intro: {
+                    content: function (storage, player) {
                         var str = '当一名角色造成伤害后，';
                         if (player.storage.qunyou2023_m3_mouhuo) str += '你视为对受到伤害的角色使用一张【杀】。';
                         else str += '你视为对伤害来源使用一张【杀】。';
                         return str;
                     },
                 },
-                filter:function(event,player){
-                    return event.getParent(3).name!="qunyou2023_m3_mouhuo"&&!player.hasSkill("qunyou2023_m3_mouhuo_disable");
+                filter: function (event, player) {
+                    return event.getParent(3).name != "qunyou2023_m3_mouhuo" && !player.hasSkill("qunyou2023_m3_mouhuo_disable");
                 },
-                logTarget:function(event,player){
-                    if(player.storage.qunyou2023_m3_mouhuo) return event.player;
+                logTarget: function (event, player) {
+                    if (player.storage.qunyou2023_m3_mouhuo) return event.player;
                     return event.source;
                 },
-                content:function(){
+                content: function () {
                     'step 0'
-                    var target=(player.storage.qunyou2023_m3_mouhuo)?trigger.player:trigger.source;
-                    player.useCard({name:'sha',isCard:true},target,false);
+                    var target = (player.storage.qunyou2023_m3_mouhuo) ? trigger.player : trigger.source;
+                    player.useCard({
+                        name: 'sha',
+                        isCard: true
+                    }, target, false);
                     player.changeZhuanhuanji("qunyou2023_m3_mouhuo");
                     'step 1'
-                    var bool=player.hasHistory('sourceDamage',function(evt){
-                        var card=evt.card;
-                        if(!card||card.name!='sha') return false;
-                        var evtx=evt.getParent('useCard');
-                        return evtx.card==card&&evtx.getParent()==event;
+                    var bool = player.hasHistory('sourceDamage', function (evt) {
+                        var card = evt.card;
+                        if (!card || card.name != 'sha') return false;
+                        var evtx = evt.getParent('useCard');
+                        return evtx.card == card && evtx.getParent() == event;
                     });
-                    if(!bool){
+                    if (!bool) {
                         player.addTempSkill('qunyou2023_m3_mouhuo_disable');
                         player.addTempSkill('qunyou2023_m3_mingzhe_enable');
                     };
                 },
-                subSkill:{
-                    disable:{
-                        mark:true,
-                        intro:{
-                            content:"本回合不能再发动〖谋祸〗",
+                subSkill: {
+                    disable: {
+                        mark: true,
+                        intro: {
+                            content: "本回合不能再发动〖谋祸〗",
                         },
-                        sub:true,
+                        sub: true,
                     },
                 },
             },
             "qunyou2023_m3_mingzhe": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{
-                    player:'damageBegin3',
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    player: 'damageBegin3',
                 },
-                usable:2,
-                forced:true,
-                filter:function(event,player){
-                    if(player.hasSkill("qunyou2023_m3_mingzhe_enable")) return true;
+                usable: 2,
+                forced: true,
+                filter: function (event, player) {
+                    if (player.hasSkill("qunyou2023_m3_mingzhe_enable")) return true;
                     return !player.hasSkill("qunyou2023_m3_mingzhe_disable");
                 },
-                content:function(){
+                content: function () {
                     "step 0"
                     trigger.num--;
                     player.draw();
                     player.addTempSkill("qunyou2023_m3_mingzhe_disable");
                     "step 1"
-                    if(trigger.card&&get.type(trigger.card)=='basic') player.loseHp();
+                    if (trigger.card && get.type(trigger.card) == 'basic') player.loseHp();
                 },
-                subSkill:{
-                    enable:{},
-                    disable:{},
+                subSkill: {
+                    enable: {},
+                    disable: {},
                 },
             },
 
             //qunyou2023_m3_hongxia
             "qunyou2023_m3_gu": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{player:'phaseJieshuBegin'},
-                filter:function(event,player){
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    player: 'phaseJieshuBegin'
+                },
+                filter: function (event, player) {
                     return !event.numFixed;
                 },
-                frequent:true,
-                mark:true,
-                intro:{
-                    content:function(storage,player){
-                        return '你使用['+get.translation(player.storage.qunyou2023_m3_gu)+']的基本牌无次数限制';
+                frequent: true,
+                mark: true,
+                intro: {
+                    content: function (storage, player) {
+                        return '你使用[' + get.translation(player.storage.qunyou2023_m3_gu) + ']的基本牌无次数限制';
                     },
                 },
-                init:function(player){
-                    player.storage.qunyou2023_m3_gu='heart';
+                init: function (player) {
+                    player.storage.qunyou2023_m3_gu = 'heart';
                 },
-                content:function(){
+                content: function () {
                     "step 0"
-                    event.cards=get.cards(4);
+                    event.cards = get.cards(4);
                     game.cardsGotoOrdering(event.cards);
-                    event.videoId=lib.status.videoId++;
-                    game.broadcastAll(function(player,id,cards){
+                    event.videoId = lib.status.videoId++;
+                    game.broadcastAll(function (player, id, cards) {
                         var str;
-                        if(player==game.me) str='鼓：将一种花色的牌分配给任意其他角色或弃置并获得其余牌';
-                        else str=get.translation(player.name)+'展示的牌';
-                        var dialog=ui.create.dialog(str,cards);
-                        dialog.videoId=id;
-                    },player,event.videoId,event.cards);
-                    game.log(player,'展示了',event.cards);
+                        if (player == game.me) str = '鼓：将一种花色的牌分配给任意其他角色或弃置并获得其余牌';
+                        else str = get.translation(player.name) + '展示的牌';
+                        var dialog = ui.create.dialog(str, cards);
+                        dialog.videoId = id;
+                    }, player, event.videoId, event.cards);
+                    game.log(player, '展示了', event.cards);
                     player.chooseControl(lib.suit);
                     "step 1"
-                    player.storage.qunyou2023_m3_gu=result.control;
-                    game.broadcastAll('closeDialog',event.videoId);
-                    event.cards2=[];
-                    for(var i=0;i<event.cards.length;i++){
-                        if(get.suit(event.cards[i])!=player.storage.qunyou2023_m3_gu){
+                    player.storage.qunyou2023_m3_gu = result.control;
+                    game.broadcastAll('closeDialog', event.videoId);
+                    event.cards2 = [];
+                    for (var i = 0; i < event.cards.length; i++) {
+                        if (get.suit(event.cards[i]) != player.storage.qunyou2023_m3_gu) {
                             event.cards2.push(event.cards[i]);
-                            event.cards.splice(i--,1);
+                            event.cards.splice(i--, 1);
                         }
                     };
                     'step 2'
-                    if(event.cards.length){
-                        player.chooseCardButton('鼓：请选择要分配的牌',event.cards,[1,event.cards.length]).set('ai',function(button){
-                            if(ui.selected.buttons.length==0) return 1;
+                    if (event.cards.length) {
+                        player.chooseCardButton('鼓：请选择要分配的牌', event.cards, [1, event.cards.length]).set('ai', function (button) {
+                            if (ui.selected.buttons.length == 0) return 1;
                             return 0;
                         });
                     };
                     'step 3'
-                    if(result.bool){
-                        event.togive=result.links;
-                        player.chooseTarget('选择一名角色获得'+get.translation(result.links),lib.filter.notMe).set('ai',function(target){
-                            var att=get.attitude(_status.event.player,target);
-                            if(_status.event.enemy){
+                    if (result.bool) {
+                        event.togive = result.links;
+                        player.chooseTarget('选择一名角色获得' + get.translation(result.links), lib.filter.notMe).set('ai', function (target) {
+                            var att = get.attitude(_status.event.player, target);
+                            if (_status.event.enemy) {
                                 return -att;
+                            } else if (att > 0) {
+                                return att / (1 + target.countCards('h'));
+                            } else {
+                                return att / 100;
                             }
-                            else if(att>0){
-                                return att/(1+target.countCards('h'));
-                            }
-                            else{
-                                return att/100;
-                            }
-                        }).set('enemy',get.value(event.togive[0],player,'raw')<0);
-                    }
-                    else event.goto(5);
+                        }).set('enemy', get.value(event.togive[0], player, 'raw') < 0);
+                    } else event.goto(5);
                     'step 4'
-                    if(result.bool){
+                    if (result.bool) {
                         event.cards.removeArray(event.togive);
-                        result.targets[0].gain(event.togive.slice(0),"gain2");
+                        result.targets[0].gain(event.togive.slice(0), "gain2");
                     };
-                    if(event.cards.length>0) event.goto(2);
+                    if (event.cards.length > 0) event.goto(2);
                     'step 5'
-                    player.gain(event.cards2,"gain2");
+                    player.gain(event.cards2, "gain2");
                 },
-                mod:{
-                    cardUsable:function(card,player,num){
-                        if(get.suit(card)==player.storage.qunyou2023_m3_gu&&get.type(card)=='basic') return Infinity;
+                mod: {
+                    cardUsable: function (card, player, num) {
+                        if (get.suit(card) == player.storage.qunyou2023_m3_gu && get.type(card) == 'basic') return Infinity;
                     },
                 },
             },
             "qunyou2023_m3_yin": {
-                unique:true,
-                audio:"ext:群友DIY/audio/skill:2",
-                mark:true,
-                intro:{
-                    content:function(storage,player){
-                        return '其他角色可以交给你一张['+get.translation(player.storage.qunyou2023_m3_gu)+']牌，视为使用或打出一张【'+get.translation(player.storage.qunyou2023_m3_yin)+'】';
+                unique: true,
+                audio: "ext:群友DIY/audio/skill:2",
+                mark: true,
+                intro: {
+                    content: function (storage, player) {
+                        return '其他角色可以交给你一张[' + get.translation(player.storage.qunyou2023_m3_gu) + ']牌，视为使用或打出一张【' + get.translation(player.storage.qunyou2023_m3_yin) + '】';
                     },
                 },
-                init:function(player){
-                    player.storage.qunyou2023_m3_yin='tao';
+                init: function (player) {
+                    player.storage.qunyou2023_m3_yin = 'tao';
                 },
-                enable:["chooseToUse","chooseToRespond"],
-                hiddenCard:function(player,name){
-                    if(get.type(name)!='basic') return false;
-                    return player.hasCard(function(card){
-                        return get.suit(card)==player.storage.qunyou2023_m3_gu;
-                    },'hs');
+                enable: ["chooseToUse", "chooseToRespond"],
+                hiddenCard: function (player, name) {
+                    if (get.type(name) != 'basic') return false;
+                    return player.hasCard(function (card) {
+                        return get.suit(card) == player.storage.qunyou2023_m3_gu;
+                    }, 'hs');
                 },
-                filter:function(event,player){
-                    if(!player.hasCard(function(card){
-                        return get.suit(card)==player.storage.qunyou2023_m3_gu;
-                    },'hs')) return false;
-                    for(var name of lib.inpile){
-                        if(get.type(name)!='basic') continue;
-                        if(event.filterCard({name:name,suit:player.storage.qunyou2023_m3_gu},player,event)) return true;
-                        if(name=='sha'){
-                            for(var nature of lib.inpile_nature){
-                                if(event.filterCard({name:'sha',nature:nature,suit:player.storage.qunyou2023_m3_gu},player,event)) return true;
+                filter: function (event, player) {
+                    if (!player.hasCard(function (card) {
+                            return get.suit(card) == player.storage.qunyou2023_m3_gu;
+                        }, 'hs')) return false;
+                    for (var name of lib.inpile) {
+                        if (get.type(name) != 'basic') continue;
+                        if (event.filterCard({
+                                name: name,
+                                suit: player.storage.qunyou2023_m3_gu
+                            }, player, event)) return true;
+                        if (name == 'sha') {
+                            for (var nature of lib.inpile_nature) {
+                                if (event.filterCard({
+                                        name: 'sha',
+                                        nature: nature,
+                                        suit: player.storage.qunyou2023_m3_gu
+                                    }, player, event)) return true;
                             }
                         }
                     }
                     return false;
                 },
-                chooseButton:{
-                    dialog:function(event,player){
-                        var list=[];
-                        for(var name of lib.inpile){
-                            if(get.type(name)=='basic'){
-                                list.push(['基本','',name]);
-                                if(name=='sha'){
-                                    for(var nature of lib.inpile_nature) list.push(['基本','','sha',nature]);
+                chooseButton: {
+                    dialog: function (event, player) {
+                        var list = [];
+                        for (var name of lib.inpile) {
+                            if (get.type(name) == 'basic') {
+                                list.push(['基本', '', name]);
+                                if (name == 'sha') {
+                                    for (var nature of lib.inpile_nature) list.push(['基本', '', 'sha', nature]);
                                 };
                             };
                         };
-                        return ui.create.dialog('音：将一张'+get.translation(player.storage.qunyou2023_m3_gu)+'花色的牌当做无次数限制的任意基本牌使用或打出',[list,'vcard'],'hidden');
+                        return ui.create.dialog('音：将一张' + get.translation(player.storage.qunyou2023_m3_gu) + '花色的牌当做无次数限制的任意基本牌使用或打出', [list, 'vcard'], 'hidden');
                     },
-                    filter:function(button,player){
-                        return _status.event.getParent().filterCard({name:button.link[2],natrue:button.link[3],suit:player.storage.qunyou2023_m3_gu},player,_status.event.getParent());
+                    filter: function (button, player) {
+                        return _status.event.getParent().filterCard({
+                            name: button.link[2],
+                            natrue: button.link[3],
+                            suit: player.storage.qunyou2023_m3_gu
+                        }, player, _status.event.getParent());
                     },
-                    check:function(button){
-                        var player=_status.event.player;
-                        var card={name:button.link[2],nature:button.link[3]};
-                        if(_status.event.getParent().type!='phase'||game.hasPlayer(function(current){
-                            return player.canUse(card,current)&&get.effect(current,card,player,player)>0;
-                        })){
-                            switch(button.link[2]){
-                                case 'tao':case 'shan':return 5;
-                                case 'jiu':{
-                                    if(player.storage.yizan&&player.countCards('hs',{type:'basic'})>2) return 3;
+                    check: function (button) {
+                        var player = _status.event.player;
+                        var card = {
+                            name: button.link[2],
+                            nature: button.link[3]
+                        };
+                        if (_status.event.getParent().type != 'phase' || game.hasPlayer(function (current) {
+                                return player.canUse(card, current) && get.effect(current, card, player, player) > 0;
+                            })) {
+                            switch (button.link[2]) {
+                                case 'tao':
+                                case 'shan':
+                                    return 5;
+                                case 'jiu': {
+                                    if (player.storage.yizan && player.countCards('hs', {
+                                            type: 'basic'
+                                        }) > 2) return 3;
                                 };
-                                case 'sha':
-                                    if(button.link[3]=='fire') return 2.95;
-                                    else if(button.link[3]=='thunder'||button.link[3]=='ice') return 2.92;
-                                    else return 2.9;
+                            case 'sha':
+                                if (button.link[3] == 'fire') return 2.95;
+                                else if (button.link[3] == 'thunder' || button.link[3] == 'ice') return 2.92;
+                                else return 2.9;
                             }
                         }
                         return 0;
                     },
-                    backup:function(links,player){
+                    backup: function (links, player) {
                         return {
-                            audio:"ext:群友DIY/audio/skill:2",
-                            filterCard:function(card,player,target){
-                                return get.suit(card)==player.storage.qunyou2023_m3_gu;
+                            audio: "ext:群友DIY/audio/skill:2",
+                            filterCard: function (card, player, target) {
+                                return get.suit(card) == player.storage.qunyou2023_m3_gu;
                             },
-                            check:function(card,player,target){
-                                return 6-get.value(card);
+                            check: function (card, player, target) {
+                                return 6 - get.value(card);
                             },
-                            viewAs:{name:links[0][2],nature:links[0][3]},
-                            position:'hs',
-                            popname:true,
-                            onuse:function(links,player){
-                                player.storage.qunyou2023_m3_yin=links.card.name;
+                            viewAs: {
+                                name: links[0][2],
+                                nature: links[0][3]
+                            },
+                            position: 'hs',
+                            popname: true,
+                            onuse: function (links, player) {
+                                player.storage.qunyou2023_m3_yin = links.card.name;
                             },
                         }
                     },
-                    prompt:function(links,player){
-                        return '将'+get.translation(player.storage.qunyou2023_m3_gu)+'花色的牌当做'+get.translation(links[0][3]||'')+'【'+get.translation(links[0][2])+'】使用或打出';
+                    prompt: function (links, player) {
+                        return '将' + get.translation(player.storage.qunyou2023_m3_gu) + '花色的牌当做' + get.translation(links[0][3] || '') + '【' + get.translation(links[0][2]) + '】使用或打出';
                     },
                 },
-                ai:{
-                    order:function(){
-                        var player=_status.event.player;
-                        var event=_status.event;
-                        if(event.filterCard({name:'jiu'},player,event)&&get.effect(player,{name:'jiu'})>0&&player.storage.yizan&&player.countCards('hs',{type:'basic'})>2){
+                ai: {
+                    order: function () {
+                        var player = _status.event.player;
+                        var event = _status.event;
+                        if (event.filterCard({
+                                name: 'jiu'
+                            }, player, event) && get.effect(player, {
+                                name: 'jiu'
+                            }) > 0 && player.storage.yizan && player.countCards('hs', {
+                                type: 'basic'
+                            }) > 2) {
                             return 3.3;
                         }
                         return 3.1;
                     },
-                    skillTagFilter:function(player,tag,arg){
-                        if(tag=='fireAttack') return true;
-                        if(!player.storage.yizan&&player.countCards('hes')<2) return false;
-                        if(!player.hasCard(function(card){
-                            return get.type(card)=='basic';
-                        },'hes')){
+                    skillTagFilter: function (player, tag, arg) {
+                        if (tag == 'fireAttack') return true;
+                        if (!player.storage.yizan && player.countCards('hes') < 2) return false;
+                        if (!player.hasCard(function (card) {
+                                return get.type(card) == 'basic';
+                            }, 'hes')) {
                             return false;
                         }
                     },
-                    result:{
-                        player:1,
+                    result: {
+                        player: 1,
                     },
-                    respondSha:true,
-                    respondShan:true,
-                    fireAttack:true,
+                    respondSha: true,
+                    respondShan: true,
+                    fireAttack: true,
                 },
-                global:"qunyou2023_m3_yin_effect",
-                subSkill:{
-                    effect:{
-                        enable:['chooseToRespond','chooseToUse'],
-                        charlotte:true,
-                        prompt:function(event,player){
-                            var targets=game.filterPlayer(function(target){
+                global: "qunyou2023_m3_yin_effect",
+                subSkill: {
+                    effect: {
+                        enable: ['chooseToRespond', 'chooseToUse'],
+                        charlotte: true,
+                        prompt: function (event, player) {
+                            var targets = game.filterPlayer(function (target) {
                                 return target.hasSkill('qunyou2023_m3_yin');
                             });
-                            var suit=targets[0].storage.qunyou2023_m3_gu;
-                            var name=targets[0].storage.qunyou2023_m3_yin;
-                            return '交给'+get.translation(targets[0])+'一张['+get.translation(suit)+']牌，视为使用或打出一张【'+get.translation(name)+'】';
+                            var suit = targets[0].storage.qunyou2023_m3_gu;
+                            var name = targets[0].storage.qunyou2023_m3_yin;
+                            return '交给' + get.translation(targets[0]) + '一张[' + get.translation(suit) + ']牌，视为使用或打出一张【' + get.translation(name) + '】';
                         },
-                        viewAs:function(cards,player){
-                            var targets=game.filterPlayer(function(target){
+                        viewAs: function (cards, player) {
+                            var targets = game.filterPlayer(function (target) {
                                 return target.hasSkill('qunyou2023_m3_yin');
                             });
-                            return {name:targets[0].storage.qunyou2023_m3_yin,isCard:true};
+                            return {
+                                name: targets[0].storage.qunyou2023_m3_yin,
+                                isCard: true
+                            };
                         },
-                        ignoreMod:true,
-                        filterCard:function(card,player,event){
-                            var targets=game.filterPlayer(function(target){
+                        ignoreMod: true,
+                        filterCard: function (card, player, event) {
+                            var targets = game.filterPlayer(function (target) {
                                 return target.hasSkill('qunyou2023_m3_gu');
                             });
-                            return get.suit(card)==targets[0].storage.qunyou2023_m3_gu;
+                            return get.suit(card) == targets[0].storage.qunyou2023_m3_gu;
                         },
-                        filter:function(event,player){
-                            var targets=game.filterPlayer(function(target){
+                        filter: function (event, player) {
+                            var targets = game.filterPlayer(function (target) {
                                 return target.hasSkill('qunyou2023_m3_yin');
                             });
-                            if(targets[0]==player) return false;
-                            if(targets[0].hasSkill('qunyou2023_m3_yin_disable')) return false;
-                            var suit=targets[0].storage.qunyou2023_m3_gu;
-                            var name=targets[0].storage.qunyou2023_m3_yin;
-                            return event.filterCard({name:name},player,event)&&player.countCards('hes',(card)=>get.suit(card)==suit);
+                            if (targets[0] == player) return false;
+                            if (targets[0].hasSkill('qunyou2023_m3_yin_disable')) return false;
+                            var suit = targets[0].storage.qunyou2023_m3_gu;
+                            var name = targets[0].storage.qunyou2023_m3_yin;
+                            return event.filterCard({
+                                name: name
+                            }, player, event) && player.countCards('hes', (card) => get.suit(card) == suit);
                         },
-                        precontent:function(){
-                            var targets=game.filterPlayer(function(target){
+                        precontent: function () {
+                            var targets = game.filterPlayer(function (target) {
                                 return target.hasSkill('qunyou2023_m3_yin');
                             });
                             targets[0].logSkill('qunyou2023_m3_yin');
                             targets[0].addTempSkill('qunyou2023_m3_yin_disable');
-                            player.give(event.result.cards.slice(0),targets[0]);
-                            event.result.card.cards=[];
-                            event.result.cards=[];
+                            player.give(event.result.cards.slice(0), targets[0]);
+                            event.result.card.cards = [];
+                            event.result.cards = [];
                             delete event.result.skill;
                             delete event.result.card.suit;
                             delete event.result.card.number;
                         },
-                        sub:true,
+                        sub: true,
                     },
                 },
             },
 
             //qunyou2023_m3_diaochan
             "qunyou2023_m3_huahun": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{
-                    player:'damageBegin4',
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    player: 'damageBegin4',
                 },
-                forced:true,
-                filter:function(event,player){
+                forced: true,
+                filter: function (event, player) {
                     return !player.hasSkill("qunyou2023_m3_huahun_disable");
                 },
-                content:function(){
+                content: function () {
                     "step 0"
                     player.draw(2);
                     "step 1"
-                    if(trigger.num>=player.hp){
+                    if (trigger.num >= player.hp) {
                         player.addTempSkill("qunyou2023_m3_huahun_disable");
                         trigger.cancel();
                     };
                 },
-                subSkill:{
-                    disable:{
-                        mark:true,
-                        charlotte:true,
-                        intro:{
-                            content:"〖花魂〗失效",
+                subSkill: {
+                    disable: {
+                        mark: true,
+                        charlotte: true,
+                        intro: {
+                            content: "〖花魂〗失效",
                         },
-                        sub:true,
+                        sub: true,
                     },
                 },
             },
             "qunyou2023_m3_yingjin": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{global:'phaseZhunbeiBegin'},
-                prompt2:function(event,player){
-                    return "是否令"+get.translation(event.player)+"本回合造成与受到的伤害+1，然后其视为对你使用一张【决斗】？";
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    global: 'phaseZhunbeiBegin'
                 },
-                check:function (event,player){
-                    if(get.attitude(player,event.player)>=0) return true;
-                    return player.countCards("he","sha")>event.player.countCards("he","sha");
+                prompt2: function (event, player) {
+                    return "是否令" + get.translation(event.player) + "本回合造成与受到的伤害+1，然后其视为对你使用一张【决斗】？";
                 },
-                content:function(){
+                check: function (event, player) {
+                    if (get.attitude(player, event.player) >= 0) return true;
+                    return player.countCards("he", "sha") > event.player.countCards("he", "sha");
+                },
+                content: function () {
                     "step 0"
                     trigger.player.addTempSkill("qunyou2023_m3_yingjin_add");
                     "step 1"
-                    trigger.player.useCard({name:"juedou",isCard:true},player);
+                    trigger.player.useCard({
+                        name: "juedou",
+                        isCard: true
+                    }, player);
                 },
             },
             "qunyou2023_m3_yingjin_add": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{player:'damageBegin3',source:'damageBegin1'},
-                forced:true,
-                mark:true,
-                intro:{
-                    content:"造成与受到的伤害+1",
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    player: 'damageBegin3',
+                    source: 'damageBegin1'
                 },
-                content:function(){
+                forced: true,
+                mark: true,
+                intro: {
+                    content: "造成与受到的伤害+1",
+                },
+                content: function () {
                     trigger.num++;
                 },
             },
             "qunyou2023_m3_shaoxi": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{
-                    global:"phaseUseEnd",
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    global: "phaseUseEnd",
                 },
-                filter:function (event,player){
+                filter: function (event, player) {
                     return !player.hasSkill('qunyou2023_m3_shaoxi_disable');
                 },
-                prompt2:function(event,player){
-                    return "是否对"+get.translation(event.player)+"造成一点伤害，然后令其进行一个额外的出牌阶段？";
+                prompt2: function (event, player) {
+                    return "是否对" + get.translation(event.player) + "造成一点伤害，然后令其进行一个额外的出牌阶段？";
                 },
-                check:function (event,player){
-                    if(get.attitude(player,event.player)>=0) return event.player.countCards('h')>event.player.hp&&event.player.hp>2&&!event.player.hasSkill("qunyou2023_m3_yingjin_add");
-                    return event.player.countCards('h')<event.player.hp&&event.player.hp<=2&&event.player.hasSkill("qunyou2023_m3_yingjin_add");
+                check: function (event, player) {
+                    if (get.attitude(player, event.player) >= 0) return event.player.countCards('h') > event.player.hp && event.player.hp > 2 && !event.player.hasSkill("qunyou2023_m3_yingjin_add");
+                    return event.player.countCards('h') < event.player.hp && event.player.hp <= 2 && event.player.hasSkill("qunyou2023_m3_yingjin_add");
                 },
-                logTarget:'player',
-                content:function (){
-                    player.addTempSkill('qunyou2023_m3_shaoxi_disable','roundStart');
+                logTarget: 'player',
+                content: function () {
+                    player.addTempSkill('qunyou2023_m3_shaoxi_disable', 'roundStart');
                     trigger.player.damage();
-                    var next=trigger.player.phaseUse();
+                    var next = trigger.player.phaseUse();
                     event.next.remove(next);
                     trigger.getParent('phase').next.push(next);
                 },
-                ai:{
-                    expose:0.3,
+                ai: {
+                    expose: 0.3,
                 },
-                subSkill:{
-                    disable:{
-                        charlotte:true,
-                        sub:true,
+                subSkill: {
+                    disable: {
+                        charlotte: true,
+                        sub: true,
                     },
                 },
             },
 
             //qunyou2023_m3_caoanyang
             "qunyou2023_m3_lianci": {
-                audio:"ext:群友DIY/audio/skill:2",
-                enable:'phaseUse',
+                audio: "ext:群友DIY/audio/skill:2",
+                enable: 'phaseUse',
                 filterCard: function (card, player) {
                     return !card.hasGaintag('qunyou2023_m3_lianci');
                 },
-                position:'hs',
-                discard:false,
-                delay:false,
-                insert:true,
-                check:function(card){
-                    return 8-get.value(card);
+                position: 'hs',
+                discard: false,
+                delay: false,
+                insert: true,
+                check: function (card) {
+                    return 8 - get.value(card);
                 },
-                content:function(){
+                content: function () {
                     'step 0'
                     ui.cardPile.appendChild(cards[0]);
-                    event.card=get.cardPile2(function(card){
-                        return card.name!=cards[0].name&&get.type(card,'trick')==get.type(cards[0],'trick');
+                    event.card = get.cardPile2(function (card) {
+                        return card.name != cards[0].name && get.type(card, 'trick') == get.type(cards[0], 'trick');
                     });
-                    if(!event.card) event.finish();
+                    if (!event.card) event.finish();
                     'step 1'
                     game.cardsGotoOrdering(event.card);
-                    var str=get.translation(player.name)+'展示的牌';
-                    event.dialog = ui.create.dialog(str,[event.card]);
-                    game.broadcast(function(str,cards){
-                        ui.create.dialog(str,cards);
-                    },str,event.card);
-                    game.log(player,'展示了',event.card);
+                    var str = get.translation(player.name) + '展示的牌';
+                    event.dialog = ui.create.dialog(str, [event.card]);
+                    game.broadcast(function (str, cards) {
+                        ui.create.dialog(str, cards);
+                    }, str, event.card);
+                    game.log(player, '展示了', event.card);
                     "step 2"
-                    if(player.hasUseTarget(event.card)) player.chooseControl(['使用此牌','弃置此牌并摸一张牌']);
-                    else{
-                        event.control='弃置此牌并摸一张牌';
+                    if (player.hasUseTarget(event.card)) player.chooseControl(['使用此牌', '弃置此牌并摸一张牌']);
+                    else {
+                        event.control = '弃置此牌并摸一张牌';
                         game.delayx(2.5);
                     };
                     "step 3"
-                    if(!event.control) event.control=result.control;
-                    game.broadcast('closeDialog',event.dialogid);
+                    if (!event.control) event.control = result.control;
+                    game.broadcast('closeDialog', event.dialogid);
                     event.dialog.close();
                     "step 4"
-                    if(event.control=='使用此牌') player.chooseUseTarget(event.card,'nopopup',true);
-                    if(event.control=='弃置此牌并摸一张牌'){
+                    if (event.control == '使用此牌') player.chooseUseTarget(event.card, 'nopopup', true);
+                    if (event.control == '弃置此牌并摸一张牌') {
                         game.cardsDiscard(event.card);
                         var card1 = get.cards(1);
-                        player.gain(card1,'gain2').gaintag.add('qunyou2023_m3_lianci');
+                        player.gain(card1, 'gain2').gaintag.add('qunyou2023_m3_lianci');
                     };
                 },
-                mod:{
-                    ignoredHandcard:function(card,player){
-                        if(card.hasGaintag('qunyou2023_m3_lianci')) return true;
+                mod: {
+                    ignoredHandcard: function (card, player) {
+                        if (card.hasGaintag('qunyou2023_m3_lianci')) return true;
                     },
-                    cardDiscardable:function(card,player,name){
-                        if(name=='phaseDiscard'&&card.hasGaintag('qunyou2023_m3_lianci')) return false;
+                    cardDiscardable: function (card, player, name) {
+                        if (name == 'phaseDiscard' && card.hasGaintag('qunyou2023_m3_lianci')) return false;
                     },
                 },
-                group:"qunyou2023_m3_lianci_remove",
-                subSkill:{
-                    remove:{
-                        trigger:{player:'phaseEnd'},
-                        direct:true,
-                        filter:function(ebent,player){
-                            return player.countCards('hs',(card)=>card.hasGaintag('qunyou2023_m3_lianci'))>0;
+                group: "qunyou2023_m3_lianci_remove",
+                subSkill: {
+                    remove: {
+                        trigger: {
+                            player: 'phaseEnd'
                         },
-                        content:function(){
+                        direct: true,
+                        filter: function (ebent, player) {
+                            return player.countCards('hs', (card) => card.hasGaintag('qunyou2023_m3_lianci')) > 0;
+                        },
+                        content: function () {
                             player.removeGaintag('qunyou2023_m3_lianci');
                         },
-                        sub:true,
+                        sub: true,
                     },
                 },
             },
             "qunyou2023_m3_shangfu": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{player:['phaseJieshuBegin','damageEnd']},
-                frequent:true,
-                filter:function(event,player){
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    player: ['phaseJieshuBegin', 'damageEnd']
+                },
+                frequent: true,
+                filter: function (event, player) {
                     return player.isDamaged();
                 },
-                content:function(){
+                content: function () {
                     'step 0'
-                    event.cards=game.cardsGotoOrdering(get.bottomCards(player.getDamagedHp())).cards;
-                    var bool=true,list=[];
-                    for(var i of event.cards){
-                        if(list.contains(get.type(i,'trick'))){
-                            bool=false;
+                    event.cards = game.cardsGotoOrdering(get.bottomCards(player.getDamagedHp())).cards;
+                    var bool = true,
+                        list = [];
+                    for (var i of event.cards) {
+                        if (list.contains(get.type(i, 'trick'))) {
+                            bool = false;
                             break;
                         };
-                        list.push(get.type(i,'trick'));
+                        list.push(get.type(i, 'trick'));
                     };
-                    if(event.cards.length>=2&&bool){
+                    if (event.cards.length >= 2 && bool) {
                         player.gainMaxHp();
                         player.recover();
                     };
                     'step 1'
-                    if(event.cards.length>1){
-                        player.chooseCardButton('殇赋：请选择要分配的牌',true,event.cards,[1,event.cards.length]).set('ai',function(button){
-                            if(ui.selected.buttons.length==0) return 1;
+                    if (event.cards.length > 1) {
+                        player.chooseCardButton('殇赋：请选择要分配的牌', true, event.cards, [1, event.cards.length]).set('ai', function (button) {
+                            if (ui.selected.buttons.length == 0) return 1;
                             return 0;
                         });
-                    }
-                    else if(event.cards.length==1){
-                        event._result={links:event.cards.slice(0),bool:true};
-                    }
-                    else{
+                    } else if (event.cards.length == 1) {
+                        event._result = {
+                            links: event.cards.slice(0),
+                            bool: true
+                        };
+                    } else {
                         event.finish();
                     }
                     'step 2'
-                    if(result.bool){
+                    if (result.bool) {
                         event.cards.removeArray(result.links);
-                        event.togive=result.links.slice(0);
-                        player.chooseTarget('选择一名角色获得'+get.translation(result.links),true).set('ai',function(target){
-                            var att=get.attitude(_status.event.player,target);
-                            if(_status.event.enemy){
+                        event.togive = result.links.slice(0);
+                        player.chooseTarget('选择一名角色获得' + get.translation(result.links), true).set('ai', function (target) {
+                            var att = get.attitude(_status.event.player, target);
+                            if (_status.event.enemy) {
                                 return -att;
+                            } else if (att > 0) {
+                                return att / (1 + target.countCards('h'));
+                            } else {
+                                return att / 100;
                             }
-                            else if(att>0){
-                                return att/(1+target.countCards('h'));
-                            }
-                            else{
-                                return att/100;
-                            }
-                        }).set('enemy',get.value(event.togive[0],player,'raw')<0);
+                        }).set('enemy', get.value(event.togive[0], player, 'raw') < 0);
                     };
                     'step 3'
-                    if(result.targets.length) result.targets[0].gain(event.togive,"gain2");
-                    if(event.cards.length>0) event.goto(1);
+                    if (result.targets.length) result.targets[0].gain(event.togive, "gain2");
+                    if (event.cards.length > 0) event.goto(1);
                 },
-                ai:{
-                    maixie:true,
-                    maixie_hp:true,
-                    effect:{
-                        target:function(card,player,target){
-                            if(get.tag(card,'damage')){
-                                if(player.hasSkillTag('jueqing',false,target)) return [1,-2];
-                                if(!target.hasFriend()) return;
-                                var num=1;
-                                if(get.attitude(player,target)>0){
-                                    if(player.needsToDiscard()){
-                                        num=0.7;
-                                    }
-                                    else{
-                                        num=0.5;
+                ai: {
+                    maixie: true,
+                    maixie_hp: true,
+                    effect: {
+                        target: function (card, player, target) {
+                            if (get.tag(card, 'damage')) {
+                                if (player.hasSkillTag('jueqing', false, target)) return [1, -2];
+                                if (!target.hasFriend()) return;
+                                var num = 1;
+                                if (get.attitude(player, target) > 0) {
+                                    if (player.needsToDiscard()) {
+                                        num = 0.7;
+                                    } else {
+                                        num = 0.5;
                                     }
                                 }
-                                if(target.hp>=4) return [1,num*2];
-                                if(target.hp==3) return [1,num*1.5];
-                                if(target.hp==2) return [1,num*0.5];
+                                if (target.hp >= 4) return [1, num * 2];
+                                if (target.hp == 3) return [1, num * 1.5];
+                                if (target.hp == 2) return [1, num * 0.5];
                             }
                         }
                     }
@@ -4397,427 +4530,700 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2023_m3_caoqingming
             "qunyou2023_m3_huaying": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{
-                    global:"phaseZhunbeiBegin",
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    global: "phaseZhunbeiBegin",
                 },
-                forced:true,
-                filter:function(event,player){
+                forced: true,
+                filter: function (event, player) {
                     return event.player.hasSkill('qunyou2023_m3_huaying_xin');
                 },
-                content:function(){
+                content: function () {
                     trigger.player.removeSkill('qunyou2023_m3_huaying_xin');
                     player.draw();
                 },
-                group:"qunyou2023_m3_huaying_add",
-                subSkill:{
-                    add:{
-                        audio:"ext:群友DIY/audio/skill:2",
-                        trigger:{
-                            player:'useCardToPlayered',
-                            target:'useCardToTargeted',
+                group: "qunyou2023_m3_huaying_add",
+                subSkill: {
+                    add: {
+                        audio: "ext:群友DIY/audio/skill:2",
+                        trigger: {
+                            player: 'useCardToPlayered',
+                            target: 'useCardToTargeted',
                         },
-                        forced:true,
-                        filter:function(event,player){
-                            if(event.name=='useCardToPlayered'){
-                                if(lib.skill['qunyou2023_m3_xianlei'].group.contains(event.getParent(2).name)) return false;
-                                return event.target!=player;
-                            }
-                            else return event.player!=player;
+                        forced: true,
+                        filter: function (event, player) {
+                            if (event.name == 'useCardToPlayered') {
+                                if (lib.skill['qunyou2023_m3_xianlei'].group.contains(event.getParent(2).name)) return false;
+                                return event.target != player;
+                            } else return event.player != player;
                         },
-                        content:function(){
-                            if(trigger.name=='useCardToPlayered'){
-                                if(!trigger.target.hasSkill('qunyou2023_m3_huaying_xin')) trigger.target.addSkill('qunyou2023_m3_huaying_xin');
+                        content: function () {
+                            if (trigger.name == 'useCardToPlayered') {
+                                if (!trigger.target.hasSkill('qunyou2023_m3_huaying_xin')) trigger.target.addSkill('qunyou2023_m3_huaying_xin');
+                                else player.draw();
+                            } else {
+                                if (!trigger.player.hasSkill('qunyou2023_m3_huaying_xin')) trigger.player.addSkill('qunyou2023_m3_huaying_xin');
                                 else player.draw();
                             }
-                            else{
-                                if(!trigger.player.hasSkill('qunyou2023_m3_huaying_xin')) trigger.player.addSkill('qunyou2023_m3_huaying_xin');
-                                else player.draw();
-                            }
                         },
-                        sub:true,
+                        sub: true,
                     },
-                    xin:{
-                        charlotte:true,
-                        mark:true,
-                        marktext:"形",
-                        intro:{
-                            content:"你已被赋予了“形”",
+                    xin: {
+                        charlotte: true,
+                        mark: true,
+                        marktext: "形",
+                        intro: {
+                            content: "你已被赋予了“形”",
                         },
                     },
                 },
             },
             "qunyou2023_m3_xianlei": {
-                audio:"ext:群友DIY/audio/skill:2",
-                group:['qunyou2023_m3_xianlei_damageEnd','qunyou2023_m3_xianlei_phaseUse'],
-                subSkill:{
-                    damageEnd:{
-                        trigger:{
-                            player:'damageEnd',
+                audio: "ext:群友DIY/audio/skill:2",
+                group: ['qunyou2023_m3_xianlei_damageEnd', 'qunyou2023_m3_xianlei_phaseUse'],
+                subSkill: {
+                    damageEnd: {
+                        trigger: {
+                            player: 'damageEnd',
                         },
-                        filter:function(event,player){
-                            return game.hasPlayer((current)=>current.hasSkill('qunyou2023_m3_huaying_xin'));
+                        filter: function (event, player) {
+                            return game.hasPlayer((current) => current.hasSkill('qunyou2023_m3_huaying_xin'));
                         },
-                        direct:true,
-                        content:function(){
+                        direct: true,
+                        content: function () {
                             "step 0"
-                            var next=player.chooseTarget(function(card,player,target){
+                            var next = player.chooseTarget(function (card, player, target) {
                                 return target.hasSkill('qunyou2023_m3_huaying_xin');
                             });
-                            next.set("prompt",get.prompt('qunyou2023_m3_xianlei')+"（受到伤害后）");
-                            next.set("prompt2",get.translation('qunyou2023_m3_xianlei_info'));
-                            next.set("targetprompt",function(target){
-                                var str="";
-                                if(target.name=="unknown") return "无";
-                                var list=[],skills=lib.character[target.name][3];
-                                for(var i=0;i<skills.length;i++){
-                                    if(skills[i]=='qunyou2023_m3_xianlei') continue;
-                                    var list2=[skills[i]];
+                            next.set("prompt", get.prompt('qunyou2023_m3_xianlei') + "（受到伤害后）");
+                            next.set("prompt2", get.translation('qunyou2023_m3_xianlei_info'));
+                            next.set("targetprompt", function (target) {
+                                var str = "";
+                                if (target.name == "unknown") return "无";
+                                var list = [],
+                                    skills = lib.character[target.name][3];
+                                for (var i = 0; i < skills.length; i++) {
+                                    if (skills[i] == 'qunyou2023_m3_xianlei') continue;
+                                    var list2 = [skills[i]];
                                     game.expandSkills(list2);
-                                    for(var j=0;j<list2.length;j++){
-                                        var info=lib.skill[list2[j]];
-                                        if(!info||!info.trigger||!info.trigger.player||info.silent||info.limited||info.juexingji||info.zhuanhuanji||info.hiddenSkill||info.dutySkill) continue;
-                                        if(info.trigger.player==event.triggername||Array.isArray(info.trigger.player)&&info.trigger.player.contains(event.triggername)){
-                                            if(info.init||info.ai&&(info.ai.combo||info.ai.notemp||info.ai.neg)) continue;
-                                            if(info.filter){
-                                                try{
-                                                    var bool=info.filter(trigger,player,event.triggername);
-                                                    if(!bool) continue;
-                                                }
-                                                catch(e){
+                                    for (var j = 0; j < list2.length; j++) {
+                                        var info = lib.skill[list2[j]];
+                                        if (!info || !info.trigger || !info.trigger.player || info.silent || info.limited || info.juexingji || info.zhuanhuanji || info.hiddenSkill || info.dutySkill) continue;
+                                        if (info.trigger.player == event.triggername || Array.isArray(info.trigger.player) && info.trigger.player.contains(event.triggername)) {
+                                            if (info.init || info.ai && (info.ai.combo || info.ai.notemp || info.ai.neg)) continue;
+                                            if (info.filter) {
+                                                try {
+                                                    var bool = info.filter(trigger, player, event.triggername);
+                                                    if (!bool) continue;
+                                                } catch (e) {
                                                     continue;
                                                 };
                                             };
-                                            if(!list.contains(skills[i])) list.push(skills[i]);
+                                            if (!list.contains(skills[i])) list.push(skills[i]);
                                         };
                                     };
                                 };
-                                if(list.length==0) str+="无";
-                                else for(var i=0;i<list.length;i++){
-                                    str+=get.translation(list[i]);
-                                    if(i<list.length-1) str+="<br>";
-                                };
+                                if (list.length == 0) str += "无";
+                                else
+                                    for (var i = 0; i < list.length; i++) {
+                                        str += get.translation(list[i]);
+                                        if (i < list.length - 1) str += "<br>";
+                                    };
                                 return str;
                             });
                             "step 1"
-                            if(!result.bool) event.finish();
-                            event.target=result.targets[0];
+                            if (!result.bool) event.finish();
+                            event.target = result.targets[0];
                             "step 2"
-                            event.list=[];
-                            if(event.target.name!="unknown"){
-                                var skills=lib.character[event.target.name][3];
-                                for(var i=0;i<skills.length;i++){
-                                    if(skills[i]=='qunyou2023_m3_xianlei') continue;
-                                    var list2=[skills[i]];
+                            event.list = [];
+                            if (event.target.name != "unknown") {
+                                var skills = lib.character[event.target.name][3];
+                                for (var i = 0; i < skills.length; i++) {
+                                    if (skills[i] == 'qunyou2023_m3_xianlei') continue;
+                                    var list2 = [skills[i]];
                                     game.expandSkills(list2);
-                                    for(var j=0;j<list2.length;j++){
-                                        var info=lib.skill[list2[j]];
-                                        if(!info||!info.trigger||!info.trigger.player||info.silent||info.limited||info.juexingji||info.zhuanhuanji||info.hiddenSkill||info.dutySkill) continue;
-                                        if(info.trigger.player==event.triggername||Array.isArray(info.trigger.player)&&info.trigger.player.contains(event.triggername)){
-                                            if(info.init||info.ai&&(info.ai.combo||info.ai.notemp||info.ai.neg)) continue;
-                                            if(info.filter){
-                                                try{
-                                                    var bool=info.filter(trigger,player,event.triggername);
-                                                    if(!bool) continue;
-                                                }
-                                                catch(e){
+                                    for (var j = 0; j < list2.length; j++) {
+                                        var info = lib.skill[list2[j]];
+                                        if (!info || !info.trigger || !info.trigger.player || info.silent || info.limited || info.juexingji || info.zhuanhuanji || info.hiddenSkill || info.dutySkill) continue;
+                                        if (info.trigger.player == event.triggername || Array.isArray(info.trigger.player) && info.trigger.player.contains(event.triggername)) {
+                                            if (info.init || info.ai && (info.ai.combo || info.ai.notemp || info.ai.neg)) continue;
+                                            if (info.filter) {
+                                                try {
+                                                    var bool = info.filter(trigger, player, event.triggername);
+                                                    if (!bool) continue;
+                                                } catch (e) {
                                                     continue;
                                                 };
                                             };
-                                            if(!event.list.contains(skills[i])) event.list.push(skills[i]);
+                                            if (!event.list.contains(skills[i])) event.list.push(skills[i]);
                                         };
                                     };
                                 };
                             };
-                            var list1=[],k=0;
-                            while(k<event.list.length){
-                                list1.push(get.translation(event.list[k])+"："+get.translation(event.list[k]+"_info"));
+                            var list1 = [],
+                                k = 0;
+                            while (k < event.list.length) {
+                                list1.push(get.translation(event.list[k]) + "：" + get.translation(event.list[k] + "_info"));
                                 k++;
                             };
-                            list1.push("衔泪：视为对"+get.translation(event.target)+"使用一张不计入次数的基本牌或普通锦囊牌（不触发〖化影〗）");
-                            if(list1.length==1) event.index=0;
-                            else{
-                                var next=player.chooseControl(event.list,"衔泪",'cancel2');
-                                next.set('prompt',"移去"+get.translation(event.target)+"的【形】并选择一项");
-                                next.set('choiceList',list1);
-                                next.set("displayIndex",false);
+                            list1.push("衔泪：视为对" + get.translation(event.target) + "使用一张不计入次数的基本牌或普通锦囊牌（不触发〖化影〗）");
+                            if (list1.length == 1) event.index = 0;
+                            else {
+                                var next = player.chooseControl(event.list, "衔泪", 'cancel2');
+                                next.set('prompt', "移去" + get.translation(event.target) + "的【形】并选择一项");
+                                next.set('choiceList', list1);
+                                next.set("displayIndex", false);
                             };
                             "step 3"
-                            if(result.control=='cancel2') event.goto(0);
-                            if(result.index!=undefined) event.index=result.index;
+                            if (result.control == 'cancel2') event.goto(0);
+                            if (result.index != undefined) event.index = result.index;
                             "step 4"
-                            if(event.index<=event.list.length-1){
-                                player.logSkill('qunyou2023_m3_xianlei',event.target);
+                            if (event.index <= event.list.length - 1) {
+                                player.logSkill('qunyou2023_m3_xianlei', event.target);
                                 event.target.removeSkill('qunyou2023_m3_huaying_xin');
-                                player.addTempSkill(event.list[event.index],'damageAfter');
+                                player.addTempSkill(event.list[event.index], 'damageAfter');
                                 event.finish();
                             };
                             "step 5"
-                            if(event.index==event.list.length){
-                                var list=[];
-                                for(var i=0;i<lib.inpile.length;i++){
-                                    var name=lib.inpile[i];
-                                    if(name=='sha'){
-                                        list.push(['基本','','sha']);
-                                        for(var j of lib.inpile_nature) list.push(['基本','','sha',j]);
-                                    }
-                                    else if(get.type(name)=='basic') list.push(['基本','',name]);
-                                    else if(get.type(name)=='trick') list.push(['锦囊','',name]);
+                            if (event.index == event.list.length) {
+                                var list = [];
+                                for (var i = 0; i < lib.inpile.length; i++) {
+                                    var name = lib.inpile[i];
+                                    if (name == 'sha') {
+                                        list.push(['基本', '', 'sha']);
+                                        for (var j of lib.inpile_nature) list.push(['基本', '', 'sha', j]);
+                                    } else if (get.type(name) == 'basic') list.push(['基本', '', name]);
+                                    else if (get.type(name) == 'trick') list.push(['锦囊', '', name]);
                                 }
-                                var next=player.chooseButton(["衔泪：视为对"+get.translation(event.target)+"使用一张不计入次数的基本牌或普通锦囊牌（不触发〖化影〗）",[list,'vcard']]);
-                                next.set('filterButton',function(button){
-                                    return player.canUse({name:button.link[2],nature:button.link[3],isCard:true},event.target,false);
+                                var next = player.chooseButton(["衔泪：视为对" + get.translation(event.target) + "使用一张不计入次数的基本牌或普通锦囊牌（不触发〖化影〗）", [list, 'vcard']]);
+                                next.set('filterButton', function (button) {
+                                    return player.canUse({
+                                        name: button.link[2],
+                                        nature: button.link[3],
+                                        isCard: true
+                                    }, event.target, false);
                                 });
-                                next.set('check',function(button){
-                                    return get.effect(event.target,{name:button.link[2],nature:button.link[3]},player,player);
+                                next.set('check', function (button) {
+                                    return get.effect(event.target, {
+                                        name: button.link[2],
+                                        nature: button.link[3]
+                                    }, player, player);
                                 });
                             };
                             "step 6"
-                            if(result.bool==false){
-                                if(event.index==0) event.goto(0);
+                            if (result.bool == false) {
+                                if (event.index == 0) event.goto(0);
                                 else event.goto(2);
-                            }
-                            else{
-                                player.logSkill('qunyou2023_m3_xianlei',event.target);
+                            } else {
+                                player.logSkill('qunyou2023_m3_xianlei', event.target);
                                 event.target.removeSkill('qunyou2023_m3_huaying_xin');
-                                player.useCard({name:result.links[0][2],nature:result.links[0][3],isCard:true},event.target,false);
+                                player.useCard({
+                                    name: result.links[0][2],
+                                    nature: result.links[0][3],
+                                    isCard: true
+                                }, event.target, false);
                             };
                         },
-                        sub:true,
+                        sub: true,
                     },
-                    phaseUse:{
-                        enable:"phaseUse",
-                        filter:function(event,player){
-                            return game.hasPlayer(function(current){
-                                if(current.hasSkill('qunyou2023_m3_xianlei_disable')) return false;
+                    phaseUse: {
+                        enable: "phaseUse",
+                        filter: function (event, player) {
+                            return game.hasPlayer(function (current) {
+                                if (current.hasSkill('qunyou2023_m3_xianlei_disable')) return false;
                                 return current.hasSkill('qunyou2023_m3_huaying_xin');
-                        });
+                            });
                         },
-                        filterTarget:function(card,player,target){
-                            if(target.hasSkill('qunyou2023_m3_xianlei_disable')) return false;
+                        filterTarget: function (card, player, target) {
+                            if (target.hasSkill('qunyou2023_m3_xianlei_disable')) return false;
                             return target.hasSkill('qunyou2023_m3_huaying_xin');
                         },
-                        prompt:function(){
+                        prompt: function () {
                             return get.translation('qunyou2023_m3_xianlei_info');
                         },
-                        targetprompt:function(target){
-                            var str="";
-                            if(target.name=="unknown") return "无";
-                            var list=[],skills=lib.character[target.name][3];
-                            for(var i=0;i<skills.length;i++){
-                                if(skills[i]=='qunyou2023_m3_xianlei') continue;
-                                var list2=[skills[i]];
+                        targetprompt: function (target) {
+                            var str = "";
+                            if (target.name == "unknown") return "无";
+                            var list = [],
+                                skills = lib.character[target.name][3];
+                            for (var i = 0; i < skills.length; i++) {
+                                if (skills[i] == 'qunyou2023_m3_xianlei') continue;
+                                var list2 = [skills[i]];
                                 game.expandSkills(list2);
-                                for(var j=0;j<list2.length;j++){
-                                    var info=lib.skill[list2[j]];
-                                    if(!info||!info.enable||info.viewAs||info.limited||info.juexingji||info.zhuanhuanji||info.hiddenSkill||info.dutySkill) continue;
-                                    if(info.enable=='phaseUse'||Array.isArray(info.enable)&&info.enable.contains('phaseUse')){
-                                        if(info.init||info.onChooseToUse||info.ai&&(info.ai.combo||info.ai.notemp||info.ai.neg)) continue;
-                                        if(info.filter){
-                                            try{
-                                                var bool=info.filter(event.getParent(2),player);
-                                                if(!bool) continue;
-                                            }
-                                            catch(e){
+                                for (var j = 0; j < list2.length; j++) {
+                                    var info = lib.skill[list2[j]];
+                                    if (!info || !info.enable || info.viewAs || info.limited || info.juexingji || info.zhuanhuanji || info.hiddenSkill || info.dutySkill) continue;
+                                    if (info.enable == 'phaseUse' || Array.isArray(info.enable) && info.enable.contains('phaseUse')) {
+                                        if (info.init || info.onChooseToUse || info.ai && (info.ai.combo || info.ai.notemp || info.ai.neg)) continue;
+                                        if (info.filter) {
+                                            try {
+                                                var bool = info.filter(event.getParent(2), player);
+                                                if (!bool) continue;
+                                            } catch (e) {
                                                 continue;
                                             }
                                         };
-                                        if(!list.contains(skills[i])) list.push(skills[i]);
+                                        if (!list.contains(skills[i])) list.push(skills[i]);
                                     };
                                 };
                             };
-                            if(list.length==0) str+="无";
-                            else for(var i=0;i<list.length;i++){
-                                str+=get.translation(list[i]);
-                                if(i<list.length-1) str+="<br>";
-                            };
+                            if (list.length == 0) str += "无";
+                            else
+                                for (var i = 0; i < list.length; i++) {
+                                    str += get.translation(list[i]);
+                                    if (i < list.length - 1) str += "<br>";
+                                };
                             return str;
                         },
-                        content:function(){
+                        content: function () {
                             "step 0"
-                            event.list=[];
-                            if(target.name!="unknown"){
-                                var skills=lib.character[target.name][3];
-                                for(var i=0;i<skills.length;i++){
-                                    if(skills[i]=='qunyou2023_m3_xianlei') continue;
-                                    var list2=[skills[i]];
+                            event.list = [];
+                            if (target.name != "unknown") {
+                                var skills = lib.character[target.name][3];
+                                for (var i = 0; i < skills.length; i++) {
+                                    if (skills[i] == 'qunyou2023_m3_xianlei') continue;
+                                    var list2 = [skills[i]];
                                     game.expandSkills(list2);
-                                    for(var j=0;j<list2.length;j++){
-                                        var info=lib.skill[list2[j]];
-                                        if(!info||!info.enable||info.viewAs||info.limited||info.juexingji||info.zhuanhuanji||info.hiddenSkill||info.dutySkill) continue;
-                                        if(info.enable=='phaseUse'||Array.isArray(info.enable)&&info.enable.contains('phaseUse')){
-                                            if(info.init||info.onChooseToUse||info.ai&&(info.ai.combo||info.ai.notemp||info.ai.neg)) continue;
-                                            if(info.filter){
-                                                try{
-                                                    var bool=info.filter(_status.event.getParent(2),_status.event.player);
-                                                    if(!bool) continue;
-                                                }
-                                                catch(e){
+                                    for (var j = 0; j < list2.length; j++) {
+                                        var info = lib.skill[list2[j]];
+                                        if (!info || !info.enable || info.viewAs || info.limited || info.juexingji || info.zhuanhuanji || info.hiddenSkill || info.dutySkill) continue;
+                                        if (info.enable == 'phaseUse' || Array.isArray(info.enable) && info.enable.contains('phaseUse')) {
+                                            if (info.init || info.onChooseToUse || info.ai && (info.ai.combo || info.ai.notemp || info.ai.neg)) continue;
+                                            if (info.filter) {
+                                                try {
+                                                    var bool = info.filter(_status.event.getParent(2), _status.event.player);
+                                                    if (!bool) continue;
+                                                } catch (e) {
                                                     continue;
                                                 }
                                             };
-                                            if(!event.list.contains(skills[i])) event.list.push(skills[i]);
+                                            if (!event.list.contains(skills[i])) event.list.push(skills[i]);
                                         };
                                     };
                                 };
                             };
-                            var list1=[],k=0;
-                            while(k<event.list.length){
-                                list1.push(get.translation(event.list[k])+"："+get.translation(event.list[k]+"_info"));
+                            var list1 = [],
+                                k = 0;
+                            while (k < event.list.length) {
+                                list1.push(get.translation(event.list[k]) + "：" + get.translation(event.list[k] + "_info"));
                                 k++;
                             };
-                            list1.push("衔泪：视为对"+get.translation(target)+"使用一张不计入次数的基本牌或普通锦囊牌（不触发〖化影〗）");
-                            if(list1.length==1) event.index=0;
-                            else{
-                                var next=player.chooseControl(event.list,"衔泪",'cancel2');
-                                next.set('prompt',"移去"+get.translation(target)+"的【形】并选择一项");
-                                next.set('choiceList',list1);
-                                next.set("displayIndex",false);
+                            list1.push("衔泪：视为对" + get.translation(target) + "使用一张不计入次数的基本牌或普通锦囊牌（不触发〖化影〗）");
+                            if (list1.length == 1) event.index = 0;
+                            else {
+                                var next = player.chooseControl(event.list, "衔泪", 'cancel2');
+                                next.set('prompt', "移去" + get.translation(target) + "的【形】并选择一项");
+                                next.set('choiceList', list1);
+                                next.set("displayIndex", false);
                             };
                             "step 1"
-                            if(result.control=='cancel2') event.finish();
-                            if(result.index!=undefined) event.index=result.index;
+                            if (result.control == 'cancel2') event.finish();
+                            if (result.index != undefined) event.index = result.index;
                             "step 2"
-                            if(event.index<=event.list.length-1){
-                                player.logSkill('qunyou2023_m3_xianlei',target);
+                            if (event.index <= event.list.length - 1) {
+                                player.logSkill('qunyou2023_m3_xianlei', target);
                                 target.removeSkill('qunyou2023_m3_huaying_xin');
                                 target.addTempSkill('qunyou2023_m3_xianlei_disable');
-                                player.addTempSkill(event.list[event.index],'phaseUseEnd');
-                                if(!player.hasSkill('qunyou2023_m3_xianlei_temp')) player.addTempSkill('qunyou2023_m3_xianlei_temp','phaseUseEnd');
+                                player.addTempSkill(event.list[event.index], 'phaseUseEnd');
+                                if (!player.hasSkill('qunyou2023_m3_xianlei_temp')) player.addTempSkill('qunyou2023_m3_xianlei_temp', 'phaseUseEnd');
                                 player.storage.qunyou2023_m3_xianlei_temp.push(event.list[event.index]);
                                 event.finish();
                             };
                             "step 3"
-                            if(event.index==event.list.length){
-                                var list=[];
-                                for(var i=0;i<lib.inpile.length;i++){
-                                    var name=lib.inpile[i];
-                                    if(name=='sha'){
-                                        list.push(['基本','','sha']);
-                                        for(var j of lib.inpile_nature) list.push(['基本','','sha',j]);
-                                    }
-                                    else if(get.type(name)=='basic') list.push(['基本','',name]);
-                                    else if(get.type(name)=='trick') list.push(['锦囊','',name]);
+                            if (event.index == event.list.length) {
+                                var list = [];
+                                for (var i = 0; i < lib.inpile.length; i++) {
+                                    var name = lib.inpile[i];
+                                    if (name == 'sha') {
+                                        list.push(['基本', '', 'sha']);
+                                        for (var j of lib.inpile_nature) list.push(['基本', '', 'sha', j]);
+                                    } else if (get.type(name) == 'basic') list.push(['基本', '', name]);
+                                    else if (get.type(name) == 'trick') list.push(['锦囊', '', name]);
                                 }
-                                var next=player.chooseButton(["衔泪：视为对"+get.translation(target)+"使用一张不计入次数的基本牌或普通锦囊牌（不触发〖化影〗）",[list,'vcard']]);
-                                next.set('filterButton',function(button){
-                                    return player.canUse({name:button.link[2],nature:button.link[3],isCard:true},target,false);
+                                var next = player.chooseButton(["衔泪：视为对" + get.translation(target) + "使用一张不计入次数的基本牌或普通锦囊牌（不触发〖化影〗）", [list, 'vcard']]);
+                                next.set('filterButton', function (button) {
+                                    return player.canUse({
+                                        name: button.link[2],
+                                        nature: button.link[3],
+                                        isCard: true
+                                    }, target, false);
                                 });
-                                next.set('check',function(button){
-                                    return get.effect(target,{name:button.link[2],nature:button.link[3]},player,player);
+                                next.set('check', function (button) {
+                                    return get.effect(target, {
+                                        name: button.link[2],
+                                        nature: button.link[3]
+                                    }, player, player);
                                 });
                             };
                             "step 4"
-                            if(result.bool==false){
-                                if(event.index==0) event.finish();
+                            if (result.bool == false) {
+                                if (event.index == 0) event.finish();
                                 else event.goto(0);
-                            }
-                            else{
-                                player.logSkill('qunyou2023_m3_xianlei',target);
+                            } else {
+                                player.logSkill('qunyou2023_m3_xianlei', target);
                                 target.removeSkill('qunyou2023_m3_huaying_xin');
                                 target.addTempSkill('qunyou2023_m3_xianlei_disable');
-                                player.useCard({name:result.links[0][2],nature:result.links[0][3],isCard:true},target,false);
+                                player.useCard({
+                                    name: result.links[0][2],
+                                    nature: result.links[0][3],
+                                    isCard: true
+                                }, target, false);
                             };
                         },
-                        sub:true,
+                        sub: true,
                     },
-                    temp:{
-                        trigger:{player:['useSkillBegin','useCard1']},
-                        silent:true,
-                        firstDo:true,
-                        init:function(player){
-                            player.storage.qunyou2023_m3_xianlei_temp=[];
+                    temp: {
+                        trigger: {
+                            player: ['useSkillBegin', 'useCard1']
                         },
-                        onremove:function(player){
+                        silent: true,
+                        firstDo: true,
+                        init: function (player) {
+                            player.storage.qunyou2023_m3_xianlei_temp = [];
+                        },
+                        onremove: function (player) {
                             delete player.storage.qunyou2023_m3_xianlei_temp;
                         },
-                        filter:function(event,player){
-                            var info=lib.skill[event.skill];
-                            if(!info) return false;
-                            if(player.storage.qunyou2023_m3_xianlei_temp.contains(event.skill)) return true;
-                            if(player.storage.qunyou2023_m3_xianlei_temp.contains(info.sourceSkill)) return true;
-                            if(player.storage.qunyou2023_m3_xianlei_temp.contains(info.group)) return true;
-                            if(Array.isArray(info.group)&&player.storage.qunyou2023_m3_xianlei_temp.some((i)=>info.group.contains(i))) return true;
+                        filter: function (event, player) {
+                            var info = lib.skill[event.skill];
+                            if (!info) return false;
+                            if (player.storage.qunyou2023_m3_xianlei_temp.contains(event.skill)) return true;
+                            if (player.storage.qunyou2023_m3_xianlei_temp.contains(info.sourceSkill)) return true;
+                            if (player.storage.qunyou2023_m3_xianlei_temp.contains(info.group)) return true;
+                            if (Array.isArray(info.group) && player.storage.qunyou2023_m3_xianlei_temp.some((i) => info.group.contains(i))) return true;
                             return false;
                         },
-                        content:function(){
-                            var info=lib.skill[trigger.skill];
-                            if(player.storage.qunyou2023_m3_xianlei_temp.contains(trigger.skill)){
+                        content: function () {
+                            var info = lib.skill[trigger.skill];
+                            if (player.storage.qunyou2023_m3_xianlei_temp.contains(trigger.skill)) {
                                 player.storage.qunyou2023_m3_xianlei_temp.remove(trigger.skill);
                                 player.removeSkill(trigger.skill);
                             };
-                            if(player.storage.qunyou2023_m3_xianlei_temp.contains(info.sourceSkill)){
+                            if (player.storage.qunyou2023_m3_xianlei_temp.contains(info.sourceSkill)) {
                                 player.storage.qunyou2023_m3_xianlei_temp.remove(info.sourceSkill);
                                 player.removeSkill(info.sourceSkill);
                             };
-                            if(player.storage.qunyou2023_m3_xianlei_temp.contains(info.group)){
+                            if (player.storage.qunyou2023_m3_xianlei_temp.contains(info.group)) {
                                 player.storage.qunyou2023_m3_xianlei_temp.remove(info.group);
                                 player.removeSkill(info.group);
                             };
-                            if(Array.isArray(info.group)){
-                                for(var i of player.storage.qunyou2023_m3_xianlei_temp){
-                                    if(info.group.contains(i)){
+                            if (Array.isArray(info.group)) {
+                                for (var i of player.storage.qunyou2023_m3_xianlei_temp) {
+                                    if (info.group.contains(i)) {
                                         player.storage.qunyou2023_m3_xianlei_temp.remove(i);
                                         player.removeSkill(i);
                                     };
                                 };
                             };
                         },
-                        sub:true,
+                        sub: true,
                     },
-                    disable:{
-                        charlotte:true,
-                        mark:true,
-                        intro:{
-                            content:"本回合已成为过〖衔泪〗的目标",
+                    disable: {
+                        charlotte: true,
+                        mark: true,
+                        intro: {
+                            content: "本回合已成为过〖衔泪〗的目标",
                         },
                     },
                 },
             },
-            
+
             //qunyou2023_m3_sb_guojia
             "qunyou2023_m3_tiandu": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{player:'phaseBegin'},
-                charlotte:true,
-                forced:true,
-                mark:true,
-                intro:{
-                    content:'你已被选为天之骄子',
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    player: 'phaseBegin'
                 },
-                content:function(){
+                charlotte: true,
+                forced: true,
+                mark: true,
+                intro: {
+                    content: '你已被选为天之骄子',
+                },
+                content: function () {
                     player.die();
                 },
             },
             "qunyou2023_m3_yiji": {
-                audio:"ext:群友DIY/audio/skill:2",
-                trigger:{player:'die'},
-                direct:true,
-                charlotte:true,
-                skillAnimation:true,
-                animationColor:'thunder',
-                forceDie:true,
-                content:function(){
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    player: 'die'
+                },
+                direct: true,
+                charlotte: true,
+                skillAnimation: true,
+                animationColor: 'thunder',
+                forceDie: true,
+                content: function () {
                     "step 0"
-                    player.chooseTarget(get.prompt2("qunyou2023_m3_yiji"),lib.filter.notMe).set('forceDie',true).set('ai',function(target){
-                        if(target.hasSkill("qunyou2023_m3_tiandu")||target.hasSkill("qunyou2023_m3_yiji")) return 0;
-                        return -get.attitude(_status.event.player,target);
+                    player.chooseTarget(get.prompt2("qunyou2023_m3_yiji"), lib.filter.notMe).set('forceDie', true).set('ai', function (target) {
+                        if (target.hasSkill("qunyou2023_m3_tiandu") || target.hasSkill("qunyou2023_m3_yiji")) return 0;
+                        return -get.attitude(_status.event.player, target);
                     });
                     "step 1"
-                    if(result.bool){
-                        var target=result.targets[0];
-                        player.logSkill("qunyou2023_m3_yiji",target);
-                        player.line(target,'green');
+                    if (result.bool) {
+                        var target = result.targets[0];
+                        player.logSkill("qunyou2023_m3_yiji", target);
+                        player.line(target, 'green');
                         target.addSkill("qunyou2023_m3_tiandu");
                         target.addSkill("qunyou2023_m3_yiji");
                     };
                 },
-                ai:{
-                    expose:0.5,
+                ai: {
+                    expose: 0.5,
                 },
             },
 
             //qunyou2023_m4_shen_machao
+            // qunyou2023_m4_shuangtoushirenmo
+            "qunyou2023_m4_tongxin": {
+                audio: "dunxi",
+                trigger: {
+                    player: "useCardToPlayer",
+                },
+                forced: true,
+                locked: false,
+                filter: function (event, player) {
+                    if (event.getParent()._dunxi) return false;
+                    var numa=Math.random();
+                    if(numa<0.5){
+                        return true;
+                    }
+                    return get.name(event.card) =='sha';
+                },
+                content: function () {
+                    'step 0'
+                    trigger.getParent()._dunxi = true;
+                    var target = trigger.target;
+                    event.target = target;
+                    trigger.targets.remove(target);
+                    trigger.getParent().triggeredTargets1.remove(target);
+                    trigger.untrigger();
+                    game.delayx();
+                    'step 1'
+                    var list;
+                    list = game.filterPlayer(function (current) {
+                        if(current == trigger.player || current == trigger.target) return false;
+                        return lib.filter.targetEnabled2(trigger.card, trigger.player, current);
+                    });
+                    if (list.length) target = list.randomGet();
+                    trigger.targets.push(target);
+                    trigger.player.line(target, 'fire');
+                    game.log(trigger.card, '的目标被改为', target);
+                },
+            },
+            "qunyou2023_m4_tongli":{
+                mod:{
+                    cardUsable:function(card,player,num){
+                        if(card.name=='sha') return num+1;
+                    },
+                    selectTarget:function(card,player,range){
+                        if(card.name=='sha'&&range[1]!=-1){
+                            range[1]++;
+                        }
+                    },
+                },
+            },
+            // qunyou2023_m4_shen_zhanghe
+            "qunyou2023_m4_xuanhua":{
+                audio: "ext:群友DIY/audio/skill:2",
+                trigger: {
+                    player:"phaseBegin",
+                },
+                locked:true,
+                forced:true,
+                zhuanhuanji: true,
+                mark: true,
+                marktext: "☯",
+                intro: {
+                    content: function (storage, player) {
+                        var str = '你的回合开始时';
+                        if (!player.storage.qunyou2023_m4_xuanhua) str += '你跳过判定阶段和摸牌阶段';
+                        else str += '你跳过出牌阶段和弃牌阶段';
+                        return str;
+                    },
+                },
+                content: function () {
+                    'step 0'
+                    if(!player.storage.qunyou2023_m4_xuanhua){
+                        player.skip("phaseJudge");
+                        player.skip("phaseDraw");
+                    }else{
+                        player.skip("phaseUse");
+                        player.skip("phaseDiscard");
+                        
+                    }
+                    player.changeZhuanhuanji("qunyou2023_m4_xuanhua");
+                },
+            },
+            "qunyou2023_m4_qimen":{
+                mod:{
+                    targetInRange:function(card){
+                        if(_status.event.skill=='qunyou2023_m4_qimen') return true;
+                    },
+                },
+                trigger:{
+                    player:["phaseJudgeSkipped","phaseJudgeCancelled","phaseDrawSkipped","phaseDrawCancelled","phaseUseSkipped","phaseUseCancelled","phaseDiscardSkipped","phaseDiscardCancelled"],
+                },
+                forced:true,
+                filter:function (event, player) {
+                    return _status.currentPhase == player;
+                },
+                content:function(){
+                    if(event.triggername == "phaseJudgeSkipped" || event.triggername == "phaseJudgeCancelled"){
+                        player.chooseUseTarget("奇门：视为使用一张【借刀杀人】", {
+                            name: 'jiedao',
+                            isCard: true
+                        }, false,'nodistance');
+                    }
+                    if(event.triggername == "phaseDrawSkipped" || event.triggername == "phaseDrawCancelled"){
+                        player.chooseUseTarget("奇门：视为使用一张【顺手牵羊】", {
+                            name: 'shunshou',
+                            isCard: true
+                        }, false,'nodistance');
+                    }
+                    if(event.triggername == "phaseUseSkipped" || event.triggername == "phaseUseCancelled"){
+                        player.chooseUseTarget("奇门：视为使用一张【火攻】", {
+                            name: 'huogong',
+                            isCard: true
+                        }, false,'nodistance');
+                    }
+                    if(event.triggername == "phaseDiscardSkipped" || event.triggername == "phaseDiscardCancelled"){
+                        player.chooseUseTarget("奇门：视为使用一张【雷杀】", {
+                            name: 'sha',
+                            nature:'thunder',
+                            isCard: true
+                        }, false,'nodistance');
+                    }
+                },
+            },
+            "qunyou2023_m4_danfu":{
+                trigger:{
+                    player:"damageEnd",
+                },
+                filter:function (event, player) {
+                    return (event.source && event.source.hp>player.hp && event.num > 0);
+                },
+                check:function(event,player){
+                    return (get.attitude(player,event.source)<=0);
+                },
+                content:function(){
+                    "step 0"
+                    player.judge(function(card){
+                        if(get.number(card)> trigger.source.hp+player.hp) return 4;
+                        return 0;
+                    }).judge2=function(result){
+                        return result.bool;
+                    };
+                    "step 1"
+                    if(result.judge==0){
+                        event.finish();return;
+                    }
+                    trigger.source.addSkill("qunyou2023_m4_xuanhua");
+                },
+            },
+            // qunyou2023_m4_caoanyang
+            "qunyou2023_m4_heshi":{
+                trigger:{
+                    global:"useCardAfter",
+                },
+                usable:1,
+                filter:function(event,player){
+                    return get.type(event.card)!='equip'&& player.isPhaseUsing();
+                },
+                content:function(){
+                    "step 0"
+                    //直接结束出牌阶段并在后面插入一个结束阶段
+                    event.card = trigger.card;
+                    player.skip("phaseDiscard");
+                    for(var phase of lib.phaseName){
+                        var evt=event.getParent(phase);
+                        if(evt&&evt.name==phase){
+                            var name=['出牌'][lib.phaseName.indexOf(phase)];
+                            game.log(player,'令',_status.currentPhase,'结束了出牌阶段');
+                            player.line(_status.currentPhase,'thunder');
+                            evt.skipped=true;
+                        }
+                    }
+                    "step 1"
+                    player.chooseUseTarget("和诗：视为使用一张"+get.translation(event.card), {
+                        name: event.card.name,
+                        nature:event.card.natrue,
+                        isCard: true
+                    }, false,'nodistance');
+                },
+                group:["qunyou2023_m4_heshi_back_skill"],
+                subSkill:{
+                    back_skill:{
+                        trigger:{
+                            global:"washCard",
+                        },
+                        forced:true,
+                        charlotte:true,
+                        content:function(){
+                            game.log("怀孕回来了");
+                            player.restoreSkill("qunyou2023_m4_huanyun");
+                        }
+                    }
+                }
+            },
+            "qunyou2023_m4_huanyun":{
+                limited: true,
+                unique: true,
+                skillAnimation: true,
+                mark: true,
+                intro: {
+                    content: "limited",
+                },
+                init: function (player, skill) {
+                    player.storage[skill] = false;
+                },
+                trigger:{
+                    global:"phaseEnd",
+                },
+                check:function(event,player){
+                    return (get.attitude(player,event.source)<=0) && Math.ceil(event.source.getCards('he')/2)>event.source.hp;
+                },
+                content:function(){
+                    "step 0"
+                    player.awakenSkill('qunyou2023_m4_huanyun');
+                    event.cards=trigger.player.getCards('he');
+                    trigger.player.addSkill('qunyou2023_m4_huanyun_back_card');
+                    trigger.player.addToExpansion(event.cards,'giveAuto',target).gaintag.add('qunyou2023_m4_huanyun');
+                    "step 1"
+                    trigger.player.damage(Math.ceil(event.cards.length/2));
+                },
+                subSkill:{
+                    back_card:{
+                        trigger:{
+                            global:"phaseBegin",
+                        },
+                        forced:true,
+                        popup:false,
+                        charlotte:true,
+                        filter:function(event,player){
+                            return player.getExpansions('qunyou2023_m4_huanyun').length>0;
+                        },
+                        content:function(){
+                            'step 0'
+                            var cards=player.getExpansions('qunyou2023_m4_huanyun');
+                            player.gain(cards,'draw');
+                            game.log(player,'收回了'+get.cnNumber(cards.length)+'张“环韵”牌');
+                            'step 1'
+                            player.removeSkill('qunyou2023_m4_huanyun_back_card');
+                        },
+                        intro:{
+                            markcount:"expansion",
+                            mark:function(dialog,storage,player){
+                                var cards=player.getExpansions('qunyou2023_m4_huanyun');
+                                if(player.isUnderControl(true)) dialog.addAuto(cards);
+                                else return '共有'+get.cnNumber(cards.length)+'张牌';
+                            },
+                        },
+                    },
+                }
+            }
+
         },
         translate: {
             // 分组部分
@@ -4849,9 +5255,9 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
             "qunyou2023_m2_jiangwei": "姜维",
             "qunyou2023_m2_liubei": "刘备",
             "qunyou2023_m2_dailaidongzhu": "带来洞主",
-            "qunyou2023_m2_aerwa":"阿尔瓦",
-            "qunyou2023_m2_aogusiting":"奥古斯汀",
-            "qunyou2023_m2_qifu_zhangliao":"张辽",
+            "qunyou2023_m2_aerwa": "阿尔瓦",
+            "qunyou2023_m2_aogusiting": "奥古斯汀",
+            "qunyou2023_m2_qifu_zhangliao": "张辽",
             //m3
             "qunyou2023_m3_heiyukuaidou": "黑羽快斗",
             "qunyou2023_m3_feicunjianxin": "绯村剑心",
@@ -4865,10 +5271,12 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
             "qunyou2023_m3_diaochan": "貂蝉",
             "qunyou2023_m3_caoanyang": "曹安阳",
             "qunyou2023_m3_caoqingming": "曹清明",
-            "qunyou2023_m3_sb_guojia":"谋郭嘉",
+            "qunyou2023_m3_sb_guojia": "谋郭嘉",
             //m4
             "qunyou2023_m4_shen_machao": "神马超",
-
+            "qunyou2023_m4_shuangtoushirenmo":"双头食人魔",
+            "qunyou2023_m4_shen_zhanghe":"神张郃",
+            "qunyou2023_m4_caoanyang":"曹安阳",
 
             // 技能部分
 
@@ -4981,10 +5389,10 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
             "qunyou2023_m2_panqin_info": "蜀势力技，出牌阶段限一次，你可以与一名角色拼点，若你赢，你对其造成1点伤害，并将势力修改为“群”；若你没赢，你失去1点体力。",
 
             //qunyou2023_m2_aerwa
-            "qunyou2023_m2_ganzhi":"感知",
-            "qunyou2023_m2_ganzhi_info":"锁定技，游戏开始时，你令所有角色获得〖电荷〗。",
-            "qunyou2023_m2_dianhe":"电荷",
-            "qunyou2023_m2_dianhe_info":"转换技，锁定技。准备阶段，你变更转换技状态。当你受到伤害时，若伤害来源与你的〖电荷〗状态：不同，此伤害+1；相同：此伤害-1，然后你变更转换技状态。",
+            "qunyou2023_m2_ganzhi": "感知",
+            "qunyou2023_m2_ganzhi_info": "锁定技，游戏开始时，你令所有角色获得〖电荷〗。",
+            "qunyou2023_m2_dianhe": "电荷",
+            "qunyou2023_m2_dianhe_info": "转换技，锁定技。准备阶段，你变更转换技状态。当你受到伤害时，若伤害来源与你的〖电荷〗状态：不同，此伤害+1；相同：此伤害-1，然后你变更转换技状态。",
             "qunyou2023_m2_endian": "恩典",
             "qunyou2023_m2_endian_info": "出牌阶段开始时，你可以获得所有与你的〖电荷〗状态不同的角色各一张牌，然后变更〖电荷〗状态。",
             "qunyou2023_m2_qiji": "奇迹",
@@ -5005,7 +5413,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
             "qunyou2023_m2_tuxi_info": "摸牌阶段，你可以少摸任意张牌并获得等量的其他角色的各一张牌。若你获得的牌中包含装备牌，你翻面。",
             "qunyou2023_m2_zhesheng": "折盛",
             "qunyou2023_m2_zhesheng_info": "一名角色的出牌阶段开始时，若你已翻面，你可以将自己任意张牌扣置于武将牌旁，然后弃置该角色等量的牌。若如此做，当你从背面翻至正面时，你获得扣置的牌。",
-        
+
             //qunyou2023_m3_heiyukuaidou
             "qunyou2023_m3_jiashu": "假术",
             "qunyou2023_m3_jiashu_info": "其他角色的出牌阶段开始时，你可以将所有手牌（至少一张）当做一张普通锦囊牌使用。当你以此法造成伤害时，你防止此伤害并摸一张牌。",
@@ -5065,7 +5473,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
             "qunyou2023_m3_gu_info": "结束阶段，你可以亮出牌堆顶4张牌，将一种花色的牌分配给任意其他角色或弃置，并将此花色记录为[ ]，然后获得其余牌；你使用[ ]花色的基本牌无次数限制。（[ ]初始为♥）",
             "qunyou2023_m3_yin": "音",
             "qunyou2023_m3_yin_info": "①你可以将一张[ ]花色的牌当做任意基本牌使用或打出，然后将此牌名记录为【】；②其他角色可以交给你一张[ ]花色的牌，视为使用或打出一张【】。（【】初始为【桃】）",
-            
+
             //qunyou2023_m3_diaochan
             "qunyou2023_m3_huahun": "花魂",
             "qunyou2023_m3_huahun_info": "锁定技，当你受到伤害时，你摸两张牌；然后若此伤害不小于你的体力值，你防止此伤害并令此技能本回合失效。",
@@ -5078,7 +5486,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2023_m3_caoanyang
             "qunyou2023_m3_lianci": "炼词",
-            "qunyou2023_m3_lianci_info":"出牌阶段，你可以将一张手牌置于牌堆底，然后亮出牌堆中一张不同牌名的同类型牌并选择一项：1、使用此牌；2、弃置此牌并摸一张牌。你以此法获得的牌本回合无法用来发动〖炼词〗，且不计入手牌上限。",
+            "qunyou2023_m3_lianci_info": "出牌阶段，你可以将一张手牌置于牌堆底，然后亮出牌堆中一张不同牌名的同类型牌并选择一项：1、使用此牌；2、弃置此牌并摸一张牌。你以此法获得的牌本回合无法用来发动〖炼词〗，且不计入手牌上限。",
             "qunyou2023_m3_shangfu": "殇赋",
             "qunyou2023_m3_shangfu_info": "结束阶段或当你受到伤害后，你可以观看牌堆底X张牌（X为你已损失的体力值），然后将其分配给任意角色。若X不小于2且其中所有牌的类型均不同，你增加一点体力上限并回复一点体力。",
 
@@ -5089,12 +5497,32 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
             "qunyou2023_m3_xianlei_info": "出牌阶段每名角色限一次/当你受到伤害后，你可以移去一名其他角色的【形】并选择一项：1、发动其武将牌上对应时机的技能；2、视为对其使用一张不计入次数的基本牌或普通锦囊牌（不触发〖化影〗）。",
 
             //qunyou2023_m3_sb_guojia
-            "qunyou2023_m3_tiandu":"天妒",
-            "qunyou2023_m3_tiandu_info":"锁定技，回合开始时，你立即死亡。",
-            "qunyou2023_m3_yiji":"遗计",
-            "qunyou2023_m3_yiji_info":"当你死亡时，你可以令一名其他角色获得〖天妒〗和〖遗计〗。",
+            "qunyou2023_m3_tiandu": "天妒",
+            "qunyou2023_m3_tiandu_info": "锁定技，回合开始时，你立即死亡。",
+            "qunyou2023_m3_yiji": "遗计",
+            "qunyou2023_m3_yiji_info": "当你死亡时，你可以令一名其他角色获得〖天妒〗和〖遗计〗。",
 
             //qunyou2023_m4_shen_machao
+
+            // qunyou2023_m4_shuangtoushirenmo
+            "qunyou2023_m4_tongxin":"同心",
+            "qunyou2023_m4_tongxin_info":"锁定技，你使用杀指定目标后，有50%几率随机指定另一名目标",
+            "qunyou2023_m4_tongli":"同力",
+            "qunyou2023_m4_tongli_info":"锁定技，你的出牌阶段你可以额外使用一张杀，且你的杀可以额外指定一名目标",
+    
+            // qunyou2023_m4_shen_zhanghe
+            "qunyou2023_m4_xuanhua":"玄化",
+            "qunyou2023_m4_xuanhua_info":"锁定技,转换技,你的回合开始时,1:你跳过判定阶段与摸牌阶段。2:你跳过出牌阶段与弃牌阶段。",
+            "qunyou2023_m4_qimen":"奇门",
+            "qunyou2023_m4_qimen_info":"当你于你的回合内跳过某一阶段时,你可以指定一名角色,根据你跳过的阶段视为对其无视距离使用相应的牌:1.判定阶段:【借刀杀人】;2.摸牌阶段:【顺手牵羊】;3.出牌阶段:【火攻】:4.弃牌阶段:雷【杀】。",
+            "qunyou2023_m4_danfu":"惮伏",
+            "qunyou2023_m4_danfu_info":"当你受到伤害后,若伤害来源体力值大于你,你可以进行一次判定,若点数大于你与其体力值合计数,令其获得“玄化”.",
+            
+            // qunyou2023_m4_caoanyang
+            "qunyou2023_m4_heshi":"和诗",
+            "qunyou2023_m4_heshi_info":"出牌阶段限一次,当一名角色使用非装备牌牌结算后，你可以结束当前出牌阶段并跳过弃牌阶段，视为使用之",
+            "qunyou2023_m4_huanyun":"环韵",
+            "qunyou2023_m4_huanyun_info":"限定技，一名其他角色的回合结束时，你可以将其所有牌置于其武将牌上，然后令其受到这一半牌数（向下取整)的伤害，最后令其获得这些牌。每次牌堆洗牌后，复原此技能",
 
         },
         //转换技显示
@@ -5118,13 +5546,19 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
             },
 
             //qunyou2023_m3_hongxia
-            "qunyou2023_m3_gu":function (player) {
-                return '结束阶段，你可以亮出牌堆顶4张牌，将一种花色的牌分配给任意其他角色或弃置，并将此花色记录为[ ]，然后获得其余牌；你使用['+get.translation(player.storage.qunyou2023_m3_gu)+']花色的基本牌无次数限制。（[ ]初始为♥）';
+            "qunyou2023_m3_gu": function (player) {
+                return '结束阶段，你可以亮出牌堆顶4张牌，将一种花色的牌分配给任意其他角色或弃置，并将此花色记录为[ ]，然后获得其余牌；你使用[' + get.translation(player.storage.qunyou2023_m3_gu) + ']花色的基本牌无次数限制。（[ ]初始为♥）';
             },
-            "qunyou2023_m3_yin":function (player) {
-                return '①你可以将一张['+get.translation(player.storage.qunyou2023_m3_gu)+']花色的牌当做任意基本牌使用或打出，然后将此牌名记录为【】；②其他角色可以交给你一张['+get.translation(player.storage.qunyou2023_m3_gu)+']牌，视为使用或打出一张【'+get.translation(player.storage.qunyou2023_m3_yin)+'】。';
+            "qunyou2023_m3_yin": function (player) {
+                return '①你可以将一张[' + get.translation(player.storage.qunyou2023_m3_gu) + ']花色的牌当做任意基本牌使用或打出，然后将此牌名记录为【】；②其他角色可以交给你一张[' + get.translation(player.storage.qunyou2023_m3_gu) + ']牌，视为使用或打出一张【' + get.translation(player.storage.qunyou2023_m3_yin) + '】。';
             },
-
+            //qunyou2023_m4_shen_zhanghe
+            "qunyou2023_m4_xuanhua":function(player){
+                var str = '锁定技，转换技，你的回合开始时';
+                if (!player.storage.qunyou2023_m4_xuanhua) str += '阴：你跳过判定阶段和摸牌阶段<span class="bluetext">阳：你跳过出牌阶段和弃牌阶段。</span>';
+                else str += '<span class="bluetext">阴：你跳过判定阶段和摸牌阶段</span>阳：你跳过出牌阶段和弃牌阶段。';
+                return str;
+            }
         },
     };
     if (lib.device || lib.node) {
