@@ -177,6 +177,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
         skill: {
             //qunyou2022_luxun1
             "qunyou2022_qianxun1": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: ["phaseJudgeBefore", "phaseDrawBefore"],
                 },
@@ -187,6 +188,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_lianying1": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "loseAfter",
                 },
@@ -198,6 +200,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_luxun2
             "qunyou2022_qianxun2": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: ["phaseJudgeBefore"],
                 },
@@ -211,6 +214,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_lianying2": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "loseAfter",
                 },
@@ -259,8 +263,8 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                     'step 2'
                     if (result.bool) {
                         var list = [];
-                        list.push("当" + get.translation(player) + "的牌进入弃牌堆时，你须弃置一张与其类型相同的牌（无相同类型则不弃），直到其下回合开始");
-                        list.push("直到" + get.translation(player) + "下回合开始，你的手牌上限-X（X为其本回合进入弃牌堆的总牌数）");
+                        list.push("当" + get.translation(player) + "的牌进入弃牌堆时，你须弃置一张与其类型相同的牌（无相同类型则不弃），直到你的下回合结束");
+                        list.push("你的手牌上限-X（X为+"+get.translation(player)+"本回合进入弃牌堆的总牌数），直到你的下回合结束");
                         var next = event.target.chooseControl();
                         next.set("prompt", "匪躯：请选择一项");
                         next.set("choiceList", list);
@@ -416,6 +420,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_liuba
             "qunyou2022_pingjia": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 enable: "phaseUse",
                 usable: 1,
                 filterTarget: function (card, player, target) {
@@ -436,6 +441,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
                 subSkill: {
                     back: {
+                        audio: ["qunyou2022_pingjia",2],
                         trigger: {
                             player: "phaseUseEnd",
                         },
@@ -463,6 +469,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_qinggao": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     target: "useCardToTargeted",
                 },
@@ -543,6 +550,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_wenbing": {
+                audio: "ext:群友DIY/skill/audio:2",
                 trigger: {
                     global: "phaseEnd",
                 },
@@ -615,6 +623,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                         return event.current.inRange(target);
                     }).set('ai', function (target) {
                         //如果玩家有藤甲，队友会砍你刷牌。
+                        var player=_status.event.player;
                         var cards = player.getCards('e', function (card) {
                             return get.name(card) == 'tengjia';
                         });
@@ -655,7 +664,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
             "qunyou2022_xunliao": {
                 audio: "ext:群友DIY/skill/audio:2",
                 enable: "phaseUse",
-                direct: true,
+                popup: false,
                 filter: function (event, player) {
                     if (player.hasSkill('qunyou2022_xunliao_disable')) return false;
                     return !player.storage.qunyou2022_xunliao1 ||
@@ -793,32 +802,34 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_wangyun
             "qunyou2022_lianji": {
-                trigger: {
-                    player: "phaseJieshuBegin",
+                audio: "ext:群友DIY/skill/audio:2",
+                trigger:{
+                    player:"phaseJieshuBegin",
                 },
-                content: function () {
+                content:function (){
                     player.draw(2);
-                    var next = player.phaseUse();
+                    var next=player.phaseUse();
                     event.next.remove(next);
                     trigger.next.push(next);
                     player.addTempSkill("qunyou2022_lianji_remove");
                 },
-                subSkill: {
-                    remove: {
-                        trigger: {
-                            player: "phaseUseEnd",
+                subSkill:{
+                    remove:{
+                        audio: ["qunyou2022_lianji",2],
+                        trigger:{
+                            player:"phaseUseEnd",
                         },
-                        forced: true,
-                        filter: function (event, player) {
-                            var history = player.getHistory('sourceDamage', function (evt) {
-                                return evt.getParent('phaseUse') == event;
+                        forced:true,
+                        filter:function (event,player){
+                            var history=player.getHistory('sourceDamage',function(evt){
+                                return evt.getParent('phaseUse')==event;
                             });
-                            return history.length == 0;
+                            return history.length==0;
                         },
-                        content: function () {
+                        content:function (){
                             player.loseHp();
                         },
-                        sub: true,
+                        sub:true,
                     },
                 },
             },
@@ -908,7 +919,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_midangdawang
             "qunyou2022_qiangdi": {
-                audio: "ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "phaseZhunbeiBegin",
                 },
@@ -1171,149 +1182,142 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_sijiyingji
             "qunyou2022_zhongshen": {
-                trigger: {
-                    player: "phaseUseBegin",
+                audio: "ext:群友DIY/skill/audio:2",
+                trigger:{
+                    player:"phaseUseBegin",
                 },
-                forced: true,
-                filter: function (event, player) {
-                    return player.hp - player.storage.qunyou2022_zhongshen_hp < 0;
+                forced:true,
+                init:function (player){
+                    player.storage.qunyou2022_zhongshen_hp=0;
                 },
-                init: function (player) {
-                    player.storage.qunyou2022_zhongshen_hp = 0;
+                filter:function (event,player){
+                    return player.hp-player.storage.qunyou2022_zhongshen_hp<0;
                 },
-                content: function () {
+                content:function (){
                     player.addTempSkill('qunyou2022_zhongshen_effect');
                 },
-                group: "qunyou2022_zhongshen_hp",
-                subSkill: {
-                    hp: {
-                        trigger: {
-                            player: "phaseEnd",
+                group:"qunyou2022_zhongshen_hp",
+                subSkill:{
+                    hp:{
+                        trigger:{
+                            player:"phaseEnd",
                         },
-                        direct: true,
-                        content: function () {
-                            player.storage.qunyou2022_zhongshen_hp = player.hp;
-                            player.addTempSkill('qunyou2022_zhongshen_mark', {
-                                player: "phaseUseBegin"
-                            });
-                        },
-                        sub: true,
-                    },
-                    mark: {
-                        charlotte: true,
-                        mark: true,
-                        intro: {
-                            markcount: function (storage, player) {
+                        direct:true,
+                        mark:true,
+                        intro:{
+                            markcount:function(storage,player){
                                 return player.storage.qunyou2022_zhongshen_hp;
                             },
-                            content: function (storage, player) {
-                                return "上个回合结束时，你的体力值为" + player.storage.qunyou2022_zhongshen_hp;
+                            content:function(storage,player){
+                                return "上个回合结束时，你的体力值为"+player.storage.qunyou2022_zhongshen_hp;
                             },
                         },
+                        content:function (){
+                            player.storage.qunyou2022_zhongshen_hp=player.hp;
+                        },
+                        sub:true,
                     },
-                    effect: {
-                        trigger: {
-                            player: "useCard",
+                    effect:{
+                        trigger:{
+                            player:"useCard",
                         },
-                        direct: true,
-                        mark: true,
-                        intro: {
-                            content: "使用牌无距离与次数限制；<br>每当你使用黑色基本或锦囊牌后，你摸一张牌。",
-
+                        direct:true,
+                        filter:function (event,player){
+                            if(_status.currentPhase!=player) return false;
+                            if(get.type(event.card)=='equip') return false;
+                            return get.color(event.card)=='black';
                         },
-                        filter: function (event, player) {
-                            if (_status.currentPhase != player) return false;
-                            if (get.type(event.card) == 'equip') return false;
-                            return get.color(event.card) == 'black';
-                        },
-                        content: function () {
+                        content:function (){
                             player.draw();
                         },
-                        mod: {
-                            cardUsable: function (card, player) {
+                        mod:{
+                            cardUsable:function (card,player){
                                 return true;
                             },
-                            targetInRange: function (card, player) {
+                            targetInRange:function (card,player){
                                 return true;
                             },
                         },
-                        sub: true,
+                        sub:true,
                     },
                 },
             },
             "qunyou2022_zuifa": {
-                audio: "ext:群友DIY/audio/skill:2",
-                trigger: {
-                    global: "useCard2",
+                audio:"ext:群友DIY/audio/qunyou2022:2",
+                trigger:{
+                    global:"useCard2",
                 },
-                filter: function (event, player) {
-                    return event.card && event.card.name == 'sha' && event.player != player && get.color(event.card) != 'none';
+                filter:function (event,player){
+                    return event.card&&event.card.name=='sha'&&event.player!=player&&get.color(event.card)!='none';
                 },
-                prompt: function (event) {
+                prompt:function (event){
                     var color = get.color(event.card);
-                    if (color == 'red') return "令" + get.translation(event.player) + "失去1点体力值并收回此【杀】，然后本回合不能再对除你外的角色使用【杀】";
+                    if(color=='red') return "令"+get.translation(event.player)+"失去1点体力值并收回此【杀】，然后本回合不能再对除你外的角色使用【杀】";
                     return "令此【杀】伤害+1，然后你也成为该【杀】的目标";
                 },
-                content: function () {
-                    event.color = get.color(trigger.cards);
-                    if (event.color == 'red') {
+                content:function (){
+                    event.card = trigger.card;
+                    event.color = get.color(event.card);
+                    if(event.color=='red'){
                         trigger.player.loseHp();
-                        trigger.player.gain(trigger.cards, 'gain2');
+                        trigger.player.gain(event.card,'gain2');
                         trigger.player.addTempSkill("qunyou2022_zuifa_check");
-                        trigger.player.storage.qunyou2022_zuifa_check = player;
-                    } else {
+                        trigger.player.storage.qunyou2022_zuifa_check=player;
+                    }
+                    else{
                         trigger.baseDamage++;
-                        if (!trigger.targets.contains(player)) {
+                        if(!trigger.targets.contains(player)){
                             trigger.targets.addArray(player);
-                            game.log(player, '成为了额外目标');
+                            game.log(player,'成为了额外目标');
                         };
                     }
                 },
-                ai: {
-                    threaten: 1.1,
+                ai:{
+                    threaten:1.1,
                 },
-                group: "qunyou2022_zuifa_none",
-                subSkill: {
-                    none: {
-                        trigger: {
-                            global: "useCard2",
+                group:"qunyou2022_zuifa_none",
+                subSkill:{
+                    none:{
+                        audio:["qunyou2022_zuifa",2],
+                        trigger:{
+                            global:"useCard2",
                         },
-                        filter: function (event, player) {
-                            return event.cards && event.cards.name == 'sha' && event.player != player && get.color(event.cards) == 'none' && player.countCards('hes');
+                        filter:function (event,player){
+                            return event.card&&event.card.name=='sha'&&event.player!=player&&get.color(event.card)=='none'&&player.countCards('hes');
                         },
-                        direct: true,
-                        content: function () {
+                        direct:true,
+                        content:function (){
                             "step 0"
-                            player.chooseToDiscard("弃一张牌，然后获得此【杀】", "hes");
+                            player.chooseToDiscard("弃一张牌，然后获得此【杀】","hes");
                             "step 1"
-                            if (result.bool) {
-                                player.gain(trigger.cards, 'gain2');
+                            if(result.bool){
+                                player.gain(trigger.cards,'gain2');
                                 player.logSkill("qunyou2022_zuifa");
                             };
                         },
-                        sub: true,
+                        sub:true,
                     },
-                    check: {
-                        mark: true,
-                        marktext: "罪罚",
-                        intro: {
-                            content: function (storage, player) {
-                                return "只能对" + get.translation(player.storage.qunyou2022_zuifa_check) + "使用【杀】";
+                    check:{
+                        mark:true,
+                        marktext:"罪罚",
+                        intro:{
+                            content:function(storage,player){
+                                return "只能对"+get.translation(player.storage.qunyou2022_zuifa_check)+"使用【杀】";
                             },
                         },
-                        mod: {
-                            playerEnabled: function (card, player, target) {
-                                if (card.name == 'sha' && player.storage.qunyou2022_zuifa_check != target) return false;
+                        mod:{
+                            playerEnabled:function (card,player,target){
+                                if(card.name=='sha'&&player.storage.qunyou2022_zuifa_check!=target) return false;
                             },
                         },
-                        sub: true,
+                        sub:true,
                     },
                 },
             },
 
             //qunyou2022_sp_linghu
             "qunyou2022_shangwei": {
-                audio: "ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     global: "damageEnd",
                 },
@@ -1351,6 +1355,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_mengjie
             "qunyou2022_chuzhang": {
+                audio:"ext:群友DIY/audio/qunyou2022:2",
                 enable: "phaseUse",
                 usable: 1,
                 filterTarget: function (card, player, target) {
@@ -1391,7 +1396,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_cishang": {
-                audio: "ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "die",
                 },
@@ -1416,7 +1421,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_dongtuna
             "qunyou2022_kuifu": {
-                audio: "ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     global: "phaseBefore",
                     player: "enterGame",
@@ -1499,7 +1504,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_xianmeng": {
-                audio: "ext:群友DIY/qudio/skill:2",
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 enable: "phaseUse",
                 usable: 1,
                 delay: false,
@@ -1561,6 +1566,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_mizhu
             "qunyou2022_ziyuan": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 enable: "phaseUse",
                 usable: 1,
                 filterTarget: function (card, player, target) {
@@ -1670,6 +1676,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_jugu": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 mod: {
                     maxHandcard: function (player, num) {
                         return num - player.maxHp;
@@ -1690,6 +1697,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_jinxianggongzhu
             "qunyou2022_lizhuang": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 enable: "phaseUse",
                 usable: 1,
                 filterTarget: function (card, player, target) {
@@ -1719,6 +1727,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_wudu": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "damageEnd",
                 },
@@ -1804,7 +1813,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_laoba
             "qunyou2022_shishi": {
-                audio:"ext:群友DIY/audio/skill:1",
+                audio:"ext:群友DIY/audio/qunyou2022:1",
                 enable: "phaseUse",
                 usable: 1,
                 mark:true,
@@ -1846,7 +1855,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 group:["qunyou2022_shishi_add","qunyou2022_shishi_remove"],
                 subSkill: {
                     du: {
-                        audio:"ext:群友DIY/audio/skill:1",
+                        audio:"ext:群友DIY/audio/qunyou2022:1",
                         trigger:{
                             player:['loseAfter','compare'],
                             global:['equipAfter','addJudgeAfter','gainAfter','loseAsyncAfter','addToExpansionAfter'],
@@ -1937,7 +1946,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_cheshuo": {
-                audio:"ext:群友DIY/audio/skill:1",
+                audio:"ext:群友DIY/audio/qunyou2022:1",
                 trigger:{
                     player:"phaseUseBegin",
                 },
@@ -1947,7 +1956,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                     'step 0'
                     var next=player.chooseTarget("观看一名其他角色的手牌，然后减少其下回合手牌上限",lib.filter.notMe);
                     next.set('ai', function (target) {
-                        return -get.attitude(player, target);
+                        return -get.attitude(_status.event.player, target);
                     });
                     'step 1'
                     if (result.bool) {
@@ -1998,6 +2007,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_pengtuo
             "qunyou2022_guzhu": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     global: "phaseBegin",
                 },
@@ -2014,6 +2024,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_sp_xuchu
             "qunyou2022_tianqiong": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "damageEnd",
                 },
@@ -2037,6 +2048,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_pofeng": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "phaseDrawBegin1",
                 },
@@ -2055,6 +2067,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_xuechuang": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     global: "useCard",
                 },
@@ -2070,6 +2083,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_junbei": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "phaseJieshuBegin",
                 },
@@ -2097,6 +2111,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_sp_shen_liubei
             "qunyou2022_baidi": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: ["linkBefore", "enterGame"],
                     global: "phaseBefore",
@@ -2216,6 +2231,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_jieyi": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "loseAfter",
                 },
@@ -2234,6 +2250,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_xuehai": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 skillAnimation: true,
                 animationColor: "thunder",
                 unique: true,
@@ -2264,6 +2281,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_xiaoqiao
             "qunyou2022_xiuhua": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     target: "shaBefore",
                 },
@@ -2284,6 +2302,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_jinghong": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "phaseDiscardBegin",
                 },
@@ -2299,6 +2318,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_zhangbiao
             "qunyou2022_tuijun": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "useCardAfter",
                 },
@@ -2320,6 +2340,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_wuli": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "phaseJieshuBegin",
                 },
@@ -2402,6 +2423,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_yingba": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 enable: "phaseUse",
                 usable: 1,
                 selectTarget: 1,
@@ -2649,6 +2671,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_wenqiao
             "qunyou2022_ranxi": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 enable: "phaseUse",
                 usable: 1,
                 filter: function (event, player) {
@@ -2716,6 +2739,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_hongyi": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: ["recoverAfter", "loseHpEnd", "damageEnd"],
                 },
@@ -2738,6 +2762,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_huangwudie
             "qunyou2022_shifan": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     source: "damageSource",
                 },
@@ -2753,9 +2778,11 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
                 subSkill: {
                     "2": {
+                        charlotte:true,
                         sub: true,
                     },
                     judge: {
+                        audio: ["qunyou2022_shifan",2],
                         trigger: {
                             player: "phaseDrawEnd",
                         },
@@ -2788,6 +2815,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_hongzhuang": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: ["useCard", "respond"],
                 },
@@ -2829,7 +2857,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_re_zhanghe
             "qunyou2022_jixian": {
-                audio:"ext:群友DIY/audio/skill:2",
+                audio:"ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     global: "phaseBegin",
                 },
@@ -2858,7 +2886,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 group: "qunyou2022_jixian_add",
                 subSkill: {
                     add: {
-                        audio:"ext:群友DIY/audio/skill:2",
+                        audio:"ext:群友DIY/audio/qunyou2022:2",
                         trigger: {
                             global: "dieAfter",
                         },
@@ -2882,6 +2910,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_liubei
             "qunyou2022_shuangjian": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 shaRelated: true,
                 trigger: {
                     global: "useCard",
@@ -2899,6 +2928,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 group: ["qunyou2022_shuangjian_1"],
                 subSkill: {
                     "1": {
+                        audio: ["qunyou2022_shuangjian",2],
                         trigger: {
                             global: "phaseJieshuBegin",
                         },
@@ -2920,6 +2950,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_longzhang": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 zhuSkill: true,
                 forced: true,
                 locked: true,
@@ -2948,6 +2979,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_suibian
             "qunyou2022_liushi": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 locked: true,
                 forced: true,
                 trigger: {
@@ -2971,6 +3003,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_fudu": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "changeHp",
                 },
@@ -2986,6 +3019,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_sunjun
             "qunyou2022_xiongyi": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "phaseBegin",
                 },
@@ -3000,6 +3034,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 group: ["qunyou2022_xiongyi_wansha"],
                 subSkill: {
                     wansha: {
+                        audio: ["qunyou2022_xiongyi",2],
                         trigger: {
                             global: "dying",
                         },
@@ -3032,6 +3067,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_jiaoli": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "dying",
                 },
@@ -3046,6 +3082,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_jiangwei
             "qunyou2022_lianbing": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "phaseDrawBefore",
                 },
@@ -3122,6 +3159,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 group: ["qunyou2022_lianbing_nodiscard"],
                 subSkill: {
                     nodiscard: {
+                        audio: ["qunyou2022_lianbing",2],
                         trigger: {
                             player: "phaseDiscardBefore",
                         },
@@ -3138,6 +3176,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_xianshou": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 enable: ["chooseToUse", "chooseToRespond"],
                 hiddenCard: function (player, name) {
                     if (get.type(name) == 'trick' && lib.inpile.contains(name) && player.storage.qunyou2022_lianbing.length > 1) return true;
@@ -3165,6 +3204,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                     },
                     backup: function (links, player) {
                         return {
+                            audio: ["qunyou2022_xianshou",2],
                             selectCard: -1,
                             filterCard: function () {
                                 return false
@@ -3209,6 +3249,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_zhandisi
             "qunyou2022_qiangmai": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     global: "loseAfter",
                 },
@@ -3245,6 +3286,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_qiangmai2": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "loseAfter",
                     global: ["equipAfter", "addJudgeAfter", "gainAfter", "loseAsyncAfter", "addToExpansionAfter"],
@@ -3262,6 +3304,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_taotieyoumo
             "qunyou2022_jingtun": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     global: "phaseZhunbeiBegin",
                 },
@@ -3306,6 +3349,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_zhouxue": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "phaseZhunbeiBegin",
                 },
@@ -3322,6 +3366,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_simazhi
             "qunyou2022_renhui": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "loseAfter",
                 },
@@ -3362,6 +3407,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_minxin": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 usable: 1,
                 trigger: {
                     global: "recoverAfter",
@@ -3391,6 +3437,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_langxiongdi
             "qunyou2022_shangjin": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "phaseZhunbeiBegin",
                 },
@@ -3446,6 +3493,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_shishou": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "damageBegin1",
                 },
@@ -3466,6 +3514,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_jingxiang_zhangjiao
             "qunyou2022_sanhe": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     source: "damageSource",
                     player: "damageEnd",
@@ -3542,6 +3591,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_cedian": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 enable: "phaseUse",
                 usable: 1,
                 filterCard: true,
@@ -3592,6 +3642,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_re_guohuai
             "qunyou2022_jingce": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "phaseJieshuBegin",
                 },
@@ -3652,6 +3703,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_bolilingmeng
             "qunyou2022_tuizhi": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: ["useCard", "respond"],
                 },
@@ -3678,6 +3730,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 group: "qunyou2022_tuizhi_damaged",
                 subSkill: {
                     damaged: {
+                        audio: ["qunyou2022_tuizhi",2],
                         trigger: {
                             player: "damageEnd",
                         },
@@ -3722,6 +3775,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_youxian": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 round: 1,
                 forced: true,
                 trigger: {
@@ -3739,6 +3793,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_shihuan
             "qunyou2022_fagu": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     global: "damageEnd",
                 },
@@ -3760,6 +3815,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_jieliang": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     global: "gainAfter",
                 },
@@ -3782,6 +3838,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_huzhao
             "qunyou2022_chengfu": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 marktext: "赋",
                 intro: {
                     content: "expansion",
@@ -3815,6 +3872,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_liyin": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     target: "useCardToTargeted",
                 },
@@ -3833,6 +3891,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_shuzhi": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 enable: ["chooseToUse"],
                 usable: 1,
                 init: function (player) {
@@ -3892,6 +3951,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                         }
                         game.log(get.translation(player.storage.qunyou2022_shuzhi));
                         return {
+                            audio: ["qunyou2022_shuzhi",2],
                             viewAs: {
                                 name: links[0][2],
                                 isCard: true,
@@ -3918,6 +3978,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 group: "qunyou2022_shuzhi_draw",
                 subSkill: {
                     draw: {
+                        audio: ["qunyou2022_shuzhi",2],
                         prompt: "使一名角色将手牌摸至X张（X为你本局游戏因此法使用过的牌名数）",
                         trigger: {
                             player: "useCardAfter",
@@ -3947,6 +4008,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_wujie
             "qunyou2022_dilie": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "damageEnd",
                 },
@@ -3956,6 +4018,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_tianbeng": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     source: "damageSource",
                 },
@@ -3971,6 +4034,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 group:"qunyou2022_tianbeng_damage",
                 subSkill: {
                     damage:{
+                        audio: ["qunyou2022_tianbeng",2],
                         trigger: {
                             global: "phaseBegin",
                         },
@@ -4002,6 +4066,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_tuteng": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     global: "phaseBegin",
                 },
@@ -4040,7 +4105,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_xiahoushi
             "qunyou2022_yanyu": {
-                audio: "ext:群友DIY/qudio/skill:2",
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 enable: "phaseUse",
                 filter: function (event, player) {
                     return player.countCards('h') > 0;
@@ -4069,6 +4134,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 group: "qunyou2022_yanyu_2",
                 subSkill: {
                     "2": {
+                        audio: ["qunyou2022_yanyu",2],
                         trigger: {
                             player: "phaseUseEnd",
                         },
@@ -4104,6 +4170,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_qiaoshi": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     global: "phaseJieshuBegin",
                 },
@@ -4142,6 +4209,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_gesi
             "qunyou2022_kuangzhan": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     source: "damageSource",
                 },
@@ -4163,6 +4231,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_xianji": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "phaseEnd",
                 },
@@ -4182,6 +4251,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 group: "qunyou2022_xianji_add",
                 subSkill: {
                     add: {
+                        audio: "ext:群友DIY/audio/qunyou2022:2",
                         trigger: {
                             player: "useCard2",
                         },
@@ -4199,6 +4269,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_tenggongzhu
             "qunyou2022_lianli": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 enable: "phaseUse",
                 filter: function (event, player) {
                     // 回合发动某个技能次数的标准写法，适用于使用次数不定的场合
@@ -4279,6 +4350,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_dianpei2": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "damageBegin3",
                 },
@@ -4331,6 +4403,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_tengyin
             "qunyou2022_xiujie": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "useCardEnd",
                 },
@@ -4406,6 +4479,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_zhongjian": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 enable: "phaseUse",
                 usable: 2,
                 filter: function (event, player) {
@@ -4435,6 +4509,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_huanfuren
             "qunyou2022_cailan": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 usable: 2,
                 trigger: {
                     global: "loseAfter",
@@ -4469,6 +4544,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_xunxu": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 usable: 1,
                 trigger: {
                     global: "dying",
@@ -4494,6 +4570,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_huaer": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     global: "damageEnd",
                 },
@@ -4537,6 +4614,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_caoyu
             "qunyou2022_yanchu": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "loseAfter",
                 },
@@ -4586,6 +4664,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_fenggong": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "phaseJieshuBegin",
                 },
@@ -4622,6 +4701,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_chunaizhanshen
             "qunyou2022_fuai": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     global: "gameStart",
                 },
@@ -4648,6 +4728,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 group: ["qunyou2022_fuai_draw", "qunyou2022_fuai_recover"],
                 subSkill: {
                     draw: {
+                        audio: ["qunyou2022_fuai",2],
                         trigger: {
                             player: "gainAfter",
                         },
@@ -4687,6 +4768,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_shenwei": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "damageBegin",
                 },
@@ -4701,6 +4783,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_hanlie": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "damageEnd",
                 },
@@ -4720,6 +4803,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 group: ["qunyou2022_hanlie_draw", "qunyou2022_hanlie_sha", "qunyou2022_hanlie_binsi", "qunyou2022_hanlie_damaged"],
                 subSkill: {
                     draw: {
+                        audio: ["qunyou2022_hanlie",2],
                         trigger: {
                             player: "phaseDrawBegin2",
                         },
@@ -4731,6 +4815,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                         sub: true,
                     },
                     sha: {
+                        audio: ["qunyou2022_hanlie",2],
                         trigger: {
                             source: "damageBegin",
                         },
@@ -4758,6 +4843,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                         sub: true,
                     },
                     binsi: {
+                        audio: ["qunyou2022_hanlie",2],
                         trigger: {
                             player: "dying",
                         },
@@ -4776,6 +4862,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                         sub: true,
                     },
                     damaged: {
+                        audio: ["qunyou2022_hanlie",2],
                         trigger: {
                             source: "damageBegin1",
                         },
@@ -4817,7 +4904,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_zibaoerhao
             "qunyou2022_hengzhi": {
-                audio: "ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "damageBegin2",
                     source: "damageBegin1",
@@ -4858,6 +4945,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_zibao": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 enable: "phaseUse",
                 content: function () {
                     "step 0"
@@ -4866,6 +4954,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 group:"qunyou2022_zibao_fire",
                 subSkill:{
                     'fire':{ 
+                        audio:["qunyou2022_zibao",2],
                         trigger:{player:'damageBefore'},
                         forced:true,
                         charlotte:true,
@@ -4882,6 +4971,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_longcuigongzhu
             "qunyou2022_hongyun": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     global: "judgeEnd",
                 },
@@ -4900,6 +4990,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_dianpei": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "loseAfter",
                 },
@@ -4931,6 +5022,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_jiying": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 zhuSkill: true,
                 trigger: {
                     global: "damageEnd",
@@ -4970,6 +5062,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_zixushangren
             "qunyou2022_yuyan": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "phaseZhunbeiBegin",
                 },
@@ -5025,6 +5118,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_xianzhi": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 usable: 1,
                 enable: "phaseUse",
                 filterTarget: function (card, player, target) {
@@ -5046,6 +5140,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_fuluan": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 limited: true,
                 unique: true,
                 enable: "phaseUse",
@@ -5123,6 +5218,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_sunnichang
             "qunyou2022_wuxian": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     global: "gainAfter",
                 },
@@ -5137,6 +5233,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_xianming": {
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 trigger: {
                     player: "useCardToPlayered",
                     target: "useCardToTargeted",
@@ -5173,7 +5270,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
 
             //qunyou2022_zhangxi
             "qunyou2022_yizun": {
-                audio: "ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 mark: true,
                 marktext: "☯",
                 zhuanhuanji: true,
@@ -5197,7 +5294,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                             'step 0'
                             player.changeZhuanhuanji('qunyou2022_yizun');
                             player.chooseTarget("令一名角色将手牌摸至与场上手牌数最多的角色相同（至多摸5张)").set('ai', function (target) {
-                                return get.attitude(player, target);
+                                return get.attitude(_status.event.player, target);
                             });
                             'step 1'
                             if (result.bool) {
@@ -5233,7 +5330,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                             "step 0"
                             player.changeZhuanhuanji('qunyou2022_yizun');
                             player.chooseTarget("令一名角色将手牌弃至与场上手牌数最少的角色相同（至多弃5张）").set('ai', function (target) {
-                                return -get.attitude(player, target);
+                                return -get.attitude(_status.event.player, target);
                             });
                             "step 1"
                             if (result.bool) {
@@ -5260,7 +5357,7 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
                 },
             },
             "qunyou2022_weihan": {
-                audio: "ext:群友DIY/audio/skill:2",
+                audio: "ext:群友DIY/audio/qunyou2022:2",
                 enable: "phaseUse",
                 limited: true,
                 unique: true,
@@ -5768,10 +5865,16 @@ game.import('character', function (lib, game, ui, get, ai, _status) {
             },
         },
     };
+
     if (lib.device || lib.node) {
-        for (var i in qunyou2022.character) qunyou2022.character[i][4].push('ext:群友DIY/image/character/' + i + '.jpg');
+        for (var i in qunyou2022.character) qunyou2022.character[i][4].push('ext:群友DIY/image/qunyou2022/' + i + '.jpg');
     } else {
-        for (var i in qunyou2022.character) qunyou2022.character[i][4].push('db:extension-群友DIY/image/character:' + i + '.jpg');
+        for (var i in qunyou2022.character) qunyou2022.character[i][4].push('db:extension-群友DIY/image/qunyou2022:' + i + '.jpg');
     }
+
+    lib.config.all.characters.push('qunyou2022');
+    if (!lib.config.characters.contains('qunyou2022')) lib.config.characters.push('qunyou2022');
+    lib.translate['qunyou2022_character_config'] = "群友2022";
+
     return qunyou2022;
 })
